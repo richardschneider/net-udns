@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard14;netstandard2</TargetFrameworks>
+    <AssemblyName>Makaretu.Dns.Unicast</AssemblyName>
+    <RootNamespace>Makaretu.Dns</RootNamespace>
+    <DocumentationFile>Makaretu.Dns.Unicast.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    
+    <!-- developer build is always 0.2 -->
+    <AssemblyVersion>0.42</AssemblyVersion>
+    <Version>0.42</Version>
+    
+    <!-- Nuget specs -->
+    <PackageId>Makaretu.Dns.Unicast</PackageId>
+    <Authors>Richard Schneider</Authors>
+    <Title>Unicast DNS client</Title>
+    <Description>A simple Unicast DNS client for TCP and UDP</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright>© 2018 Richard Schneider</Copyright>
+    <PackageTags>unicast mdns dns client</PackageTags>
+    <IncludeSymbols>True</IncludeSymbols>
+    <PackageLicenseUrl>https://github.com/richardschneider/net-udns/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/richardschneider/net-udns</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard14'">
+    <DefineConstants>NETSTANDARD14</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Common.Logging" Version="3.4.1" />
+    <PackageReference Include="Makaretu.Dns" Version="0.6.0" />
+    <PackageReference Include="Nito.AsyncEx" Version="5.0.0-pre-05" />
+    <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
