@@ -16,6 +16,20 @@ namespace Makaretu.Dns
     [TestClass]
     public class DnsClientTest
     {
+        static bool SupportsIPv6
+        {
+            get
+            {
+                return Socket.OSSupportsIPv6
+
+                    // See https://discuss.circleci.com/t/ipv6-support/13571
+                    && Environment.GetEnvironmentVariable("CIRCLECI") == null
+
+                    // See https://github.com/njh/travis-ipv6-test
+                    && Environment.GetEnvironmentVariable("TRAVIS") == null
+                    ;
+            }
+        }
         [TestMethod]
         public void Servers()
         {
@@ -124,7 +138,7 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task Query_IPv6()
         {
-            if (!Socket.OSSupportsIPv6)
+            if (!SupportsIPv6)
             {
                 Assert.Inconclusive("IPv6 not supported by OS.");
             }
