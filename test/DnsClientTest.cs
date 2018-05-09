@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -123,6 +124,11 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task Query_IPv6()
         {
+            if (!Socket.OSSupportsIPv6)
+            {
+                Assert.Inconclusive("IPv6 not supported by OS.");
+            }
+
             DnsClient.Servers = new IPAddress[]
             {
                 IPAddress.Parse("2001:4860:4860::8888"), // google dns
