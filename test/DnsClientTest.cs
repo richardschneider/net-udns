@@ -37,8 +37,8 @@ namespace Makaretu.Dns
         {
             var originalUdp = DnsClient.TimeoutUdp;
             var originalTcp = DnsClient.TimeoutTcp;
-            DnsClient.TimeoutUdp = TimeSpan.FromMilliseconds(1);
-            DnsClient.TimeoutTcp= TimeSpan.FromMilliseconds(1);
+            DnsClient.TimeoutUdp = TimeSpan.FromMilliseconds(0);
+            DnsClient.TimeoutTcp= TimeSpan.FromMilliseconds(0);
             try
             {
                 var query = new Message { RD = true };
@@ -77,10 +77,21 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
-        public void Query_UnknownName()
+        public void Query_UnknownTldName()
         {
             var query = new Message { RD = true };
             query.Questions.Add(new Question { Name = "emanon.foo", Type = DnsType.A });
+            ExceptionAssert.Throws<IOException>(() =>
+            {
+                var _ = DnsClient.QueryAsync(query).Result;
+            }, "DNS error 'NameError'.");
+        }
+
+        [TestMethod]
+        public void Query_UnknownName()
+        {
+            var query = new Message { RD = true };
+            query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
             ExceptionAssert.Throws<IOException>(() =>
             {
                 var _ = DnsClient.QueryAsync(query).Result;

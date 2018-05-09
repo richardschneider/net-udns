@@ -64,6 +64,24 @@ namespace Makaretu.Dns
         }
 
         /// <summary>
+        ///   Get the DNS servers that can be communicated with.
+        /// </summary>
+        /// <returns>
+        ///   A sequence of IP addresses for the DNS servers.
+        /// </returns>
+        /// <remarks>
+        ///   Only servers with an <see cref="AddressFamily"/> supported by
+        ///   the OS is returned.
+        /// </remarks>
+        public static IEnumerable<IPAddress> AvailableServers()
+        {
+            return Servers
+                .Where(a =>
+                    (Socket.OSSupportsIPv4 && a.AddressFamily == AddressFamily.InterNetwork) ||
+                    (Socket.OSSupportsIPv6 && a.AddressFamily == AddressFamily.InterNetworkV6));
+        }
+
+        /// <summary>
         ///   Get the DNS servers.
         /// </summary>
         /// <returns>
@@ -96,104 +114,110 @@ namespace Makaretu.Dns
         /// <remarks>
         ///   The <paramref name="request"/> is sent with UDP.  If no response is
         ///   received (or is truncated) in <see cref="TimeoutUdp"/>, then it is resent via TCP.
+        ///   <para>
+        ///   Some home routers have issues with IPv6, so IPv4 servers are tried first.
+        ///   </para>
         /// </remarks>
         public static async Task<Message> QueryAsync(
             Message request,
             CancellationToken cancel = default(CancellationToken))
         {
             var msg = request.ToByteArray();
+            var servers = AvailableServers()
+                .OrderBy(a => a.AddressFamily)
+                .ToArray();
             Message response = null;
 
-            // Try UDP first.
-            var cs = new CancellationTokenSource(TimeoutUdp);
-            try
+            foreach (var server in servers)
             {
-                response = await QueryUdpAsync(msg, cs.Token);
-                // If truncated response, then use TCP.
-                if (response != null && response.TC)
-                {
-                    response = null; 
-                }
-            }
-            catch (TaskCanceledException)
-            {
-                // Timeout, will retry with TCP 
-            }
-
-            // If no response, then try TCP
-            if (response == null)
-            {
-                cs = new CancellationTokenSource(TimeoutTcp);
-                try
-                {
-                    response = await QueryTcpAsync(msg, cs.Token);
-                }
-                catch (TaskCanceledException)
-                {
-                    // Timeout
-                }
+                response = await QueryAsync(msg, server, cancel);
+                if (response != null)
+                    break;
             }
 
             // Check the response.
             if (response == null)
+            {
+                log.Warn("No response from DNS servers.");
                 throw new IOException("No response from DNS servers.");
-            if (response.Status != MessageStatus.NoError)
+            }
+            if (response.Status != MessageStatus.NoError) {
+                log.Warn($"DNS error '{response.Status}'.");
                 throw new IOException($"DNS error '{response.Status}'.");
+            }
 
+            log.Debug("Got response");
             return response;
+        }
+
+        static async Task<Message> QueryAsync(byte[] request, IPAddress server, CancellationToken cancel)
+        {
+            // Try UDP first.
+            var cs = new CancellationTokenSource(TimeoutUdp);
+            try
+            {
+                var response = await QueryUdpAsync(request, server, cs.Token);
+                // If truncated response, then use TCP.
+                if (response != null && !response.TC)
+                {
+                    return response;
+                }
+            }
+            catch (SocketException e)
+            {
+                // Cannot connect, try another server.
+                log.Warn(e.Message);
+                return null;
+            }
+            catch (TaskCanceledException e)
+            {
+                // Timeout, will retry with TCP 
+                log.Warn(e.Message);
+            }
+
+            // If no response, then try TCP
+            cs = new CancellationTokenSource(TimeoutTcp);
+            try
+            {
+                return await QueryTcpAsync(request, server, cs.Token);
+            }
+            catch (Exception e)
+            {
+                log.Warn(e.Message);
+                return null;
+            }
         }
 
         static async Task<Message> QueryUdpAsync(
             byte[] request,
+            IPAddress server,
             CancellationToken cancel)
         {
-            foreach (var server in Servers/*.Where(s => s.AddressFamily == AddressFamily.InterNetwork)*/)
+            var endPoint = new IPEndPoint(server, DnsPort);
+            log.Debug("UDP to " + endPoint.ToString());
+
+            using (var client = new UdpClient(server.AddressFamily))
             {
-                var endPoint = new IPEndPoint(server, DnsPort);
-                log.Debug("UDP to " + endPoint.ToString());
-
-                using (var client = new UdpClient(server.AddressFamily))
-                {
-                    try
-                    {
-                        await client.SendAsync(request, request.Length, endPoint);
-                        var result = await client
-                            .ReceiveAsync()
-                            .WaitAsync(cancel);
-                        var response = (Message)(new Message().Read(result.Buffer));
-                        return response;
-                    }
-                    catch (Exception e)
-                    {
-                        log.Error(e.Message);
-                    }
-                }
-            }
-            return null;
-
-            using (var client = new UdpClient())
-            {
-                var servers = Servers
-                    .Where(s => s.AddressFamily == AddressFamily.InterNetwork);  // TODO IPv6
-                var server = new IPEndPoint(servers.First(), DnsPort);
-                await client.SendAsync(request, request.Length, server);
-
+                await client.SendAsync(request, request.Length, endPoint);
                 var result = await client
                     .ReceiveAsync()
                     .WaitAsync(cancel);
                 var response = (Message)(new Message().Read(result.Buffer));
-                return response; 
+                return response;
             }
         }
 
         static async Task<Message> QueryTcpAsync(
             byte[] request,
+            IPAddress server,
             CancellationToken cancel)
         {
-            using (var client = new TcpClient())
+            log.Debug("TCP to " + server.ToString());
+
+            using (var client = new TcpClient(server.AddressFamily))
             {
                 await client
-                    .ConnectAsync(Servers.ToArray(), DnsPort)
+                    .ConnectAsync(server, DnsPort)
                     .WaitAsync(cancel);
                 using (var stream = client.GetStream())
                 {
@@ -214,7 +238,7 @@ namespace Makaretu.Dns
                         .ReadAsync(buffer, 0, buffer.Length)
                         .WaitAsync(cancel);
                     if (n == 0)
-                        throw new Exception($"No response from DNS server.");
+                        return null;
                     if (BitConverter.IsLittleEndian)
                     {
                         Array.Reverse(buffer);
