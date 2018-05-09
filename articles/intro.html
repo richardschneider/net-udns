@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | Multicast DNS documentation </title>
+    <title>DNS Client | DNS Client </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | Multicast DNS documentation ">
+    <meta name="title" content="DNS Client | DNS Client ">
     <meta name="generator" content="docfx 2.35.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,10 +67,24 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="dns-client">DNS Client</h1>
 
-<p>A simple Multicast Domain Name Service based on <a href="https://tools.ietf.org/html/rfc6762">RFC 6762</a>.  The source code is on <a href="https://github.com/richardschneider/net-mdns">GitHub</a> and the package is published on <a href="https://www.nuget.org/packages/Makaretu.Dns.Multicast">NuGet</a>.</p>
-<p>The <a href="xref:Makaretu.Dns.MulticastService">MulticastService</a> is used to send <a href="xref:Makaretu.Dns.MulticastService.SendQuery">queries</a> and <a href="xref:Makaretu.Dns.MulticastService.SendAnswer">answers</a>.  It also listens for DNS <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Messages</a> and raises either the <a href="xref:Makaretu.Dns.MulticastService.QueryReceived">QueryReceived</a> or <a href="xref:Makaretu.Dns.MulticastService.AnswerReceived">AnswerReceived</a> event.</p>
-</article>
+<p>A simple Unicast DNS client that communicates with a DNS server over UPD and TCP. 
+The source code is on <a href="https://github.com/richardschneider/net-udns">GitHub</a> and the package is published on <a href="https://www.nuget.org/packages/Makaretu.Dns.Unicast">NuGet</a>.</p>
+<p><a class="xref" href="../api/Makaretu.Dns.DnsClient.html">DnsClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> to a DNS server and receive a response.  </p>
+<h2 id="usage">Usage</h2>
+<p>Get all the TXT strings assoicated with &quot;ipfs.io&quot;</p>
+<pre><code class="lang-csharp">using Makaretu.Dns;
+
+var response = await DnsClient.QueryAsync(&quot;ipfs.io&quot;, DnsType.TXT);
+var strings = response.Answers
+    .OfType&lt;TXTRecord&gt;()
+    .SelectMany(txt =&gt; txt.Strings);
+foreach (var s in strings)
+    Console.WriteLine(s);
+</code></pre><p>Produces the output</p>
+<pre><code>dnslink=/ipfs/QmYNQJoKGNHTpPxCBPh9KkDpaExgd2duMa3aF6ytMpHdao
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

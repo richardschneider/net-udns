@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Makaretu.Dns
-   | DNS Client </title>
+    <title>Cancelling a request | DNS Client </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Makaretu.Dns
-   | DNS Client ">
+    <meta name="title" content="Cancelling a request | DNS Client ">
     <meta name="generator" content="docfx 2.35.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -68,18 +66,27 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Makaretu.Dns">
-  
-  <h1 id="Makaretu_Dns" data-uid="Makaretu.Dns" class="text-break">Namespace Makaretu.Dns
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-  </h3>
-      <h4><a class="xref" href="Makaretu.Dns.DnsClient.html">DnsClient</a></h4>
-      <section><p>Client to a unicast DNS server.</p>
-</section>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="cancelling-a-request">Cancelling a request</h1>
+
+<p>All requests to the DNS server can be cancelled by supplying 
+an optional <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>.  When 
+the token is cancelled, 
+a <a href="xref:System.Threading.Tasks.TaskCanceledException">TaskCanceledException</a> 
+will be <code>thrown</code>.</p>
+<p>Here&#39;s a contrived unit test that forces the query to be cancelled</p>
+<pre><code class="lang-csharp">var cts = new CancellationTokenSource(500);
+try
+{
+    await Task.Delay(400);
+    var response = await DnsClient.QueryAsync(..., cts.Token);
+    Assert.Fail(&quot;Did not throw TaskCanceledException&quot;);
+}
+catch (TaskCanceledException)
+{
+    return;
+}
+</code></pre><p>See also <a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-cancellation">Task Cancellation</a></p>
 </article>
           </div>
           
@@ -87,6 +94,9 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/richardschneider/net-udns/blob/master/doc/articles/cancellation.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
