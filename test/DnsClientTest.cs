@@ -162,6 +162,7 @@ namespace Makaretu.Dns
                 DnsClient.Servers = null;
             }
         }
+
         [TestMethod]
         public void Query_NoServers()
         {
@@ -174,6 +175,23 @@ namespace Makaretu.Dns
                 {
                     var _ = DnsClient.QueryAsync(query).Result;
                 }, "No DNS servers are available.");
+            }
+            finally
+            {
+                DnsClient.Servers = null;
+            }
+        }
+
+        [TestMethod]
+        public void Query_UnreachableServer()
+        {
+            DnsClient.Servers = new IPAddress[] { IPAddress.Parse("127.0.0.1") };
+            try
+            {
+                ExceptionAssert.Throws<Exception>(() =>
+                {
+                    var _ = DnsClient.QueryAsync("ipfs.io", DnsType.A).Result;
+                }, "No response from DNS servers.");
             }
             finally
             {
