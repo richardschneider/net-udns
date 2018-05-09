@@ -1,0 +1,99 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Makaretu.Dns
+  name: Makaretu.Dns
+  href: api/Makaretu.Dns.html
+  commentId: N:Makaretu.Dns
+  fullName: Makaretu.Dns
+  nameWithType: Makaretu.Dns
+- uid: Makaretu.Dns.DnsClient
+  name: DnsClient
+  href: api/Makaretu.Dns.DnsClient.html
+  commentId: T:Makaretu.Dns.DnsClient
+  fullName: Makaretu.Dns.DnsClient
+  nameWithType: DnsClient
+- uid: Makaretu.Dns.DnsClient.AvailableServers
+  name: AvailableServers()
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_AvailableServers
+  commentId: M:Makaretu.Dns.DnsClient.AvailableServers
+  fullName: Makaretu.Dns.DnsClient.AvailableServers()
+  nameWithType: DnsClient.AvailableServers()
+- uid: Makaretu.Dns.DnsClient.AvailableServers*
+  name: AvailableServers
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_AvailableServers_
+  commentId: Overload:Makaretu.Dns.DnsClient.AvailableServers
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClient.AvailableServers
+  nameWithType: DnsClient.AvailableServers
+- uid: Makaretu.Dns.DnsClient.GetServers
+  name: GetServers()
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_GetServers
+  commentId: M:Makaretu.Dns.DnsClient.GetServers
+  fullName: Makaretu.Dns.DnsClient.GetServers()
+  nameWithType: DnsClient.GetServers()
+- uid: Makaretu.Dns.DnsClient.GetServers*
+  name: GetServers
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_GetServers_
+  commentId: Overload:Makaretu.Dns.DnsClient.GetServers
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClient.GetServers
+  nameWithType: DnsClient.GetServers
+- uid: Makaretu.Dns.DnsClient.QueryAsync(Makaretu.Dns.Message,System.Threading.CancellationToken)
+  name: QueryAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_Makaretu_Dns_Message_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClient.QueryAsync(Makaretu.Dns.Message,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClient.QueryAsync(Makaretu.Dns.Message, System.Threading.CancellationToken)
+  nameWithType: DnsClient.QueryAsync(Message, CancellationToken)
+- uid: Makaretu.Dns.DnsClient.QueryAsync(System.String,Makaretu.Dns.DnsType,System.Threading.CancellationToken)
+  name: QueryAsync(String, DnsType, CancellationToken)
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_System_String_Makaretu_Dns_DnsType_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClient.QueryAsync(System.String,Makaretu.Dns.DnsType,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClient.QueryAsync(System.String, Makaretu.Dns.DnsType, System.Threading.CancellationToken)
+  nameWithType: DnsClient.QueryAsync(String, DnsType, CancellationToken)
+- uid: Makaretu.Dns.DnsClient.QueryAsync*
+  name: QueryAsync
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_
+  commentId: Overload:Makaretu.Dns.DnsClient.QueryAsync
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClient.QueryAsync
+  nameWithType: DnsClient.QueryAsync
+- uid: Makaretu.Dns.DnsClient.Servers
+  name: Servers
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_Servers
+  commentId: P:Makaretu.Dns.DnsClient.Servers
+  fullName: Makaretu.Dns.DnsClient.Servers
+  nameWithType: DnsClient.Servers
+- uid: Makaretu.Dns.DnsClient.Servers*
+  name: Servers
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_Servers_
+  commentId: Overload:Makaretu.Dns.DnsClient.Servers
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClient.Servers
+  nameWithType: DnsClient.Servers
+- uid: Makaretu.Dns.DnsClient.TimeoutTcp
+  name: TimeoutTcp
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_TimeoutTcp
+  commentId: P:Makaretu.Dns.DnsClient.TimeoutTcp
+  fullName: Makaretu.Dns.DnsClient.TimeoutTcp
+  nameWithType: DnsClient.TimeoutTcp
+- uid: Makaretu.Dns.DnsClient.TimeoutTcp*
+  name: TimeoutTcp
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_TimeoutTcp_
+  commentId: Overload:Makaretu.Dns.DnsClient.TimeoutTcp
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClient.TimeoutTcp
+  nameWithType: DnsClient.TimeoutTcp
+- uid: Makaretu.Dns.DnsClient.TimeoutUdp
+  name: TimeoutUdp
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_TimeoutUdp
+  commentId: P:Makaretu.Dns.DnsClient.TimeoutUdp
+  fullName: Makaretu.Dns.DnsClient.TimeoutUdp
+  nameWithType: DnsClient.TimeoutUdp
+- uid: Makaretu.Dns.DnsClient.TimeoutUdp*
+  name: TimeoutUdp
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_TimeoutUdp_
+  commentId: Overload:Makaretu.Dns.DnsClient.TimeoutUdp
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClient.TimeoutUdp
+  nameWithType: DnsClient.TimeoutUdp
