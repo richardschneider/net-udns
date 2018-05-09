@@ -122,10 +122,13 @@ namespace Makaretu.Dns
             Message request,
             CancellationToken cancel = default(CancellationToken))
         {
-            var msg = request.ToByteArray();
             var servers = AvailableServers()
                 .OrderBy(a => a.AddressFamily)
                 .ToArray();
+            if (servers.Length == 0)
+                throw new Exception("No DNS servers are available.");
+
+            var msg = request.ToByteArray();
             Message response = null;
 
             foreach (var server in servers)

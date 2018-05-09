@@ -140,5 +140,23 @@ namespace Makaretu.Dns
                 DnsClient.Servers = null;
             }
         }
+        [TestMethod]
+        public void Query_NoServers()
+        {
+            DnsClient.Servers = new IPAddress[0];
+            try
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
+                ExceptionAssert.Throws<Exception>(() =>
+                {
+                    var _ = DnsClient.QueryAsync(query).Result;
+                }, "No DNS servers are available.");
+            }
+            finally
+            {
+                DnsClient.Servers = null;
+            }
+        }
     }
 }
