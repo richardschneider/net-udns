@@ -1,4 +1,27 @@
-A simple Multicast Domain Name Service based on [RFC 6762](https://tools.ietf.org/html/rfc6762).  The source code is on [GitHub](https://github.com/richardschneider/net-mdns) and the package is published on [NuGet](https://www.nuget.org/packages/Makaretu.Dns.Multicast).
+# DNS Client
 
-The [MulticastService](xref:Makaretu.Dns.MulticastService) is used to send [queries](xref:Makaretu.Dns.MulticastService.SendQuery) and [answers](xref:Makaretu.Dns.MulticastService.SendAnswer).  It also listens for DNS [Messages](xref:Makaretu.Dns.Message) and raises either the [QueryReceived](xref:Makaretu.Dns.MulticastService.QueryReceived) or [AnswerReceived](xref:Makaretu.Dns.MulticastService.AnswerReceived) event.
+A simple Unicast DNS client that communicates with a DNS server over UPD and TCP. 
+The source code is on [GitHub](https://github.com/richardschneider/net-udns) and the package is published on [NuGet](https://www.nuget.org/packages/Makaretu.Dns.Unicast).
+
+[DnsClient](xref:Makaretu.Dns.DnsClient) is used to send a [Message](xref:Makaretu.Dns.Message) to a DNS server and receive a response.  
+
+## Usage
+
+Get all the TXT strings assoicated with "ipfs.io"
+
+```csharp
+using Makaretu.Dns;
+
+var response = await DnsClient.QueryAsync("ipfs.io", DnsType.TXT);
+var strings = response.Answers
+    .OfType<TXTRecord>()
+    .SelectMany(txt => txt.Strings);
+foreach (var s in strings)
+    Console.WriteLine(s);
+```
+
+Produces the output
+```
+dnslink=/ipfs/QmYNQJoKGNHTpPxCBPh9KkDpaExgd2duMa3aF6ytMpHdao
+```
 

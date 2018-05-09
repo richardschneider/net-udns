@@ -15,7 +15,7 @@
     <PackageId>Makaretu.Dns.Unicast</PackageId>
     <Authors>Richard Schneider</Authors>
     <Title>Unicast DNS client</Title>
-    <Description>A simple Unicast DNS client for TCP and UDP</Description>
+    <Description>A simple Unicast DNS client for UPD and TCP</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>© 2018 Richard Schneider</Copyright>

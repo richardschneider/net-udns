@@ -23,7 +23,7 @@ A DNS client that can fetch more than `A` and `AAAA` resource records.
 
 Published releases are available on [NuGet](https://www.nuget.org/packages/Makaretu.Dns.Unicast/).  To install, run the following command in the [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console).
 
-    PM> Install-Package Makaretu.Mdns
+    PM> Install-Package Makaretu.Dns.Unicast
     
 ## Usage
 
