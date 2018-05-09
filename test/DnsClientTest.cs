@@ -27,6 +27,8 @@ namespace Makaretu.Dns
 
                     // See https://github.com/njh/travis-ipv6-test
                     && Environment.GetEnvironmentVariable("TRAVIS") == null
+
+                    && Environment.GetEnvironmentVariable("APPVEYOR") == null
                     ;
             }
         }

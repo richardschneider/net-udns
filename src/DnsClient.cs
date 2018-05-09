@@ -96,7 +96,37 @@ namespace Makaretu.Dns
         }
 
         /// <summary>
-        ///   Send a DNS query.
+        ///   Send a DNS query with the specified name and resource record type.
+        /// </summary>
+        /// <param name="name">
+        ///   A domain name.
+        /// </param>
+        /// <param name="rtype">
+        ///   A resource record type.
+        /// </param>
+        /// <param name="cancel">
+        ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
+        /// </param>
+        /// <returns>
+        ///   A task that represents the asynchronous get operation. The task's value
+        ///   contains the response <see cref="Message"/>.
+        /// </returns>
+        /// <remarks>
+        ///   Creates a query <see cref="Message"/> and then calls <see cref="QueryAsync(Message, CancellationToken)"/>.
+        /// </remarks>
+        public static Task<Message> QueryAsync(
+            string name,
+            DnsType rtype,
+            CancellationToken cancel = default(CancellationToken))
+        {
+            var query = new Message { RD = true };
+            query.Questions.Add(new Question { Name = name, Type = rtype });
+
+            return QueryAsync(query, cancel);
+        }
+
+        /// <summary>
+        ///   Send a DNS query with the specified message.
         /// </summary>
         /// <param name="request">
         ///   A <see cref="Message"/> containing a <see cref="Question"/>.
