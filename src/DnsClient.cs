@@ -186,6 +186,13 @@ namespace Makaretu.Dns
             if (servers.Length == 0)
                 throw new Exception("No DNS servers are available.");
 
+            if (log.IsDebugEnabled)
+            {
+                var names = request.Questions
+                    .Select(q => q.Name + " " + q.Type.ToString())
+                    .Aggregate((current, next) => current + ", " + next);
+                log.Debug($"query #{request.Id} for '{names}'");
+            }
             var msg = request.ToByteArray();
             Message response = null;
 

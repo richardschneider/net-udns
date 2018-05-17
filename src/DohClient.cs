@@ -21,7 +21,7 @@ namespace Makaretu.Dns
     /// </summary>
     /// <remarks>
     ///   DNS over HTTPS (DoH) is an experimental protocol for performing remote 
-    ///   Domain Name System (DNS) resolution via the HTTPS protocol. The goal  
+    ///   Domain Name System (DNS) resolution via the HTTPS protocol. The goal
     ///   is to increase user privacy and security by preventing eavesdropping and 
     ///   manipulation of DNS data by man-in-the-middle attacks.
     /// </remarks>
