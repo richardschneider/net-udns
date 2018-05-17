@@ -14,12 +14,12 @@
     <!-- Nuget specs -->
     <PackageId>Makaretu.Dns.Unicast</PackageId>
     <Authors>Richard Schneider</Authors>
-    <Title>Unicast DNS client</Title>
-    <Description>A simple Unicast DNS client for UPD and TCP</Description>
+    <Title>Unicast DNS clients</Title>
+    <Description>Clients that communicate with a standard DNS server or a DNS server over HTTPS.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>© 2018 Richard Schneider</Copyright>
-    <PackageTags>unicast mdns dns client</PackageTags>
+    <PackageTags>unicast dns https doh client</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageLicenseUrl>https://github.com/richardschneider/net-udns/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/richardschneider/net-udns</PackageProjectUrl>

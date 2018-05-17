@@ -11,10 +11,10 @@ DNS clients that can fetch more than `A` and `AAAA` resource records.
 
 ## Features
 
-- `DnsClient` for a standard unicast DNS server
+- [DnsClient](https://richardschneider.github.io/net-udns/api/Makaretu.Dns.DnsClient.html) for a standard unicast DNS server
    - Initially uses UDP  
    - Fallbacks to TCP if no UDP response or the response is truncated
-- `DohClient` for a DNS Over HTTPS (DOH) server
+- [DohClient](https://richardschneider.github.io/net-udns/api/Makaretu.Dns.DohClient.html) for a DNS Over HTTPS (DOH) server
 - Supports asynchronous I/O
 - Supports cancellation
 - Supports IPv6 and IPv4 platforms
