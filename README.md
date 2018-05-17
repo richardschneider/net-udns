@@ -7,12 +7,14 @@
 [![Version](https://img.shields.io/nuget/v/Makaretu.Dns.Unicast.svg)](https://www.nuget.org/packages/Makaretu.Dns.Unicast)
 [![docs](https://cdn.rawgit.com/richardschneider/net-udns/master/doc/images/docs-latest-green.svg)](https://richardschneider.github.io/net-udns/articles/intro.html)
 
-A DNS client that can fetch more than `A` and `AAAA` resource records.
+DNS clients that can fetch more than `A` and `AAAA` resource records.
 
 ## Features
 
-- Uses UDP
-- Fallbacks to TCP if no UDP response or the response is truncated
+- `DnsClient` for a standard unicast DNS server
+   - Initially uses UDP  
+   - Fallbacks to TCP if no UDP response or the response is truncated
+- `DohClient` for a DNS Over HTTPS (DOH) server
 - Supports asynchronous I/O
 - Supports cancellation
 - Supports IPv6 and IPv4 platforms
