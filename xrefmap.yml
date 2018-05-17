@@ -110,3 +110,92 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClient.TimeoutUdp
   nameWithType: DnsClient.TimeoutUdp
+- uid: Makaretu.Dns.DohClient
+  name: DohClient
+  href: api/Makaretu.Dns.DohClient.html
+  commentId: T:Makaretu.Dns.DohClient
+  fullName: Makaretu.Dns.DohClient
+  nameWithType: DohClient
+- uid: Makaretu.Dns.DohClient.DnsJsonFormat
+  name: DnsJsonFormat
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_DnsJsonFormat
+  commentId: F:Makaretu.Dns.DohClient.DnsJsonFormat
+  fullName: Makaretu.Dns.DohClient.DnsJsonFormat
+  nameWithType: DohClient.DnsJsonFormat
+- uid: Makaretu.Dns.DohClient.DnsWireFormat
+  name: DnsWireFormat
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_DnsWireFormat
+  commentId: F:Makaretu.Dns.DohClient.DnsWireFormat
+  fullName: Makaretu.Dns.DohClient.DnsWireFormat
+  nameWithType: DohClient.DnsWireFormat
+- uid: Makaretu.Dns.DohClient.HttpClient
+  name: HttpClient
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_HttpClient
+  commentId: P:Makaretu.Dns.DohClient.HttpClient
+  fullName: Makaretu.Dns.DohClient.HttpClient
+  nameWithType: DohClient.HttpClient
+- uid: Makaretu.Dns.DohClient.HttpClient*
+  name: HttpClient
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_HttpClient_
+  commentId: Overload:Makaretu.Dns.DohClient.HttpClient
+  isSpec: "True"
+  fullName: Makaretu.Dns.DohClient.HttpClient
+  nameWithType: DohClient.HttpClient
+- uid: Makaretu.Dns.DohClient.QueryAsync(Message,CancellationToken)
+  name: QueryAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_QueryAsync_Message_CancellationToken_
+  commentId: M:Makaretu.Dns.DohClient.QueryAsync(Message,CancellationToken)
+  fullName: Makaretu.Dns.DohClient.QueryAsync(Message, CancellationToken)
+  nameWithType: DohClient.QueryAsync(Message, CancellationToken)
+- uid: Makaretu.Dns.DohClient.QueryAsync(System.String,DnsType,CancellationToken)
+  name: QueryAsync(String, DnsType, CancellationToken)
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_QueryAsync_System_String_DnsType_CancellationToken_
+  commentId: M:Makaretu.Dns.DohClient.QueryAsync(System.String,DnsType,CancellationToken)
+  fullName: Makaretu.Dns.DohClient.QueryAsync(System.String, DnsType, CancellationToken)
+  nameWithType: DohClient.QueryAsync(String, DnsType, CancellationToken)
+- uid: Makaretu.Dns.DohClient.QueryAsync*
+  name: QueryAsync
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_QueryAsync_
+  commentId: Overload:Makaretu.Dns.DohClient.QueryAsync
+  isSpec: "True"
+  fullName: Makaretu.Dns.DohClient.QueryAsync
+  nameWithType: DohClient.QueryAsync
+- uid: Makaretu.Dns.DohClient.ResolveAsync(System.String,CancellationToken)
+  name: ResolveAsync(String, CancellationToken)
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_ResolveAsync_System_String_CancellationToken_
+  commentId: M:Makaretu.Dns.DohClient.ResolveAsync(System.String,CancellationToken)
+  fullName: Makaretu.Dns.DohClient.ResolveAsync(System.String, CancellationToken)
+  nameWithType: DohClient.ResolveAsync(String, CancellationToken)
+- uid: Makaretu.Dns.DohClient.ResolveAsync*
+  name: ResolveAsync
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_ResolveAsync_
+  commentId: Overload:Makaretu.Dns.DohClient.ResolveAsync
+  isSpec: "True"
+  fullName: Makaretu.Dns.DohClient.ResolveAsync
+  nameWithType: DohClient.ResolveAsync
+- uid: Makaretu.Dns.DohClient.ServerUrl
+  name: ServerUrl
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_ServerUrl
+  commentId: P:Makaretu.Dns.DohClient.ServerUrl
+  fullName: Makaretu.Dns.DohClient.ServerUrl
+  nameWithType: DohClient.ServerUrl
+- uid: Makaretu.Dns.DohClient.ServerUrl*
+  name: ServerUrl
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_ServerUrl_
+  commentId: Overload:Makaretu.Dns.DohClient.ServerUrl
+  isSpec: "True"
+  fullName: Makaretu.Dns.DohClient.ServerUrl
+  nameWithType: DohClient.ServerUrl
+- uid: Makaretu.Dns.DohClient.Timeout
+  name: Timeout
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_Timeout
+  commentId: P:Makaretu.Dns.DohClient.Timeout
+  fullName: Makaretu.Dns.DohClient.Timeout
+  nameWithType: DohClient.Timeout
+- uid: Makaretu.Dns.DohClient.Timeout*
+  name: Timeout
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_Timeout_
+  commentId: Overload:Makaretu.Dns.DohClient.Timeout
+  isSpec: "True"
+  fullName: Makaretu.Dns.DohClient.Timeout
+  nameWithType: DohClient.Timeout

@@ -17,11 +17,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.DohClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.DohClient.html",
+          "hash": "lC43whUMjDXTp7lrFL7bpQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Makaretu.Dns.yml",
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.html",
-          "hash": "L7PEIvu+8bqHjK+MGCOVXg=="
+          "hash": "Ew6nzYM6p1UpXNOz5v2tEg=="
         }
       },
       "is_incremental": false,
@@ -33,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "5dgdpDo41b1zvuo69zZgIw=="
+          "hash": "cNpRdF/Q4JCymENTqul0uw=="
         }
       },
       "is_incremental": false,
@@ -69,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "1Hu0xq4ZJNmFeroKBSHOmQ=="
+          "hash": "IX/zAr8z++O4wQjl0cRkxg=="
         }
       },
       "is_incremental": false,
@@ -165,11 +177,11 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
+        "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
+        "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },

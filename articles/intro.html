@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DNS Client | DNS Client </title>
+    <title>DNS Clients | DNS Client </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DNS Client | DNS Client ">
+    <meta name="title" content="DNS Clients | DNS Client ">
     <meta name="generator" content="docfx 2.35.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,11 +67,15 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="dns-client">DNS Client</h1>
+<h1 id="dns-clients">DNS Clients</h1>
 
-<p>A simple Unicast DNS client that communicates with a DNS server over UPD and TCP. 
-The source code is on <a href="https://github.com/richardschneider/net-udns">GitHub</a> and the package is published on <a href="https://www.nuget.org/packages/Makaretu.Dns.Unicast">NuGet</a>.</p>
-<p><a class="xref" href="../api/Makaretu.Dns.DnsClient.html">DnsClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> to a DNS server and receive a response.  </p>
+<p>Various DNS clients that communicate with a DNS server. The source code is on <a href="https://github.com/richardschneider/net-udns">GitHub</a> and the package is published on <a href="https://www.nuget.org/packages/Makaretu.Dns.Unicast">NuGet</a>.</p>
+<ul>
+<li><a class="xref" href="../api/Makaretu.Dns.DnsClient.html">DnsClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> 
+to a standard DNS server and receive a response; uses UPD and then TCP (if needed).</li>
+<li><a class="xref" href="../api/Makaretu.Dns.DohClient.html">DohClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> 
+to a DNS over HTTPS server and receive a response.</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <p>Get all the TXT strings assoicated with &quot;ipfs.io&quot;</p>
 <pre><code class="lang-csharp">using Makaretu.Dns;
