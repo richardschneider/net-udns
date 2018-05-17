@@ -28,5 +28,13 @@ namespace Makaretu.Dns
                 Console.WriteLine(s);
         }
 
+        [TestMethod]
+        public async Task Resolve()
+        {
+            var addresses = await DnsClient.ResolveAsync("cloudflare-dns.com");
+            foreach (var a in addresses)
+                Console.WriteLine(a.ToString());
+        }
+
     }
 }

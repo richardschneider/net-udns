@@ -40,6 +40,24 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        public void Resolve()
+        {
+            var addresses = DnsClient.ResolveAsync("cloudflare-dns.com").Result.ToArray();
+            Assert.AreNotEqual(0, addresses.Length);
+            Assert.IsTrue(addresses.Any(a => a.AddressFamily == AddressFamily.InterNetwork));
+            Assert.IsTrue(addresses.Any(a => a.AddressFamily == AddressFamily.InterNetworkV6));
+        }
+
+        [TestMethod]
+        public void Resolve_Unknown()
+        {
+            ExceptionAssert.Throws<IOException>(() =>
+            {
+                var _ = DnsClient.ResolveAsync("emanon.noname").Result;
+            });
+        }
+
+        [TestMethod]
         public async Task Query()
         {
             var query = new Message { RD = true };
@@ -147,6 +165,7 @@ namespace Makaretu.Dns
 
             DnsClient.Servers = new IPAddress[]
             {
+                IPAddress.Parse("2606:4700:4700::1111"), // cloudflare dns
                 IPAddress.Parse("2001:4860:4860::8888"), // google dns
             };
             try

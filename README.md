@@ -27,7 +27,25 @@ Published releases are available on [NuGet](https://www.nuget.org/packages/Makar
     
 ## Usage
 
-Get all the TXT strings assoicated with "ipfs.io"
+#### Get IP addresses
+
+```csharp
+using Makaretu.Dns;
+
+var addresses = await DnsClient.ResolveAsync("cloudflare-dns.com");
+foreach (var a in addresses)
+    Console.WriteLine(a.ToString());
+```
+
+Produces the output
+```
+104.16.111.25
+104.16.112.25
+2400:cb00:2048:1::6810:6f19
+2400:cb00:2048:1::6810:7019
+````
+
+#### Get all the TXT strings
 
 ```csharp
 using Makaretu.Dns;

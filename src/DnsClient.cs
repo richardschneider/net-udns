@@ -18,7 +18,7 @@ namespace Makaretu.Dns
     ///   Client to a unicast DNS server.
     /// </summary>
     /// <remarks>
-    ///   Sends and receives DNS queries and answers.
+    ///   Sends and receives DNS queries and answers to unicast DNS servers.
     /// </remarks>
     public class DnsClient
     {
@@ -96,6 +96,34 @@ namespace Makaretu.Dns
         }
 
         /// <summary>
+        ///   Get the IP addresses for the specified name.
+        /// </summary>
+        /// <param name="name">
+        ///   A domain name.
+        /// </param>
+        /// <param name="cancel">
+        ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
+        /// </param>
+        /// <returns>
+        ///   A task that represents the asynchronous operation. The task's value
+        ///   contains the <see cref="IPAddress"/> sequence for the <paramref name="name"/>.
+        /// </returns>
+        public static async Task<IEnumerable<IPAddress>> ResolveAsync(
+            string name,
+            CancellationToken cancel = default(CancellationToken))
+        {
+            var a = QueryAsync(name, DnsType.A, cancel);
+            var aaaa = QueryAsync(name, DnsType.AAAA, cancel);
+            var responses = await Task.WhenAll(a, aaaa);
+            return responses
+                .SelectMany(m => m.Answers)
+                .Where(rr => rr.Type == DnsType.A || rr.Type == DnsType.AAAA)
+                .Select(rr => rr.Type == DnsType.A
+                    ? ((ARecord)rr).Address
+                    : ((AAAARecord)rr).Address);
+        }
+
+        /// <summary>
         ///   Send a DNS query with the specified name and resource record type.
         /// </summary>
         /// <param name="name">
@@ -108,7 +136,7 @@ namespace Makaretu.Dns
         ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
         /// </param>
         /// <returns>
-        ///   A task that represents the asynchronous get operation. The task's value
+        ///   A task that represents the asynchronous operation. The task's value
         ///   contains the response <see cref="Message"/>.
         /// </returns>
         /// <remarks>
@@ -135,7 +163,7 @@ namespace Makaretu.Dns
         ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
         /// </param>
         /// <returns>
-        ///   A task that represents the asynchronous get operation. The task's value
+        ///   A task that represents the asynchronous operation. The task's value
         ///   contains the response <see cref="Message"/>.
         /// </returns>
         /// <exception cref="IOException">
