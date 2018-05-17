@@ -81,38 +81,14 @@
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">DnsClient</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Makaretu.Dns.html">Makaretu.Dns</a></h6>
   <h6><strong>Assembly</strong>: Makaretu.Dns.Unicast.dll</h6>
   <h5 id="Makaretu_Dns_DnsClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DnsClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class DnsClient : object</code></pre>
   </div>
   <h5 id="Makaretu_Dns_DnsClient_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Sends and receives DNS queries and answers.</p>
+  <div class="markdown level0 remarks"><p>Sends and receives DNS queries and answers to unicast DNS servers.</p>
 </div>
   <h3 id="properties">Properties
   </h3>
@@ -142,7 +118,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<span class="xref">System.Net.IPAddress</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IPAddress</span>&gt;</td>
         <td><p>A sequence of IP addresses.  When <strong>null</strong> <a class="xref" href="Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_GetServers">GetServers()</a>
 is used. The default is <strong>null</strong>.</p>
 </td>
@@ -175,7 +151,7 @@ is used. The default is <strong>null</strong>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
+        <td><span class="xref">TimeSpan</span></td>
         <td><p>The default is 4 seconds.</p>
 </td>
       </tr>
@@ -207,7 +183,7 @@ is used. The default is <strong>null</strong>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
+        <td><span class="xref">TimeSpan</span></td>
         <td><p>The default is 4 seconds.</p>
 </td>
       </tr>
@@ -241,14 +217,14 @@ is used. The default is <strong>null</strong>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<span class="xref">System.Net.IPAddress</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IPAddress</span>&gt;</td>
         <td><p>A sequence of IP addresses for the DNS servers.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 id="Makaretu_Dns_DnsClient_AvailableServers_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Only servers with an <span class="xref">System.Net.Sockets.AddressFamily</span> supported by
+  <div class="markdown level1 remarks"><p>Only servers with an <see cref="!:AddressFamily"></see> supported by
 the OS is returned.</p>
 </div>
   <span class="small pull-right mobile-hide">
@@ -277,7 +253,7 @@ the OS is returned.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<span class="xref">System.Net.IPAddress</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IPAddress</span>&gt;</td>
         <td><p>A sequence of IP addresses for the DNS servers.</p>
 </td>
       </tr>
@@ -285,19 +261,19 @@ the OS is returned.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClient_QueryAsync_Makaretu_Dns_Message_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClient.QueryAsync(Makaretu.Dns.Message%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClient_QueryAsync_Message_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClient.QueryAsync(Message%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClient.cs/#L151">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClient.cs/#L179">View Source</a>
   </span>
   <a id="Makaretu_Dns_DnsClient_QueryAsync_" data-uid="Makaretu.Dns.DnsClient.QueryAsync*"></a>
-  <h4 id="Makaretu_Dns_DnsClient_QueryAsync_Makaretu_Dns_Message_System_Threading_CancellationToken_" data-uid="Makaretu.Dns.DnsClient.QueryAsync(Makaretu.Dns.Message,System.Threading.CancellationToken)">QueryAsync(Message, CancellationToken)</h4>
+  <h4 id="Makaretu_Dns_DnsClient_QueryAsync_Message_CancellationToken_" data-uid="Makaretu.Dns.DnsClient.QueryAsync(Message,CancellationToken)">QueryAsync(Message, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Send a DNS query with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;Message&gt; QueryAsync(Message request, CancellationToken cancel = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public static Task&lt;Message&gt; QueryAsync(Message request, CancellationToken cancel = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -310,15 +286,15 @@ the OS is returned.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a></td>
+        <td><span class="xref">Message</span></td>
         <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> containing a <span class="xref">Makaretu.Dns.Question</span>.</p>
+        <td><p>A <see cref="!:Message"></see> containing a <see cref="!:Question"></see>.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancel</span></td>
-        <td><p>Is used to stop the task.  When cancelled, the <span class="xref">System.Threading.Tasks.TaskCanceledException</span> is raised.</p>
+        <td><p>Is used to stop the task.  When cancelled, the <see cref="!:TaskCanceledException"></see> is raised.</p>
 </td>
       </tr>
     </tbody>
@@ -333,51 +309,35 @@ the OS is returned.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a>&gt;</td>
-        <td><p>A task that represents the asynchronous get operation. The task&apos;s value
-contains the response <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a>.</p>
+        <td><span class="xref">Task</span>&lt;<span class="xref">Message</span>&gt;</td>
+        <td><p>A task that represents the asynchronous operation. The task&apos;s value
+contains the response <see cref="!:Message"></see>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Makaretu_Dns_DnsClient_QueryAsync_Makaretu_Dns_Message_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Makaretu_Dns_DnsClient_QueryAsync_Message_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> is sent with UDP.  If no response is
 received (or is truncated) in <a class="xref" href="Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_TimeoutUdp">TimeoutUdp</a>, then it is resent via TCP.
 <p>
 Some home routers have issues with IPv6, so IPv4 servers are tried first.
 </p></p>
 </div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.IO.IOException</span></td>
-        <td><p>When the DNS server returns error status or no response.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClient_QueryAsync_System_String_Makaretu_Dns_DnsType_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClient.QueryAsync(System.String%2CMakaretu.Dns.DnsType%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClient_QueryAsync_System_String_DnsType_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClient.QueryAsync(System.String%2CDnsType%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClient.cs/#L117">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClient.cs/#L145">View Source</a>
   </span>
   <a id="Makaretu_Dns_DnsClient_QueryAsync_" data-uid="Makaretu.Dns.DnsClient.QueryAsync*"></a>
-  <h4 id="Makaretu_Dns_DnsClient_QueryAsync_System_String_Makaretu_Dns_DnsType_System_Threading_CancellationToken_" data-uid="Makaretu.Dns.DnsClient.QueryAsync(System.String,Makaretu.Dns.DnsType,System.Threading.CancellationToken)">QueryAsync(String, DnsType, CancellationToken)</h4>
+  <h4 id="Makaretu_Dns_DnsClient_QueryAsync_System_String_DnsType_CancellationToken_" data-uid="Makaretu.Dns.DnsClient.QueryAsync(System.String,DnsType,CancellationToken)">QueryAsync(String, DnsType, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Send a DNS query with the specified name and resource record type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;Message&gt; QueryAsync(string name, DnsType rtype, CancellationToken cancel = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public static Task&lt;Message&gt; QueryAsync(string name, DnsType rtype, CancellationToken cancel = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -396,15 +356,15 @@ Some home routers have issues with IPv6, so IPv4 servers are tried first.
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.DnsType.html">DnsType</a></td>
+        <td><span class="xref">DnsType</span></td>
         <td><span class="parametername">rtype</span></td>
         <td><p>A resource record type.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancel</span></td>
-        <td><p>Is used to stop the task.  When cancelled, the <span class="xref">System.Threading.Tasks.TaskCanceledException</span> is raised.</p>
+        <td><p>Is used to stop the task.  When cancelled, the <see cref="!:TaskCanceledException"></see> is raised.</p>
 </td>
       </tr>
     </tbody>
@@ -419,16 +379,73 @@ Some home routers have issues with IPv6, so IPv4 servers are tried first.
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a>&gt;</td>
-        <td><p>A task that represents the asynchronous get operation. The task&apos;s value
-contains the response <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a>.</p>
+        <td><span class="xref">Task</span>&lt;<span class="xref">Message</span>&gt;</td>
+        <td><p>A task that represents the asynchronous operation. The task&apos;s value
+contains the response <see cref="!:Message"></see>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Makaretu_Dns_DnsClient_QueryAsync_System_String_Makaretu_Dns_DnsType_System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Creates a query <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> and then calls <a class="xref" href="Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_Makaretu_Dns_Message_System_Threading_CancellationToken_">QueryAsync(Message, CancellationToken)</a>.</p>
+  <h5 id="Makaretu_Dns_DnsClient_QueryAsync_System_String_DnsType_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Creates a query <see cref="!:Message"></see> and then calls <a class="xref" href="Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_Message_CancellationToken_">QueryAsync(Message, CancellationToken)</a>.</p>
 </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClient_ResolveAsync_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClient.ResolveAsync(System.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClient.cs/#L111">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DnsClient_ResolveAsync_" data-uid="Makaretu.Dns.DnsClient.ResolveAsync*"></a>
+  <h4 id="Makaretu_Dns_DnsClient_ResolveAsync_System_String_CancellationToken_" data-uid="Makaretu.Dns.DnsClient.ResolveAsync(System.String,CancellationToken)">ResolveAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get the IP addresses for the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;IEnumerable&lt;IPAddress&gt;&gt; ResolveAsync(string name, CancellationToken cancel = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>A domain name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancel</span></td>
+        <td><p>Is used to stop the task.  When cancelled, the <see cref="!:TaskCanceledException"></see> is raised.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;<span class="xref">IPAddress</span>&gt;&gt;</td>
+        <td><p>A task that represents the asynchronous operation. The task&apos;s value
+contains the <see cref="!:IPAddress"></see> sequence for the <code data-dev-comment-type="paramref" class="paramref">name</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           

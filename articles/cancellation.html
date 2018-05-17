@@ -72,7 +72,7 @@
 <p>All requests to the DNS server can be cancelled by supplying 
 an optional <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>.  When 
 the token is cancelled, 
-a <a href="xref:System.Threading.Tasks.TaskCanceledException">TaskCanceledException</a> 
+a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.taskcanceledexception">TaskCanceledException</a> 
 will be <code>thrown</code>.</p>
 <p>Here&#39;s a contrived unit test that forces the query to be cancelled</p>
 <pre><code class="lang-csharp">var cts = new CancellationTokenSource(500);
