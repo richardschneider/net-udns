@@ -91,7 +91,12 @@
   <div class="markdown level0 remarks"><p>DNS over HTTPS (DoH) is an experimental protocol for performing remote 
 Domain Name System (DNS) resolution via the HTTPS protocol. The goal
 is to increase user privacy and security by preventing eavesdropping and 
-manipulation of DNS data by man-in-the-middle attacks.</p>
+manipulation of DNS data by man-in-the-middle attacks.
+<p>
+The <strong>DohClient</strong> uses the HTTP POST method to hide as much
+information as is possible.  Also, it tends to generated smaller
+requests.
+</p></p>
 </div>
   <h3 id="fields">Fields
   </h3>
@@ -100,7 +105,7 @@ manipulation of DNS data by man-in-the-middle attacks.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_DnsJsonFormat.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.DnsJsonFormat%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L39">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L40">View Source</a>
   </span>
   <h4 id="Makaretu_Dns_DohClient_DnsJsonFormat" data-uid="Makaretu.Dns.DohClient.DnsJsonFormat">DnsJsonFormat</h4>
   <div class="markdown level1 summary"><p>The MIME type for a DNS message encoded in JSON.</p>
@@ -130,7 +135,7 @@ manipulation of DNS data by man-in-the-middle attacks.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_DnsWireFormat.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.DnsWireFormat%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L34">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L35">View Source</a>
   </span>
   <h4 id="Makaretu_Dns_DohClient_DnsWireFormat" data-uid="Makaretu.Dns.DohClient.DnsWireFormat">DnsWireFormat</h4>
   <div class="markdown level1 summary"><p>The MIME type for a DNS message encoded in UPD wire format.</p>
@@ -162,7 +167,7 @@ manipulation of DNS data by man-in-the-middle attacks.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_HttpClient.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.HttpClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L69">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L70">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_HttpClient_" data-uid="Makaretu.Dns.DohClient.HttpClient*"></a>
   <h4 id="Makaretu_Dns_DohClient_HttpClient" data-uid="Makaretu.Dns.DohClient.HttpClient">HttpClient</h4>
@@ -197,7 +202,7 @@ application.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_ServerUrl.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.ServerUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L57">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L58">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_ServerUrl_" data-uid="Makaretu.Dns.DohClient.ServerUrl*"></a>
   <h4 id="Makaretu_Dns_DohClient_ServerUrl" data-uid="Makaretu.Dns.DohClient.ServerUrl">ServerUrl</h4>
@@ -229,7 +234,7 @@ application.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_Timeout.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.Timeout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L49">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L50">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_Timeout_" data-uid="Makaretu.Dns.DohClient.Timeout*"></a>
   <h4 id="Makaretu_Dns_DohClient_Timeout" data-uid="Makaretu.Dns.DohClient.Timeout">Timeout</h4>
@@ -263,7 +268,7 @@ application.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_QueryAsync_IPAddress_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.QueryAsync(IPAddress%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L165">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L166">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_QueryAsync_" data-uid="Makaretu.Dns.DohClient.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_DohClient_QueryAsync_IPAddress_CancellationToken_" data-uid="Makaretu.Dns.DohClient.QueryAsync(IPAddress,CancellationToken)">QueryAsync(IPAddress, CancellationToken)</h4>
@@ -326,7 +331,7 @@ response contains the name(s) of the <code data-dev-comment-type="paramref" clas
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_QueryAsync_Message_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.QueryAsync(Message%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L199">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L200">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_QueryAsync_" data-uid="Makaretu.Dns.DohClient.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_DohClient_QueryAsync_Message_CancellationToken_" data-uid="Makaretu.Dns.DohClient.QueryAsync(Message,CancellationToken)">QueryAsync(Message, CancellationToken)</h4>
@@ -390,7 +395,7 @@ Some home routers have issues with IPv6, so IPv4 servers are tried first.
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_QueryAsync_System_String_DnsType_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.QueryAsync(System.String%2CDnsType%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L135">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L136">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_QueryAsync_" data-uid="Makaretu.Dns.DohClient.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_DohClient_QueryAsync_System_String_DnsType_CancellationToken_" data-uid="Makaretu.Dns.DohClient.QueryAsync(System.String,DnsType,CancellationToken)">QueryAsync(String, DnsType, CancellationToken)</h4>
@@ -456,7 +461,7 @@ contains the response <see cref="!:Message"></see>.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_ResolveAsync_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.ResolveAsync(System.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L101">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L102">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_ResolveAsync_" data-uid="Makaretu.Dns.DohClient.ResolveAsync*"></a>
   <h4 id="Makaretu_Dns_DohClient_ResolveAsync_System_String_CancellationToken_" data-uid="Makaretu.Dns.DohClient.ResolveAsync(System.String,CancellationToken)">ResolveAsync(String, CancellationToken)</h4>
@@ -523,7 +528,7 @@ contains the <see cref="!:IPAddress"></see> sequence for the <code data-dev-comm
                     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L29" class="contribution-link">View Source</a>
+                    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
