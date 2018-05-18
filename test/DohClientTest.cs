@@ -97,6 +97,7 @@ namespace Makaretu.Dns
         [TestMethod]
         public void Query_InvalidServer()
         {
+            var original = DohClient.ServerUrl;
             DohClient.ServerUrl = "https://emanon.noname";
             try
             {
@@ -109,7 +110,29 @@ namespace Makaretu.Dns
             }
             finally
             {
-                DohClient.ServerUrl = null;
+                DohClient.ServerUrl = original;
+            }
+        }
+
+        [TestMethod]
+        public async Task Reverse()
+        {
+            var name = await DohClient.QueryAsync(IPAddress.Parse("1.1.1.1"));
+            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+
+            name = await DohClient.QueryAsync(IPAddress.Parse("2606:4700:4700::1111"));
+            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+        }
+
+        [TestMethod]
+        public async Task Resolve_Reverse()
+        {
+            var github = "github.com";
+            var addresses = await DohClient.ResolveAsync(github);
+            foreach (var address in addresses)
+            {
+                var name = await DohClient.QueryAsync(address);
+                StringAssert.EndsWith(name, github);
             }
         }
 

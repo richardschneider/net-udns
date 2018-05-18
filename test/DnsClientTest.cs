@@ -217,5 +217,27 @@ namespace Makaretu.Dns
                 DnsClient.Servers = null;
             }
         }
+
+        [TestMethod]
+        public async Task Reverse()
+        {
+            var name = await DnsClient.QueryAsync(IPAddress.Parse("1.1.1.1"));
+            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+
+            name = await DnsClient.QueryAsync(IPAddress.Parse("2606:4700:4700::1111"));
+            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+        }
+
+        [TestMethod]
+        public async Task Resolve_Reverse()
+        {
+            var github = "github.com";
+            var addresses = await DnsClient.ResolveAsync(github);
+            foreach (var address in addresses)
+            {
+                var name = await DnsClient.QueryAsync(address);
+                StringAssert.EndsWith(name, github);
+            }
+        }
     }
 }

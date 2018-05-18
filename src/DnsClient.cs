@@ -154,6 +154,36 @@ namespace Makaretu.Dns
         }
 
         /// <summary>
+        ///   Reverse query for an IP address.
+        /// </summary>
+        /// <param name="address">
+        ///   An IP address with an <see cref="IPAddress.AddressFamily"/> of
+        ///   <see cref="AddressFamily.InterNetwork"/> or
+        ///   <see cref="AddressFamily.InterNetworkV6"/>.
+        /// </param>
+        /// <param name="cancel">
+        ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
+        /// </param>
+        /// <returns>
+        ///   A task that represents the asynchronous operation. The task's value
+        ///   is the domain name of <paramref name="address"/>.
+        /// </returns>
+        /// <remarks>
+        ///   Performs a reverse lookup with a <see cref="DnsType.PTR"/>.  The
+        ///   response contains the name(s) of the <paramref name="address"/>.
+        /// </remarks>
+        public static async Task<string> QueryAsync(
+            IPAddress address,
+            CancellationToken cancel = default(CancellationToken))
+        {
+            var response = await QueryAsync(address.GetArpaName(), DnsType.PTR);
+            return response.Answers
+                .OfType<PTRRecord>()
+                .Select(p => p.DomainName)
+                .First();
+        }
+
+        /// <summary>
         ///   Send a DNS query with the specified message.
         /// </summary>
         /// <param name="request">
@@ -214,7 +244,7 @@ namespace Makaretu.Dns
                 throw new IOException($"DNS error '{response.Status}'.");
             }
 
-            log.Debug("Got response");
+            log.Debug($"Got response #{response.Id}");
             return response;
         }
 
