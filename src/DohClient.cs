@@ -1,5 +1,4 @@
 ﻿using Common.Logging;
-using Nito.AsyncEx; 
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,10 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,6 +20,11 @@ namespace Makaretu.Dns
     ///   Domain Name System (DNS) resolution via the HTTPS protocol. The goal
     ///   is to increase user privacy and security by preventing eavesdropping and 
     ///   manipulation of DNS data by man-in-the-middle attacks.
+    ///   <para>
+    ///   The <b>DohClient</b> uses the HTTP POST method to hide as much
+    ///   information as is possible.  Also, it tends to generated smaller
+    ///   requests.
+    ///   </para>
     /// </remarks>
     /// <seealso href="https://en.wikipedia.org/wiki/DNS_over_HTTPS"/>
     public class DohClient
