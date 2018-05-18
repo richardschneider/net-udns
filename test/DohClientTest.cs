@@ -136,12 +136,30 @@ namespace Makaretu.Dns
             }
         }
 
-        //
         [TestMethod]
         public async Task Query_GoogleServer()
         {
             var original = DohClient.ServerUrl;
             DohClient.ServerUrl = "https://dns.google.com/experimental";
+            try
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+                var response = await DohClient.QueryAsync(query);
+                Assert.IsNotNull(response);
+                Assert.AreNotEqual(0, response.Answers.Count);
+            }
+            finally
+            {
+                DohClient.ServerUrl = original;
+            }
+        }
+
+        [TestMethod]
+        public async Task Query_SecureEuServer()
+        {
+            var original = DohClient.ServerUrl;
+            DohClient.ServerUrl = "https://doh.securedns.eu/dns-query";
             try
             {
                 var query = new Message { RD = true };
