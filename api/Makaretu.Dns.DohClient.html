@@ -260,10 +260,73 @@ application.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_QueryAsync_IPAddress_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.QueryAsync(IPAddress%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L165">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DohClient_QueryAsync_" data-uid="Makaretu.Dns.DohClient.QueryAsync*"></a>
+  <h4 id="Makaretu_Dns_DohClient_QueryAsync_IPAddress_CancellationToken_" data-uid="Makaretu.Dns.DohClient.QueryAsync(IPAddress,CancellationToken)">QueryAsync(IPAddress, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Reverse query for an IP address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;string&gt; QueryAsync(IPAddress address, CancellationToken cancel = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IPAddress</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>An IP address with an <see cref="!:IPAddress.AddressFamily"></see> of
+<see cref="!:AddressFamily.InterNetwork"></see> or
+<see cref="!:AddressFamily.InterNetworkV6"></see>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancel</span></td>
+        <td><p>Is used to stop the task.  When cancelled, the <see cref="!:TaskCanceledException"></see> is raised.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><p>A task that represents the asynchronous operation. The task&apos;s value
+is the domain name of <code data-dev-comment-type="paramref" class="paramref">address</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Makaretu_Dns_DohClient_QueryAsync_IPAddress_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Performs a reverse lookup with a <see cref="!:DnsType.PTR"></see>.  The
+response contains the name(s) of the <code data-dev-comment-type="paramref" class="paramref">address</code>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DohClient_QueryAsync_Message_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DohClient.QueryAsync(Message%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L169">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DohClient.cs/#L199">View Source</a>
   </span>
   <a id="Makaretu_Dns_DohClient_QueryAsync_" data-uid="Makaretu.Dns.DohClient.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_DohClient_QueryAsync_Message_CancellationToken_" data-uid="Makaretu.Dns.DohClient.QueryAsync(Message,CancellationToken)">QueryAsync(Message, CancellationToken)</h4>

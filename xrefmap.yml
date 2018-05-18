@@ -39,6 +39,12 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClient.GetServers
   nameWithType: DnsClient.GetServers
+- uid: Makaretu.Dns.DnsClient.QueryAsync(IPAddress,CancellationToken)
+  name: QueryAsync(IPAddress, CancellationToken)
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_IPAddress_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClient.QueryAsync(IPAddress,CancellationToken)
+  fullName: Makaretu.Dns.DnsClient.QueryAsync(IPAddress, CancellationToken)
+  nameWithType: DnsClient.QueryAsync(IPAddress, CancellationToken)
 - uid: Makaretu.Dns.DnsClient.QueryAsync(Message,CancellationToken)
   name: QueryAsync(Message, CancellationToken)
   href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_Message_CancellationToken_
@@ -141,6 +147,12 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DohClient.HttpClient
   nameWithType: DohClient.HttpClient
+- uid: Makaretu.Dns.DohClient.QueryAsync(IPAddress,CancellationToken)
+  name: QueryAsync(IPAddress, CancellationToken)
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_QueryAsync_IPAddress_CancellationToken_
+  commentId: M:Makaretu.Dns.DohClient.QueryAsync(IPAddress,CancellationToken)
+  fullName: Makaretu.Dns.DohClient.QueryAsync(IPAddress, CancellationToken)
+  nameWithType: DohClient.QueryAsync(IPAddress, CancellationToken)
 - uid: Makaretu.Dns.DohClient.QueryAsync(Message,CancellationToken)
   name: QueryAsync(Message, CancellationToken)
   href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_QueryAsync_Message_CancellationToken_
@@ -199,3 +211,22 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DohClient.Timeout
   nameWithType: DohClient.Timeout
+- uid: Makaretu.Dns.IPAddressExtensions
+  name: IPAddressExtensions
+  href: api/Makaretu.Dns.IPAddressExtensions.html
+  commentId: T:Makaretu.Dns.IPAddressExtensions
+  fullName: Makaretu.Dns.IPAddressExtensions
+  nameWithType: IPAddressExtensions
+- uid: Makaretu.Dns.IPAddressExtensions.GetArpaName(IPAddress)
+  name: GetArpaName(IPAddress)
+  href: api/Makaretu.Dns.IPAddressExtensions.html#Makaretu_Dns_IPAddressExtensions_GetArpaName_IPAddress_
+  commentId: M:Makaretu.Dns.IPAddressExtensions.GetArpaName(IPAddress)
+  fullName: Makaretu.Dns.IPAddressExtensions.GetArpaName(IPAddress)
+  nameWithType: IPAddressExtensions.GetArpaName(IPAddress)
+- uid: Makaretu.Dns.IPAddressExtensions.GetArpaName*
+  name: GetArpaName
+  href: api/Makaretu.Dns.IPAddressExtensions.html#Makaretu_Dns_IPAddressExtensions_GetArpaName_
+  commentId: Overload:Makaretu.Dns.IPAddressExtensions.GetArpaName
+  isSpec: "True"
+  fullName: Makaretu.Dns.IPAddressExtensions.GetArpaName
+  nameWithType: IPAddressExtensions.GetArpaName

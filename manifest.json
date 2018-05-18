@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClient.html",
-          "hash": "qzbXhBZnql2sDJTJdzvk/w=="
+          "hash": "K8Xr1drUVIUNnKS1+ZlqLA=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DohClient.html",
-          "hash": "ZLKcwtpuIfYZYe5iIdl9pw=="
+          "hash": "hQgWpTw6YpXSdzhH99ggIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.IPAddressExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.IPAddressExtensions.html",
+          "hash": "K47du8fpxbFY01UOZ4jyJA=="
         }
       },
       "is_incremental": false,
@@ -33,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.html",
-          "hash": "Ew6nzYM6p1UpXNOz5v2tEg=="
+          "hash": "l5SVP583mGcbPAPpm0if3A=="
         }
       },
       "is_incremental": false,
@@ -45,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "cNpRdF/Q4JCymENTqul0uw=="
+          "hash": "Z4D87r0lujqaePh4k9mAlA=="
         }
       },
       "is_incremental": false,
@@ -186,13 +198,13 @@
           "can_incremental": false,
           "incrementalPhase": "build"
         },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
           "incrementalPhase": "build"
         }
       }
