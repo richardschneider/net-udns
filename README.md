@@ -34,7 +34,8 @@ Published releases are available on [NuGet](https://www.nuget.org/packages/Makar
 ```csharp
 using Makaretu.Dns;
 
-var addresses = await DnsClient.ResolveAsync("cloudflare-dns.com");
+var dns = new DnsClient();
+var addresses = await dns.ResolveAsync("cloudflare-dns.com");
 foreach (var a in addresses)
     Console.WriteLine(a.ToString());
 ```
@@ -52,7 +53,8 @@ Produces the output
 ```csharp
 using Makaretu.Dns;
 
-var response = await DnsClient.QueryAsync("ipfs.io", DnsType.TXT);
+var dns = new DnsClient();
+var response = await dns.QueryAsync("ipfs.io", DnsType.TXT);
 var strings = response.Answers
     .OfType<TXTRecord>()
     .SelectMany(txt => txt.Strings);

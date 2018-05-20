@@ -32,17 +32,20 @@ namespace Makaretu.Dns
                     ;
             }
         }
+
         [TestMethod]
         public void Servers()
         {
-            var servers = DnsClient.GetServers().ToArray();
+            var dns = new DnsClient();
+            var servers = dns.GetServers().ToArray();
             Assert.AreNotEqual(0, servers.Length);
         }
 
         [TestMethod]
         public void Resolve()
         {
-            var addresses = DnsClient.ResolveAsync("cloudflare-dns.com").Result.ToArray();
+            var dns = new DnsClient();
+            var addresses = dns.ResolveAsync("cloudflare-dns.com").Result.ToArray();
             Assert.AreNotEqual(0, addresses.Length);
             Assert.IsTrue(addresses.Any(a => a.AddressFamily == AddressFamily.InterNetwork));
             Assert.IsTrue(addresses.Any(a => a.AddressFamily == AddressFamily.InterNetworkV6));
@@ -51,18 +54,20 @@ namespace Makaretu.Dns
         [TestMethod]
         public void Resolve_Unknown()
         {
+            var dns = new DnsClient();
             ExceptionAssert.Throws<IOException>(() =>
             {
-                var _ = DnsClient.ResolveAsync("emanon.noname").Result;
+                var _ = dns.ResolveAsync("emanon.noname").Result;
             });
         }
 
         [TestMethod]
         public async Task Query()
         {
+            var dns = new DnsClient();
             var query = new Message { RD = true };
             query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
-            var response = await DnsClient.QueryAsync(query);
+            var response = await dns.QueryAsync(query);
             Assert.IsNotNull(response);
             Assert.AreNotEqual(0, response.Answers.Count);
         }
@@ -70,89 +75,74 @@ namespace Makaretu.Dns
         [TestMethod]
         public void Query_Timeout()
         {
-            var originalUdp = DnsClient.TimeoutUdp;
-            var originalTcp = DnsClient.TimeoutTcp;
-            DnsClient.TimeoutUdp = TimeSpan.FromMilliseconds(0);
-            DnsClient.TimeoutTcp= TimeSpan.FromMilliseconds(0);
-            try
+            var dns = new DnsClient
             {
-                var query = new Message { RD = true };
-                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
-                ExceptionAssert.Throws<IOException>(() =>
-                {
-                    var _ = DnsClient.QueryAsync(query).Result;
-                }, "No response from DNS servers.");
-            }
-            finally
+                TimeoutUdp = TimeSpan.FromMilliseconds(0),
+                TimeoutTcp = TimeSpan.FromMilliseconds(0)
+            };
+            var query = new Message { RD = true };
+            query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+            ExceptionAssert.Throws<IOException>(() =>
             {
-                DnsClient.TimeoutUdp = originalUdp;
-                DnsClient.TimeoutTcp = originalTcp;
-            }
+                var _ = dns.QueryAsync(query).Result;
+            }, "No response from DNS servers.");
         }
 
         [TestMethod]
         public async Task Query_UdpTimeout()
         {
-            var originalUdp = DnsClient.TimeoutUdp;
-            DnsClient.TimeoutUdp = TimeSpan.FromMilliseconds(1);
-            DnsClient.Servers = new IPAddress[] { IPAddress.Parse("8.8.8.8") }; // google supports TCP!
-            try
+            var dns = new DnsClient
             {
-                var query = new Message { RD = true };
-                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
-                var response = await DnsClient.QueryAsync(query);
-                Assert.IsNotNull(response);
-                Assert.AreNotEqual(0, response.Answers.Count);
-            }
-            finally
-            {
-                DnsClient.TimeoutUdp = originalUdp;
-                DnsClient.Servers = null;
-            }
+                TimeoutUdp = TimeSpan.FromMilliseconds(0),
+                Servers = new IPAddress[] { IPAddress.Parse("8.8.8.8") } // google supports TCP!
+            };
+            var query = new Message { RD = true };
+            query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+            var response = await dns.QueryAsync(query);
+            Assert.IsNotNull(response);
+            Assert.AreNotEqual(0, response.Answers.Count);
         }
 
         [TestMethod]
         public void Query_UnknownTldName()
         {
+            var dns = new DnsClient();
             var query = new Message { RD = true };
             query.Questions.Add(new Question { Name = "emanon.foo", Type = DnsType.A });
             ExceptionAssert.Throws<IOException>(() =>
             {
-                var _ = DnsClient.QueryAsync(query).Result;
+                var _ = dns.QueryAsync(query).Result;
             }, "DNS error 'NameError'.");
         }
 
         [TestMethod]
         public void Query_UnknownName()
         {
+            var dns = new DnsClient();
             var query = new Message { RD = true };
             query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
             ExceptionAssert.Throws<IOException>(() =>
             {
-                var _ = DnsClient.QueryAsync(query).Result;
+                var _ = dns.QueryAsync(query).Result;
             }, "DNS error 'NameError'.");
         }
 
         [TestMethod]
         public async Task Query_OneDeadServer()
         {
-            DnsClient.Servers = new IPAddress[] 
+            var dns = new DnsClient
             {
-                IPAddress.Parse("127.0.0.1"),
-                IPAddress.Parse("8.8.8.8")
-            }; 
-            try
-            {
-                var query = new Message { RD = true };
-                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
-                var response = await DnsClient.QueryAsync(query);
-                Assert.IsNotNull(response);
-                Assert.AreNotEqual(0, response.Answers.Count);
-            }
-            finally
-            {
-                DnsClient.Servers = null;
-            }
+                Servers = new IPAddress[]
+                {
+                    IPAddress.Parse("127.0.0.1"),
+                    IPAddress.Parse("8.8.8.8")
+                }
+            };
+            var query = new Message { RD = true };
+            query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+            var response = await dns.QueryAsync(query);
+            Assert.IsNotNull(response);
+            Assert.AreNotEqual(0, response.Answers.Count);
         }
 
         [TestMethod]
@@ -163,79 +153,69 @@ namespace Makaretu.Dns
                 Assert.Inconclusive("IPv6 not supported by OS.");
             }
 
-            DnsClient.Servers = new IPAddress[]
+            var dns = new DnsClient
             {
-                IPAddress.Parse("2606:4700:4700::1111"), // cloudflare dns
-                IPAddress.Parse("2001:4860:4860::8888"), // google dns
+                Servers = new IPAddress[]
+                {
+                    IPAddress.Parse("2606:4700:4700::1111"), // cloudflare dns
+                    IPAddress.Parse("2001:4860:4860::8888"), // google dns
+                }
             };
-            try
-            {
-                var query = new Message { RD = true };
-                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
-                var response = await DnsClient.QueryAsync(query);
-                Assert.IsNotNull(response);
-                Assert.AreNotEqual(0, response.Answers.Count);
-            }
-            finally
-            {
-                DnsClient.Servers = null;
-            }
+            var query = new Message { RD = true };
+            query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+            var response = await dns.QueryAsync(query);
+            Assert.IsNotNull(response);
+            Assert.AreNotEqual(0, response.Answers.Count);
         }
 
         [TestMethod]
         public void Query_NoServers()
         {
-            DnsClient.Servers = new IPAddress[0];
-            try
+            var dns = new DnsClient
             {
-                var query = new Message { RD = true };
-                query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
-                ExceptionAssert.Throws<Exception>(() =>
-                {
-                    var _ = DnsClient.QueryAsync(query).Result;
-                }, "No DNS servers are available.");
-            }
-            finally
+                Servers = new IPAddress[0]
+            };
+            var query = new Message { RD = true };
+            query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
+            ExceptionAssert.Throws<Exception>(() =>
             {
-                DnsClient.Servers = null;
-            }
+                var _ = dns.QueryAsync(query).Result;
+            }, "No DNS servers are available.");
         }
 
         [TestMethod]
         public void Query_UnreachableServer()
         {
-            DnsClient.Servers = new IPAddress[] { IPAddress.Parse("127.0.0.1") };
-            try
+            var dns = new DnsClient
             {
-                ExceptionAssert.Throws<Exception>(() =>
-                {
-                    var _ = DnsClient.QueryAsync("ipfs.io", DnsType.A).Result;
-                }, "No response from DNS servers.");
-            }
-            finally
+                Servers = new IPAddress[] { IPAddress.Parse("127.0.0.1") }
+            };
+            ExceptionAssert.Throws<Exception>(() =>
             {
-                DnsClient.Servers = null;
-            }
+                var _ = dns.QueryAsync("ipfs.io", DnsType.A).Result;
+            }, "No response from DNS servers.");
         }
 
         [TestMethod]
         public async Task Reverse()
         {
-            var name = await DnsClient.QueryAsync(IPAddress.Parse("1.1.1.1"));
+            var dns = new DnsClient();
+            var name = await dns.ResolveAsync(IPAddress.Parse("1.1.1.1"));
             Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
 
-            name = await DnsClient.QueryAsync(IPAddress.Parse("2606:4700:4700::1111"));
+            name = await dns.ResolveAsync(IPAddress.Parse("2606:4700:4700::1111"));
             Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
         }
 
         [TestMethod]
         public async Task Resolve_Reverse()
         {
+            var dns = new DnsClient();
             var github = "github.com";
-            var addresses = await DnsClient.ResolveAsync(github);
+            var addresses = await dns.ResolveAsync(github);
             foreach (var address in addresses)
             {
-                var name = await DnsClient.QueryAsync(address);
+                var name = await dns.ResolveAsync(address);
                 StringAssert.EndsWith(name, github);
             }
         }
@@ -243,6 +223,7 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task Query_EDNS()
         {
+            var dns = new DnsClient();
             var query = new Message
             {
                 RD = true,
@@ -264,7 +245,7 @@ namespace Makaretu.Dns
                     }
                 }
             };
-            var response = await DnsClient.QueryAsync(query);
+            var response = await dns.QueryAsync(query);
             Assert.IsNotNull(response);
             Assert.AreNotEqual(0, response.Answers.Count);
         }

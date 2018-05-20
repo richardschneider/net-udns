@@ -20,7 +20,8 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task TXT()
         {
-            var response = await DnsClient.QueryAsync("ipfs.io", DnsType.TXT);
+            var dns = new DnsClient();
+            var response = await dns.QueryAsync("ipfs.io", DnsType.TXT);
             var strings = response.Answers
                 .OfType<TXTRecord>()
                 .SelectMany(txt => txt.Strings);
@@ -31,7 +32,8 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task Resolve()
         {
-            var addresses = await DnsClient.ResolveAsync("cloudflare-dns.com");
+            var dns = new DnsClient();
+            var addresses = await dns.ResolveAsync("cloudflare-dns.com");
             foreach (var a in addresses)
                 Console.WriteLine(a.ToString());
         }

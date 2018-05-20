@@ -14,7 +14,8 @@ Get all the TXT strings assoicated with "ipfs.io"
 ```csharp
 using Makaretu.Dns;
 
-var response = await DnsClient.QueryAsync("ipfs.io", DnsType.TXT);
+var dns = new DnsClient();
+var response = await dns.QueryAsync("ipfs.io", DnsType.TXT);
 var strings = response.Answers
     .OfType<TXTRecord>()
     .SelectMany(txt => txt.Strings);
