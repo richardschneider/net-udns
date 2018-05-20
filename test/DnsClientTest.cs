@@ -239,5 +239,35 @@ namespace Makaretu.Dns
                 StringAssert.EndsWith(name, github);
             }
         }
+
+        [TestMethod]
+        public async Task Query_EDNS()
+        {
+            var query = new Message
+            {
+                RD = true,
+                Questions =
+                {
+                    new Question { Name = "ipfs.io", Type = DnsType.TXT }
+                },
+                AdditionalRecords =
+                {
+                    new OPTRecord
+                    {
+                        DO = true,
+                        Options =
+                        {
+                            new EdnsNSIDOption(),
+                            new EdnsKeepaliveOption(),
+                            new EdnsPaddingOption { Padding = new byte[] {0, 0, 0, 0 } }
+                        }
+                    }
+                }
+            };
+            var response = await DnsClient.QueryAsync(query);
+            Assert.IsNotNull(response);
+            Assert.AreNotEqual(0, response.Answers.Count);
+        }
+
     }
 }
