@@ -8,7 +8,7 @@
     <title>DNS Clients | DNS Client </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="DNS Clients | DNS Client ">
-    <meta name="generator" content="docfx 2.35.4.0">
+    <meta name="generator" content="docfx 2.36.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -80,7 +80,8 @@ to a DNS over HTTPS server and receive a response.</li>
 <p>Get all the TXT strings assoicated with &quot;ipfs.io&quot;</p>
 <pre><code class="lang-csharp">using Makaretu.Dns;
 
-var response = await DnsClient.QueryAsync(&quot;ipfs.io&quot;, DnsType.TXT);
+var dns = new DnsClient();
+var response = await dns.QueryAsync(&quot;ipfs.io&quot;, DnsType.TXT);
 var strings = response.Answers
     .OfType&lt;TXTRecord&gt;()
     .SelectMany(txt =&gt; txt.Strings);
