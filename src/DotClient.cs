@@ -267,12 +267,13 @@ namespace Makaretu.Dns
                 {
                     try
                     {
-                        var tcpClient = new TcpClient();
-                        await tcpClient.ConnectAsync(endPoint.Address, endPoint.Port);
+                        var socket = new Socket(endPoint.Address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                        await socket.ConnectAsync(endPoint.Address, endPoint.Port);
+                        var stream = new NetworkStream(socket, ownsSocket: true);
 
                         dnsServer = new SslStream(
-                            tcpClient.GetStream(),
-                            false,
+                            stream,
+                            false, // leave inner stream open
                             (sender, certificate, chain, errors) =>
                             {
                                 return ValidateServerCertificate(sender, certificate, chain, errors, endPoint.Pins);
