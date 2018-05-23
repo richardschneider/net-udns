@@ -1,14 +1,7 @@
-﻿using Common.Logging;
-using Nito.AsyncEx; 
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -66,5 +59,21 @@ namespace Makaretu.Dns
         public abstract Task<Message> QueryAsync(
             Message request,
             CancellationToken cancel = default(CancellationToken));
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        /// <summary>
+        ///   Dispose the client.
+        /// </summary>
+        /// <param name="disposing">
+        ///   <b>true</b> if managed resources should be disposed.
+        /// </param>
+        protected virtual void Dispose(bool disposing)
+        {
+        }
     }
 }

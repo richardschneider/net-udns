@@ -16,7 +16,7 @@ namespace Makaretu.Dns
     ///   Client interface to a DNS server.
     /// </summary>
     /// <seealso cref="DnsClientBase"/>
-    public interface IDnsClient
+    public interface IDnsClient : IDisposable
     {
         /// <summary>
         ///   Get the IP addresses for the specified name.

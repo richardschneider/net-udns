@@ -30,7 +30,6 @@ namespace Makaretu.Dns
     /// <seealso href="https://tools.ietf.org/html/rfc8310"/>
     public class DotClient : DnsClientBase
     {
-        // TODO: Implement IDisposable and cancel the ReadResponses thread
         SslStream dnsServer;
         readonly AsyncLock dnsServerLock = new AsyncLock();
 
@@ -121,6 +120,19 @@ namespace Makaretu.Dns
         ///   Contains the requests that are waiting for a response.
         /// </remarks>
         ConcurrentDictionary<ushort, TaskCompletionSource<Message>> OutstandingRequests = new ConcurrentDictionary<ushort, TaskCompletionSource<Message>>();
+
+        /// <inheritdoc />
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (dnsServer != null)
+                {
+                    dnsServer.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
         /// <summary>
         ///   Send a DNS query with the specified message.
@@ -273,7 +285,7 @@ namespace Makaretu.Dns
                             log.Debug($"using dns server '{endPoint.Hostname}'.");
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                        Task.Factory.StartNew(() => ReadResponses(dnsServer));
+                        Task.Run(() => ReadResponses(dnsServer));
 #pragma warning restore CS4014
 
                         return dnsServer;
@@ -307,7 +319,7 @@ namespace Makaretu.Dns
             string spki = ""; // TODO: base-64 of certificates SPKI
             return pins.Any(pin => pin == spki);
 #else
-        return true;
+            return true;
 #endif
 
         }
@@ -344,7 +356,10 @@ namespace Makaretu.Dns
                 }
                 catch (Exception e)
                 {
-                    log.Error(e);
+                    if (stream.CanRead)
+                    {
+                        log.Error(e);
+                    }
                     stream.Dispose();
                 }
             }
