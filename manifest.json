@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotClient.html",
-          "hash": "H4LNnBH7dbFLcMeg19ooBg=="
+          "hash": "dOP9rh49UgI8R0y5nwLBxQ=="
         }
       },
       "is_incremental": false,
@@ -237,11 +237,11 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
+        "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
+        "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
