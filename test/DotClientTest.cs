@@ -16,6 +16,23 @@ namespace Makaretu.Dns
     [TestClass]
     public class DotClientTest
     {
+        static bool SupportsIPv6
+        {
+            get
+            {
+                return Socket.OSSupportsIPv6
+
+                    // See https://discuss.circleci.com/t/ipv6-support/13571
+                    && Environment.GetEnvironmentVariable("CIRCLECI") == null
+
+                    // See https://github.com/njh/travis-ipv6-test
+                    && Environment.GetEnvironmentVariable("TRAVIS") == null
+
+                    && Environment.GetEnvironmentVariable("APPVEYOR") == null
+                    ;
+            }
+        }
+
         [TestMethod]
         public void PublicServers()
         {
@@ -219,6 +236,33 @@ namespace Makaretu.Dns
                     var name = await dot.ResolveAsync(address);
                     StringAssert.EndsWith(name, github);
                 }
+            }
+        }
+
+        [TestMethod]
+        public async Task Query_Cloudflare_IPv6()
+        {
+            if (!SupportsIPv6)
+            {
+                Assert.Inconclusive("IPv6 not supported by OS.");
+            }
+            using (var dot = new DotClient
+            {
+                Servers = new[]
+                {
+                    new DotEndPoint
+                    {
+                        Hostname = "cloudflare-dns.com",
+                        Address = IPAddress.Parse("2606:4700:4700::1111")
+                    }
+                }
+            })
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+                var response = await dot.QueryAsync(query);
+                Assert.IsNotNull(response);
+                Assert.AreNotEqual(0, response.Answers.Count);
             }
         }
 

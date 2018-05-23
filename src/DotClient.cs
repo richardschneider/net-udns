@@ -61,6 +61,16 @@ namespace Makaretu.Dns
             },
             new DotEndPoint
             {
+                Hostname = "cloudflare-dns.com",
+                Address = IPAddress.Parse("2606:4700:4700::1111")
+            },
+            new DotEndPoint
+            {
+                Hostname = "cloudflare-dns.com",
+                Address = IPAddress.Parse("2606:4700:4700::1001")
+            },
+            new DotEndPoint
+            {
                 Hostname = "dot.securedns.eu",
                 Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                 Address = IPAddress.Parse("146.185.167.43")
@@ -263,7 +273,10 @@ namespace Makaretu.Dns
                 if (dnsServer != null)
                     dnsServer.Dispose();
 
-                foreach (var endPoint in Servers)
+                var servers =  Servers.Where(s =>
+                    (Socket.OSSupportsIPv4 && s.Address.AddressFamily == AddressFamily.InterNetwork) ||
+                    (Socket.OSSupportsIPv6 && s.Address.AddressFamily == AddressFamily.InterNetworkV6));
+                foreach (var endPoint in servers)
                 {
                     try
                     {
@@ -283,7 +296,7 @@ namespace Makaretu.Dns
                         await dnsServer.AuthenticateAsClientAsync(endPoint.Hostname);
 
                         if (log.IsDebugEnabled)
-                            log.Debug($"using dns server '{endPoint.Hostname}'.");
+                            log.Debug($"using dns server '{endPoint.Hostname}' {endPoint.Address}.");
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                         Task.Run(() => ReadResponses(dnsServer));
