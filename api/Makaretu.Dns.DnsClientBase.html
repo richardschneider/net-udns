@@ -82,16 +82,18 @@
     <div class="level1"><span class="xref">DnsClientBase</span></div>
       <div class="level2"><a class="xref" href="Makaretu.Dns.DnsClient.html">DnsClient</a></div>
       <div class="level2"><a class="xref" href="Makaretu.Dns.DohClient.html">DohClient</a></div>
+      <div class="level2"><a class="xref" href="Makaretu.Dns.DotClient.html">DotClient</a></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Makaretu.Dns.IDnsClient.html">IDnsClient</a></div>
+    <div><span class="xref">IDisposable</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Makaretu.Dns.html">Makaretu.Dns</a></h6>
   <h6><strong>Assembly</strong>: Makaretu.Dns.Unicast.dll</h6>
   <h5 id="Makaretu_Dns_DnsClientBase_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class DnsClientBase : object, IDnsClient</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class DnsClientBase : object, IDnsClient, IDisposable</code></pre>
   </div>
   <h5 id="Makaretu_Dns_DnsClientBase_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Sends and receives DNS queries and answers to unicast DNS servers.</p>
@@ -100,10 +102,59 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_Dispose.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L64">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DnsClientBase_Dispose_" data-uid="Makaretu.Dns.DnsClientBase.Dispose*"></a>
+  <h4 id="Makaretu_Dns_DnsClientBase_Dispose" data-uid="Makaretu.Dns.DnsClientBase.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L75">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DnsClientBase_Dispose_" data-uid="Makaretu.Dns.DnsClientBase.Dispose*"></a>
+  <h4 id="Makaretu_Dns_DnsClientBase_Dispose_System_Boolean_" data-uid="Makaretu.Dns.DnsClientBase.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Dispose the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p><strong>true</strong> if managed resources should be disposed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_QueryAsync_Message_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.QueryAsync(Message%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L66">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L59">View Source</a>
   </span>
   <a id="Makaretu_Dns_DnsClientBase_QueryAsync_" data-uid="Makaretu.Dns.DnsClientBase.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_DnsClientBase_QueryAsync_Message_CancellationToken_" data-uid="Makaretu.Dns.DnsClientBase.QueryAsync(Message,CancellationToken)">QueryAsync(Message, CancellationToken)</h4>
@@ -167,7 +218,7 @@ Some home routers have issues with IPv6, so IPv4 servers are tried first.
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_QueryAsync_System_String_DnsType_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.QueryAsync(System.String%2CDnsType%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L42">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L35">View Source</a>
   </span>
   <a id="Makaretu_Dns_DnsClientBase_QueryAsync_" data-uid="Makaretu.Dns.DnsClientBase.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_DnsClientBase_QueryAsync_System_String_DnsType_CancellationToken_" data-uid="Makaretu.Dns.DnsClientBase.QueryAsync(System.String,DnsType,CancellationToken)">QueryAsync(String, DnsType, CancellationToken)</h4>
@@ -233,7 +284,7 @@ contains the response <see cref="!:Message"></see>.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_ResolveAsync_IPAddress_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.ResolveAsync(IPAddress%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L54">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L47">View Source</a>
   </span>
   <a id="Makaretu_Dns_DnsClientBase_ResolveAsync_" data-uid="Makaretu.Dns.DnsClientBase.ResolveAsync*"></a>
   <h4 id="Makaretu_Dns_DnsClientBase_ResolveAsync_IPAddress_CancellationToken_" data-uid="Makaretu.Dns.DnsClientBase.ResolveAsync(IPAddress,CancellationToken)">ResolveAsync(IPAddress, CancellationToken)</h4>
@@ -296,7 +347,7 @@ response contains the name(s) of the <code data-dev-comment-type="paramref" clas
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_ResolveAsync_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.ResolveAsync(System.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L26">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L19">View Source</a>
   </span>
   <a id="Makaretu_Dns_DnsClientBase_ResolveAsync_" data-uid="Makaretu.Dns.DnsClientBase.ResolveAsync*"></a>
   <h4 id="Makaretu_Dns_DnsClientBase_ResolveAsync_System_String_CancellationToken_" data-uid="Makaretu.Dns.DnsClientBase.ResolveAsync(System.String,CancellationToken)">ResolveAsync(String, CancellationToken)</h4>
@@ -352,6 +403,9 @@ contains the <see cref="!:IPAddress"></see> sequence for the <code data-dev-comm
   <div>
       <a class="xref" href="Makaretu.Dns.IDnsClient.html">IDnsClient</a>
   </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
 </article>
           </div>
           
@@ -363,7 +417,7 @@ contains the <see cref="!:IPAddress"></see> sequence for the <code data-dev-comm
                     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L23" class="contribution-link">View Source</a>
+                    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
