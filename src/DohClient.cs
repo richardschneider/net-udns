@@ -102,13 +102,6 @@ namespace Makaretu.Dns
         /// <exception cref="IOException">
         ///   When the DNS server returns error status or no response.
         /// </exception>
-        /// <remarks>
-        ///   The <paramref name="request"/> is sent with UDP.  If no response is
-        ///   received (or is truncated) in <see cref="Timeout"/>, then it is resent via TCP.
-        ///   <para>
-        ///   Some home routers have issues with IPv6, so IPv4 servers are tried first.
-        ///   </para>
-        /// </remarks>
         public override async Task<Message> QueryAsync(
             Message request,
             CancellationToken cancel = default(CancellationToken))

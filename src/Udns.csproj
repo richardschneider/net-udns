@@ -34,6 +34,7 @@
     <PackageReference Include="Makaretu.Dns" Version="0.8.0" />
     <PackageReference Include="Nito.AsyncEx" Version="5.0.0-pre-05" />
     <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
+    <PackageReference Include="System.Net.Security" Version="4.3.2" />
   </ItemGroup>
 
 </Project>

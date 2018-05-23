@@ -15,6 +15,8 @@ DNS clients that can fetch more than `A` and `AAAA` resource records.
    - Initially uses UDP  
    - Fallbacks to TCP if no UDP response or the response is truncated
 - [DohClient](https://richardschneider.github.io/net-udns/api/Makaretu.Dns.DohClient.html) for a DNS Over HTTPS (DOH) server
+- [DotClient](https://richardschneider.github.io/net-udns/api/Makaretu.Dns.DotClient.html) for a DNS Over TLS (DOT) server
+   - Padding of requests 
 - Supports asynchronous I/O
 - Supports cancellation
 - Supports IPv6 and IPv4 platforms

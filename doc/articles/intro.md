@@ -6,6 +6,8 @@ Various DNS clients that communicate with a DNS server. The source code is on [G
   to a standard DNS server and receive a response; uses UPD and then TCP (if needed).
 - [DohClient](xref:Makaretu.Dns.DohClient) is used to send a [Message](xref:Makaretu.Dns.Message) 
   to a DNS over HTTPS server and receive a response.
+- [DotClient](xref:Makaretu.Dns.DotClient) is used to send a [Message](xref:Makaretu.Dns.Message) 
+  to a DNS over TLS server and receive a response.
 
 ## Usage
 
