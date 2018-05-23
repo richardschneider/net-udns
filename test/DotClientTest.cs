@@ -248,7 +248,7 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task Query_SecureEU()
         {
-            var dot = new DotClient
+            using (var dot = new DotClient
             {
                 Servers = new[]
                 {
@@ -259,12 +259,14 @@ namespace Makaretu.Dns
                         Address = IPAddress.Parse("146.185.167.43")
                     },
                 }
-            };
-            var query = new Message { RD = true };
-            query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
-            var response = await dot.QueryAsync(query);
-            Assert.IsNotNull(response);
-            Assert.AreNotEqual(0, response.Answers.Count);
+            })
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+                var response = await dot.QueryAsync(query);
+                Assert.IsNotNull(response);
+                Assert.AreNotEqual(0, response.Answers.Count);
+            }
         }
 
     }

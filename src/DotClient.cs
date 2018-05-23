@@ -328,7 +328,7 @@ namespace Makaretu.Dns
         void ReadResponses(Stream stream)
         {
             if (log.IsDebugEnabled)
-                log.Debug($"Staring reading thread");
+                log.Debug($"Starting reader thread");
 
             var reader = new DnsReader(stream);
             while (stream.CanRead)
@@ -366,7 +366,7 @@ namespace Makaretu.Dns
             }
 
             if (log.IsDebugEnabled)
-                log.Debug($"Stopping reading thread");
+                log.Debug($"Stopping reader thread");
         }
     }
 
