@@ -308,9 +308,6 @@ namespace Makaretu.Dns
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"Connection to {endPoint.Address} '{endPoint.Hostname}' failed.");
-                        for (var ex = e; ex != null; ex = ex.InnerException)
-                            Console.WriteLine(ex.Message);
                         log.Warn($"Connection to {endPoint.Address} failed.", e);
                     }
                 }
