@@ -294,7 +294,7 @@ namespace Makaretu.Dns
                             },
                             null,
                             EncryptionPolicy.RequireEncryption);
-                        await dnsServer.AuthenticateAsClientAsync(endPoint.Hostname, null, SslProtocols.Tls12, true);
+                        await dnsServer.AuthenticateAsClientAsync(endPoint.Hostname);
 
                         if (log.IsDebugEnabled)
                             log.Debug($"using dns server '{endPoint.Hostname}' {endPoint.Address}.");
@@ -307,7 +307,7 @@ namespace Makaretu.Dns
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"Connection to {endPoint.Address} failed.");
+                        Console.WriteLine($"Connection to {endPoint.Address} '{endPoint.Hostname}' failed.");
                         for (var ex = e; ex != null; ex = ex.InnerException)
                             Console.WriteLine(ex.Message);
                         log.Warn($"Connection to {endPoint.Address} failed.", e);
