@@ -198,6 +198,7 @@ namespace Makaretu.Dns
                 using (await dnsServerLock.LockAsync())
                 {
                     await server.WriteAsync(tcpRequest, 0, tcpRequest.Length, cts.Token);
+                    await server.FlushAsync(cts.Token);
                 }
                 dnsResponse = await tcs.Task.WaitAsync(cts.Token);
             }
