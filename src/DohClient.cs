@@ -116,9 +116,9 @@ namespace Makaretu.Dns
 
             // Cancel the request when either the timeout is reached or the
             // task is cancelled by the caller.
-            var cts = CancellationTokenSource
-                .CreateLinkedTokenSource(cancel);
-            cts.CancelAfter(Timeout);
+            var cts = CancellationTokenSource.CreateLinkedTokenSource(
+                cancel,
+                new CancellationTokenSource(Timeout).Token);
 
             // Post the request.
             var content = new ByteArrayContent(request.ToByteArray());

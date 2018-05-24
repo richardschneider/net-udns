@@ -163,10 +163,12 @@ namespace Makaretu.Dns
         async Task<Message> QueryAsync(byte[] request, IPAddress server, CancellationToken cancel)
         {
             // Try UDP first.
-            var cs = new CancellationTokenSource(TimeoutUdp);
+            var cts = CancellationTokenSource.CreateLinkedTokenSource(
+                cancel,
+                new CancellationTokenSource(TimeoutUdp).Token);
             try
             {
-                var response = await QueryUdpAsync(request, server, cs.Token);
+                var response = await QueryUdpAsync(request, server, cts.Token);
                 // If truncated response, then use TCP.
                 if (response != null && !response.TC)
                 {
@@ -186,10 +188,12 @@ namespace Makaretu.Dns
             }
 
             // If no response, then try TCP
-            cs = new CancellationTokenSource(TimeoutTcp);
+            cts = CancellationTokenSource.CreateLinkedTokenSource(
+                cancel,
+                new CancellationTokenSource(TimeoutTcp).Token);
             try
             {
-                return await QueryTcpAsync(request, server, cs.Token);
+                return await QueryTcpAsync(request, server, cts.Token);
             }
             catch (Exception e)
             {
