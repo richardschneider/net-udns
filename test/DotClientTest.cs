@@ -292,12 +292,6 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task Query_SecureEU()
         {
-            if (Environment.GetEnvironmentVariable("CIRCLECI") != null ||
-                Environment.GetEnvironmentVariable("TRAVIS") != null)
-            {
-                Assert.Inconclusive("Not working on *nix");
-            }
-
             using (var dot = new DotClient
             {
                 Servers = new[]

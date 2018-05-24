@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
+using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -71,13 +72,13 @@ namespace Makaretu.Dns
             },
             new DotEndPoint
             {
-                Hostname = "dot.securedns.eu",
+                Hostname = "securedns.eu",
                 Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                 Address = IPAddress.Parse("146.185.167.43")
             },
             new DotEndPoint
             {
-                Hostname = "dot.securedns.eu",
+                Hostname = "securedns.eu",
                 Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                 Address = IPAddress.Parse("2a03:b0c0:0:1010::e9a:3001")
             },
@@ -197,6 +198,7 @@ namespace Makaretu.Dns
                 using (await dnsServerLock.LockAsync())
                 {
                     await server.WriteAsync(tcpRequest, 0, tcpRequest.Length, cts.Token);
+                    await server.FlushAsync(cts.Token);
                 }
                 dnsResponse = await tcs.Task.WaitAsync(cts.Token);
             }
@@ -306,9 +308,6 @@ namespace Makaretu.Dns
                     }
                     catch (Exception e)
                     {
-                        //Console.WriteLine($"Connection to {endPoint.Address} failed.");
-                        //for (var ex = e; ex != null; ex = ex.InnerException)
-                        //    Console.WriteLine(ex.Message);
                         log.Warn($"Connection to {endPoint.Address} failed.", e);
                     }
                 }
