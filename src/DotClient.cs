@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
+using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -293,7 +294,7 @@ namespace Makaretu.Dns
                             },
                             null,
                             EncryptionPolicy.RequireEncryption);
-                        await dnsServer.AuthenticateAsClientAsync(endPoint.Hostname);
+                        await dnsServer.AuthenticateAsClientAsync(endPoint.Hostname, null, SslProtocols.Tls12, true);
 
                         if (log.IsDebugEnabled)
                             log.Debug($"using dns server '{endPoint.Hostname}' {endPoint.Address}.");

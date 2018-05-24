@@ -298,7 +298,7 @@ namespace Makaretu.Dns
                 {
                     new DotEndPoint
                     {
-                        Hostname = "securedns.eu",
+                        Hostname = "dot.securedns.eu",
                         Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                         Address = IPAddress.Parse("146.185.167.43")
                     },
