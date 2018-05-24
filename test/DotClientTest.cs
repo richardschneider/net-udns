@@ -292,6 +292,12 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task Query_SecureEU()
         {
+            if (Environment.GetEnvironmentVariable("CIRCLECI") != null ||
+                Environment.GetEnvironmentVariable("TRAVIS") != null)
+            {
+                Assert.Inconclusive("Not working on *nix");
+            }
+
             using (var dot = new DotClient
             {
                 Servers = new[]
@@ -299,7 +305,7 @@ namespace Makaretu.Dns
                     new DotEndPoint
                     {
                         Hostname = "securedns.eu",
-                        // TODO: Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
+                        Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                         Address = IPAddress.Parse("146.185.167.43")
                     },
                 }
