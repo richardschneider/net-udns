@@ -353,6 +353,7 @@ namespace Makaretu.Dns
                 try
                 {
                     var length = reader.ReadUInt16();
+                    Console.WriteLine($"Response length {length}");
                     // TODO: Check MinLength
                     if (length > Message.MaxLength)
                        throw new InvalidDataException("DNS response exceeded max length.");
