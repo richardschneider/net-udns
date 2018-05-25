@@ -271,6 +271,7 @@ namespace Makaretu.Dns
         {
             using (var dot = new DotClient
             {
+                Timeout = TimeSpan.FromSeconds(30),
                 Servers = new[]
                 {
                     new DotEndPoint
