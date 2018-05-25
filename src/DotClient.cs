@@ -344,7 +344,8 @@ namespace Makaretu.Dns
         void ReadResponses(Stream stream)
         {
             if (log.IsDebugEnabled)
-                log.Debug($"Starting reader thread");
+                log.Debug("Starting reader thread");
+            Console.WriteLine("Starting reader thread");
 
             var reader = new DnsReader(stream);
             while (stream.CanRead)
@@ -362,9 +363,11 @@ namespace Makaretu.Dns
                     // Find matching request.
                     if (log.IsDebugEnabled)
                         log.Debug($"Got response #{response.Id}");
+                    Console.WriteLine($"Got response #{response.Id}");
                     if (!OutstandingRequests.TryGetValue(response.Id, out var task))
                     {
                         log.Warn("DNS response is missing a matching request ID.");
+                        Console.WriteLine("DNS response is missing a matching request ID.");
                         continue;
                     }
 
@@ -376,6 +379,7 @@ namespace Makaretu.Dns
                     if (stream.CanRead)
                     {
                         log.Error(e);
+                        Console.WriteLine(e.Message);
                     }
                     stream.Dispose();
                 }
@@ -383,6 +387,7 @@ namespace Makaretu.Dns
 
             if (log.IsDebugEnabled)
                 log.Debug($"Stopping reader thread");
+            Console.WriteLine($"Stopping reader thread");
         }
     }
 
