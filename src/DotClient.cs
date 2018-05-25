@@ -203,6 +203,12 @@ namespace Makaretu.Dns
                 }
                 dnsResponse = await tcs.Task.WaitAsync(cts.Token);
             }
+            catch (TaskCanceledException) when (server != null && !server.CanRead)
+            {
+                if (log.IsDebugEnabled)
+                    log.Debug($"Retying query #{request.Id}");
+                return await QueryAsync(request, cancel);
+            }
             finally
             {
                 OutstandingRequests.TryRemove(request.Id, out var _);
@@ -246,6 +252,16 @@ namespace Makaretu.Dns
                     paddingOption.Padding = new byte[need];
             };
 
+            // Keep the connection alive.
+            if (!opt.Options.Any(o => o.Type == EdnsOptionType.Keepalive))
+            {
+                var keepalive = new EdnsKeepaliveOption
+                {
+                    Timeout = TimeSpan.FromMinutes(2)
+                };
+                opt.Options.Add(keepalive);
+            };
+
             var udpRequest = request.ToByteArray();
             byte[] length = BitConverter.GetBytes((ushort)udpRequest.Length);
             if (BitConverter.IsLittleEndian)
@@ -285,8 +301,11 @@ namespace Makaretu.Dns
                     {
                         var socket = new Socket(endPoint.Address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                         await socket.ConnectAsync(endPoint.Address, endPoint.Port);
-                        var stream = new NetworkStream(socket, ownsSocket: true);
-
+                        Stream stream = new NetworkStream(socket, ownsSocket: true);
+                        // Better performance with a buffered stream.
+#if !NETSTANDARD14
+                        stream = new BufferedStream(stream);
+#endif
                         dnsServer = new SslStream(
                             stream,
                             false, // leave inner stream open
@@ -345,7 +364,6 @@ namespace Makaretu.Dns
         {
             if (log.IsDebugEnabled)
                 log.Debug("Starting reader thread");
-            Console.WriteLine("Starting reader thread");
 
             var reader = new DnsReader(stream);
             while (stream.CanRead)
@@ -353,7 +371,6 @@ namespace Makaretu.Dns
                 try
                 {
                     var length = reader.ReadUInt16();
-                    Console.WriteLine($"Response length {length}");
                     // TODO: Check MinLength
                     if (length > Message.MaxLength)
                        throw new InvalidDataException("DNS response exceeded max length.");
@@ -364,23 +381,25 @@ namespace Makaretu.Dns
                     // Find matching request.
                     if (log.IsDebugEnabled)
                         log.Debug($"Got response #{response.Id}");
-                    Console.WriteLine($"Got response #{response.Id}");
                     if (!OutstandingRequests.TryGetValue(response.Id, out var task))
                     {
                         log.Warn("DNS response is missing a matching request ID.");
-                        Console.WriteLine("DNS response is missing a matching request ID.");
                         continue;
                     }
 
                     // Continue the request.
                     task.SetResult(response);
                 }
+                catch (EndOfStreamException)
+                {
+                    log.Warn("Server closed stream.");
+                    stream.Dispose();
+                }
                 catch (Exception e)
                 {
                     if (stream.CanRead)
                     {
                         log.Error(e);
-                        Console.WriteLine(e.Message);
                     }
                     stream.Dispose();
                 }
@@ -388,7 +407,12 @@ namespace Makaretu.Dns
 
             if (log.IsDebugEnabled)
                 log.Debug($"Stopping reader thread");
-            Console.WriteLine($"Stopping reader thread");
+
+            // Cancel any outstanding queries.
+            foreach (var task in OutstandingRequests.Values)
+            {
+                task.SetCanceled();
+            }
         }
     }
 
