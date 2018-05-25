@@ -15,7 +15,7 @@ jobs:
       - run: cat /etc/os-release
       - checkout
       - run: dotnet restore
-      - run: dotnet build ./src/Udns.csproj -c Release --framework netstandard1.4 
+      - run: dotnet build ./src/Udns.csproj -c Release --framework netstandard14 
       - run: dotnet test ./test/UdnsTests.csproj -c Release --framework netcoreapp1.1
 
   dotnet2:

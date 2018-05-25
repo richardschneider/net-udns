@@ -186,8 +186,9 @@ namespace Makaretu.Dns
 
             // Cancel the request when either the timeout is reached or the
             // task is cancelled by the caller.
-            var cts = CancellationTokenSource.CreateLinkedTokenSource(cancel);
-            cts.CancelAfter(Timeout);
+            var cts = CancellationTokenSource.CreateLinkedTokenSource(
+                cancel, 
+                new CancellationTokenSource(Timeout).Token);
             var tcs = new TaskCompletionSource<Message>();
             OutstandingRequests[request.Id] = tcs;
 
@@ -201,6 +202,12 @@ namespace Makaretu.Dns
                     await server.FlushAsync(cts.Token);
                 }
                 dnsResponse = await tcs.Task.WaitAsync(cts.Token);
+            }
+            catch (TaskCanceledException) when (server != null && !server.CanRead)
+            {
+                if (log.IsDebugEnabled)
+                    log.Debug($"Retying query #{request.Id}");
+                return await QueryAsync(request, cancel);
             }
             finally
             {
@@ -245,6 +252,16 @@ namespace Makaretu.Dns
                     paddingOption.Padding = new byte[need];
             };
 
+            // Keep the connection alive.
+            if (!opt.Options.Any(o => o.Type == EdnsOptionType.Keepalive))
+            {
+                var keepalive = new EdnsKeepaliveOption
+                {
+                    Timeout = TimeSpan.FromMinutes(2)
+                };
+                opt.Options.Add(keepalive);
+            };
+
             var udpRequest = request.ToByteArray();
             byte[] length = BitConverter.GetBytes((ushort)udpRequest.Length);
             if (BitConverter.IsLittleEndian)
@@ -284,8 +301,11 @@ namespace Makaretu.Dns
                     {
                         var socket = new Socket(endPoint.Address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                         await socket.ConnectAsync(endPoint.Address, endPoint.Port);
-                        var stream = new NetworkStream(socket, ownsSocket: true);
-
+                        Stream stream = new NetworkStream(socket, ownsSocket: true);
+                        // Better performance with a buffered stream.
+#if !NETSTANDARD14
+                        stream = new BufferedStream(stream);
+#endif
                         dnsServer = new SslStream(
                             stream,
                             false, // leave inner stream open
@@ -343,7 +363,7 @@ namespace Makaretu.Dns
         void ReadResponses(Stream stream)
         {
             if (log.IsDebugEnabled)
-                log.Debug($"Starting reader thread");
+                log.Debug("Starting reader thread");
 
             var reader = new DnsReader(stream);
             while (stream.CanRead)
@@ -370,6 +390,11 @@ namespace Makaretu.Dns
                     // Continue the request.
                     task.SetResult(response);
                 }
+                catch (EndOfStreamException)
+                {
+                    log.Warn("Server closed stream.");
+                    stream.Dispose();
+                }
                 catch (Exception e)
                 {
                     if (stream.CanRead)
@@ -382,6 +407,12 @@ namespace Makaretu.Dns
 
             if (log.IsDebugEnabled)
                 log.Debug($"Stopping reader thread");
+
+            // Cancel any outstanding queries.
+            foreach (var task in OutstandingRequests.Values)
+            {
+                task.SetCanceled();
+            }
         }
     }
 
