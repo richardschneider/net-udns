@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net461</TargetFramework>
+    <!--ApplicationManifest>App.manifest</ApplicationManifest-->
+    <!-- developer build is always 0.2 -->
+    <AssemblyVersion>0.42</AssemblyVersion>
+    <Version>0.42</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Common.Logging" Version="3.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Udns.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Management" />
+  </ItemGroup>
+
+</Project>
