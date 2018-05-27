@@ -134,9 +134,13 @@ namespace Makaretu.Dns
             // Check the DNS response.
             var body = await httpResponse.Content.ReadAsStreamAsync();
             var dnsResponse = (Message)new Message().Read(body);
-            if (dnsResponse.Status != MessageStatus.NoError) {
-                log.Warn($"DNS error '{dnsResponse.Status}'.");
-                throw new IOException($"DNS error '{dnsResponse.Status}'.");
+            if (ThrowResponseError)
+            {
+                if (dnsResponse.Status != MessageStatus.NoError)
+                {
+                    log.Warn($"DNS error '{dnsResponse.Status}'.");
+                    throw new IOException($"DNS error '{dnsResponse.Status}'.");
+                }
             }
 
             if (log.IsDebugEnabled)

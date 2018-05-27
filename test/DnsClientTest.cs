@@ -129,6 +129,18 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        public void Query_UnknownName_NoThrow()
+        {
+            using (var dns = new DnsClient { ThrowResponseError = false })
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
+                var result = dns.QueryAsync(query).Result;
+                Assert.AreEqual(MessageStatus.NameError, result.Status);
+            }
+        }
+
+        [TestMethod]
         public async Task Query_OneDeadServer()
         {
             var dns = new DnsClient

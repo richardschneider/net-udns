@@ -16,6 +16,9 @@ namespace Makaretu.Dns
     public abstract class DnsClientBase : IDnsClient
     {
         /// <inheritdoc />
+        public bool ThrowResponseError { get; set; } = true;
+
+        /// <inheritdoc />
         public async Task<IEnumerable<IPAddress>> ResolveAsync(
             string name,
             CancellationToken cancel = default(CancellationToken))
