@@ -151,9 +151,13 @@ namespace Makaretu.Dns
                 log.Warn("No response from DNS servers.");
                 throw new IOException("No response from DNS servers.");
             }
-            if (response.Status != MessageStatus.NoError) {
-                log.Warn($"DNS error '{response.Status}'.");
-                throw new IOException($"DNS error '{response.Status}'.");
+            if (ThrowResponseError)
+            {
+                if (response.Status != MessageStatus.NoError)
+                {
+                    log.Warn($"DNS error '{response.Status}'.");
+                    throw new IOException($"DNS error '{response.Status}'.");
+                }
             }
 
             log.Debug($"Got response #{response.Id}");

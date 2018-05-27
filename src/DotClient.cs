@@ -215,16 +215,17 @@ namespace Makaretu.Dns
             }
 
             // Checks that response is valid.
-            if (!dnsResponse.IsResponse)
-                throw new FormatException("DNS response is not a response.");
-            if (dnsResponse.TC)
-                throw new FormatException("DNS response should not be truncated.");
-            // TODO: Check that answer matches.
-
-            if (dnsResponse.Status != MessageStatus.NoError)
+            if (ThrowResponseError)
             {
-                log.Warn($"DNS error '{dnsResponse.Status}'.");
-                throw new IOException($"DNS error '{dnsResponse.Status}'.");
+                if (!dnsResponse.IsResponse)
+                    throw new FormatException("DNS response is not a response.");
+                if (dnsResponse.TC)
+                    throw new FormatException("DNS response should not be truncated.");
+                if (dnsResponse.Status != MessageStatus.NoError)
+                {
+                    log.Warn($"DNS error '{dnsResponse.Status}'.");
+                    throw new IOException($"DNS error '{dnsResponse.Status}'.");
+                }
             }
 
             return dnsResponse;

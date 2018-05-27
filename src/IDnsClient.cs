@@ -19,6 +19,20 @@ namespace Makaretu.Dns
     public interface IDnsClient : IDisposable
     {
         /// <summary>
+        ///   Determines if an exception is thrown when a response contains
+        ///   an error.
+        /// </summary>
+        /// <value>
+        ///   Defaults to <b>true</b>.
+        /// </value>
+        /// <remarks>
+        ///   When set, an exception is thrown if the response's <see cref="Message.Status"/>
+        ///   is not <see cref="MessageStatus.NoError"/> or is considered invalid for the
+        ///   request.
+        /// </remarks>
+        bool ThrowResponseError { get; set; }
+
+        /// <summary>
         ///   Get the IP addresses for the specified name.
         /// </summary>
         /// <param name="name">

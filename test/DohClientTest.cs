@@ -93,7 +93,17 @@ namespace Makaretu.Dns
             }, "DNS error 'NameError'.");
         }
 
-
+        [TestMethod]
+        public void Query_UnknownName_NoThrow()
+        {
+            using (var doh = new DohClient { ThrowResponseError = false })
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
+                var result = doh.QueryAsync(query).Result;
+                Assert.AreEqual(MessageStatus.NameError, result.Status);
+            }
+        }
 
         [TestMethod]
         public void Query_InvalidServer()

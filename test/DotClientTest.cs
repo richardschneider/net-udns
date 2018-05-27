@@ -124,7 +124,17 @@ namespace Makaretu.Dns
             }
         }
 
-
+        [TestMethod]
+        public void Query_UnknownName_NoThrow()
+        {
+            using (var dot = new DotClient { ThrowResponseError = false })
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "emanon.noname.google.com", Type = DnsType.A });
+                var result = dot.QueryAsync(query).Result;
+                Assert.AreEqual(MessageStatus.NameError, result.Status);
+            }
+        }
 
         [TestMethod]
         public void Query_InvalidServer_IPAddress()
