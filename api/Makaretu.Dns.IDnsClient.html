@@ -82,6 +82,46 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IDnsClient : IDisposable</code></pre>
   </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_IDnsClient_ThrowResponseError.md&amp;value=---%0Auid%3A%20Makaretu.Dns.IDnsClient.ThrowResponseError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L33">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_IDnsClient_ThrowResponseError_" data-uid="Makaretu.Dns.IDnsClient.ThrowResponseError*"></a>
+  <h4 id="Makaretu_Dns_IDnsClient_ThrowResponseError" data-uid="Makaretu.Dns.IDnsClient.ThrowResponseError">ThrowResponseError</h4>
+  <div class="markdown level1 summary"><p>Determines if an exception is thrown when a response contains
+an error.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ThrowResponseError { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Defaults to <strong>true</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Makaretu_Dns_IDnsClient_ThrowResponseError_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>When set, an exception is thrown if the response&apos;s <see cref="!:Message.Status"></see>
+is not <see cref="!:MessageStatus.NoError"></see> or is considered invalid for the
+request.</p>
+</div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -89,7 +129,7 @@
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_IDnsClient_QueryAsync_Message_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.IDnsClient.QueryAsync(Message%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L108">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L122">View Source</a>
   </span>
   <a id="Makaretu_Dns_IDnsClient_QueryAsync_" data-uid="Makaretu.Dns.IDnsClient.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_IDnsClient_QueryAsync_Message_CancellationToken_" data-uid="Makaretu.Dns.IDnsClient.QueryAsync(Message,CancellationToken)">QueryAsync(Message, CancellationToken)</h4>
@@ -153,7 +193,7 @@ Some home routers have issues with IPv6, so IPv4 servers are tried first.
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_IDnsClient_QueryAsync_System_String_DnsType_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.IDnsClient.QueryAsync(System.String%2CDnsType%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L57">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L71">View Source</a>
   </span>
   <a id="Makaretu_Dns_IDnsClient_QueryAsync_" data-uid="Makaretu.Dns.IDnsClient.QueryAsync*"></a>
   <h4 id="Makaretu_Dns_IDnsClient_QueryAsync_System_String_DnsType_CancellationToken_" data-uid="Makaretu.Dns.IDnsClient.QueryAsync(System.String,DnsType,CancellationToken)">QueryAsync(String, DnsType, CancellationToken)</h4>
@@ -219,7 +259,7 @@ contains the response <see cref="!:Message"></see>.</p>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_IDnsClient_ResolveAsync_IPAddress_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.IDnsClient.ResolveAsync(IPAddress%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L81">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L95">View Source</a>
   </span>
   <a id="Makaretu_Dns_IDnsClient_ResolveAsync_" data-uid="Makaretu.Dns.IDnsClient.ResolveAsync*"></a>
   <h4 id="Makaretu_Dns_IDnsClient_ResolveAsync_IPAddress_CancellationToken_" data-uid="Makaretu.Dns.IDnsClient.ResolveAsync(IPAddress,CancellationToken)">ResolveAsync(IPAddress, CancellationToken)</h4>
@@ -282,7 +322,7 @@ response contains the name(s) of the <code data-dev-comment-type="paramref" clas
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_IDnsClient_ResolveAsync_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.IDnsClient.ResolveAsync(System.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L34">View Source</a>
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/IDnsClient.cs/#L48">View Source</a>
   </span>
   <a id="Makaretu_Dns_IDnsClient_ResolveAsync_" data-uid="Makaretu.Dns.IDnsClient.ResolveAsync*"></a>
   <h4 id="Makaretu_Dns_IDnsClient_ResolveAsync_System_String_CancellationToken_" data-uid="Makaretu.Dns.IDnsClient.ResolveAsync(System.String,CancellationToken)">ResolveAsync(String, CancellationToken)</h4>

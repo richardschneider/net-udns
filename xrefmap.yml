@@ -154,6 +154,19 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClientBase.ResolveAsync
   nameWithType: DnsClientBase.ResolveAsync
+- uid: Makaretu.Dns.DnsClientBase.ThrowResponseError
+  name: ThrowResponseError
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ThrowResponseError
+  commentId: P:Makaretu.Dns.DnsClientBase.ThrowResponseError
+  fullName: Makaretu.Dns.DnsClientBase.ThrowResponseError
+  nameWithType: DnsClientBase.ThrowResponseError
+- uid: Makaretu.Dns.DnsClientBase.ThrowResponseError*
+  name: ThrowResponseError
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ThrowResponseError_
+  commentId: Overload:Makaretu.Dns.DnsClientBase.ThrowResponseError
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClientBase.ThrowResponseError
+  nameWithType: DnsClientBase.ThrowResponseError
 - uid: Makaretu.Dns.DohClient
   name: DohClient
   href: api/Makaretu.Dns.DohClient.html
@@ -394,6 +407,19 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.IDnsClient.ResolveAsync
   nameWithType: IDnsClient.ResolveAsync
+- uid: Makaretu.Dns.IDnsClient.ThrowResponseError
+  name: ThrowResponseError
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_ThrowResponseError
+  commentId: P:Makaretu.Dns.IDnsClient.ThrowResponseError
+  fullName: Makaretu.Dns.IDnsClient.ThrowResponseError
+  nameWithType: IDnsClient.ThrowResponseError
+- uid: Makaretu.Dns.IDnsClient.ThrowResponseError*
+  name: ThrowResponseError
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_ThrowResponseError_
+  commentId: Overload:Makaretu.Dns.IDnsClient.ThrowResponseError
+  isSpec: "True"
+  fullName: Makaretu.Dns.IDnsClient.ThrowResponseError
+  nameWithType: IDnsClient.ThrowResponseError
 - uid: Makaretu.Dns.IPAddressExtensions
   name: IPAddressExtensions
   href: api/Makaretu.Dns.IPAddressExtensions.html
