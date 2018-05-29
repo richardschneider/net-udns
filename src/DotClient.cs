@@ -247,16 +247,6 @@ namespace Makaretu.Dns
                 request.AdditionalRecords.Add(opt);
             }
 
-            // Always use padding.
-            if (!opt.Options.Any(o => o.Type == EdnsOptionType.Padding))
-            {
-                var paddingOption = new EdnsPaddingOption();
-                opt.Options.Add(paddingOption);
-                var need = BlockLength - (request.ToByteArray().Length % BlockLength);
-                if (need > 0)
-                    paddingOption.Padding = new byte[need];
-            };
-
             // Keep the connection alive.
             if (!opt.Options.Any(o => o.Type == EdnsOptionType.Keepalive))
             {
@@ -265,6 +255,16 @@ namespace Makaretu.Dns
                     Timeout = TimeSpan.FromMinutes(2)
                 };
                 opt.Options.Add(keepalive);
+            };
+
+            // Always use padding. Must be the last transform.
+            if (!opt.Options.Any(o => o.Type == EdnsOptionType.Padding))
+            {
+                var paddingOption = new EdnsPaddingOption();
+                opt.Options.Add(paddingOption);
+                var need = BlockLength - (request.Length() % BlockLength);
+                if (need > 0)
+                    paddingOption.Padding = new byte[need];
             };
 
             var udpRequest = request.ToByteArray();
