@@ -1,5 +1,6 @@
 ﻿using Makaretu.Dns;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Peds
@@ -49,7 +50,10 @@ namespace Peds
 
         async Task StartAsync()
         {
-            var resolver = new DotClient();
+            var resolver = new DotClient
+            {
+                ThrowResponseError = false
+            };
 
             server = new UdpServer { Resolver = resolver };
             await server.StartAsync();

@@ -78,10 +78,11 @@ namespace Peds
             {
                 try
                 {
-                    var result = await listener.ReceiveAsync();
-                    var query = (Message)new Message().Read(result.Buffer);
+                    var request = await listener.ReceiveAsync();
+                    var query = (Message)new Message().Read(request.Buffer);
                     var response = await ProcessAsync(query);
-                    await listener.SendAsync(response.ToByteArray(), 0, result.RemoteEndPoint);
+                    var responseBytes = response.ToByteArray();
+                    await listener.SendAsync(responseBytes, responseBytes.Length, request.RemoteEndPoint);
                 }
                 catch (Exception e)
                 {
