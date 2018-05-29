@@ -91,8 +91,6 @@ namespace Makaretu.Dns
 
         static ILog log = LogManager.GetLogger(typeof(DotClient));
 
-        ushort nextQueryId = (ushort)new Random().Next((int)ushort.MaxValue + 1);
-
         /// <summary>
         ///   The number of octets for padding.
         /// </summary>
@@ -190,7 +188,11 @@ namespace Makaretu.Dns
                 cancel, 
                 new CancellationTokenSource(Timeout).Token);
             var tcs = new TaskCompletionSource<Message>();
-            OutstandingRequests[request.Id] = tcs;
+            if (!OutstandingRequests.TryAdd(request.Id, tcs))
+            {
+                cts.Dispose();
+                throw new Exception($"An outstanding request already exists with the ID {request.Id}.");
+            }
 
             Message dnsResponse;
             try
@@ -205,12 +207,16 @@ namespace Makaretu.Dns
             }
             catch (TaskCanceledException) when (server != null && !server.CanRead)
             {
+                cts.Dispose();
+                OutstandingRequests.TryRemove(request.Id, out var _);
+
                 if (log.IsDebugEnabled)
                     log.Debug($"Retying query #{request.Id}");
                 return await QueryAsync(request, cancel);
             }
             finally
             {
+                cts.Dispose();
                 OutstandingRequests.TryRemove(request.Id, out var _);
             }
 
@@ -233,8 +239,6 @@ namespace Makaretu.Dns
 
         byte[] BuildRequest(Message request)
         {
-            request.Id = nextQueryId++;
-
             // Add an OPT if not already present.
             var opt = request.AdditionalRecords.OfType<OPTRecord>().FirstOrDefault();
             if (opt == null)
@@ -375,13 +379,23 @@ namespace Makaretu.Dns
                     // TODO: Check MinLength
                     if (length > Message.MaxLength)
                        throw new InvalidDataException("DNS response exceeded max length.");
-                    // TODO: Should work, but doesn't
-                    //var response = (Message)new Message().Read(reader);
-                    var response = (Message)new Message().Read(reader.ReadBytes(length));
+                    Message response;
+                    var packet = reader.ReadBytes(length);
+                    try
+                    {
+                        // TODO: Should work, but doesn't
+                        //var response = (Message)new Message().Read(reader);
+                        response = (Message)new Message().Read(packet);
+                    }
+                    catch (Exception e)
+                    {
+                        log.Error($"Failed to read response {Convert.ToBase64String(packet)}", e);
+                        continue;
+                    }
 
                     // Find matching request.
                     if (log.IsDebugEnabled)
-                        log.Debug($"Got response #{response.Id}");
+                        log.Debug($"Got response #{response.Id} {response.Status}");
                     if (!OutstandingRequests.TryGetValue(response.Id, out var task))
                     {
                         log.Warn("DNS response is missing a matching request ID.");
