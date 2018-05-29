@@ -37,18 +37,18 @@ namespace Peds
 
             // TODO: Process args
 
-            Console.CancelKeyPress += async (s, e) =>
+            Console.CancelKeyPress += (s, e) =>
             {
                 Console.WriteLine("CTRL-C");
-                await StopAsync();
+                Stop();
                 e.Cancel = true;
             };
 
-            await StartAsync();
+            Start();
             return await done.Task;
         }
 
-        async Task StartAsync()
+        void Start()
         {
             var resolver = new DotClient
             {
@@ -56,13 +56,13 @@ namespace Peds
             };
 
             server = new UdpServer { Resolver = resolver };
-            await server.StartAsync();
+            server.Start();
 
             nic = new Nic();
             nic.SetDnsServer(server.Addresses);
         }
 
-        async Task StopAsync()
+        void Stop()
         {
             if (nic != null)
             {

@@ -36,15 +36,13 @@ namespace Peds
         /// </value>
         public int Port { get; set; } = 53;
 
-        public async Task StartAsync()
+        public void Start()
         {
             foreach (var address in Addresses)
             {
                 var endPoint = new IPEndPoint(address, Port);
                 var listener = new UdpClient(endPoint);
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                Task.Run(() => ReadRequests(listener));
-#pragma warning restore CS4014
+                ReadRequests(listener);
             }
         }
 
@@ -59,40 +57,41 @@ namespace Peds
             IPAddress.Loopback
         };
 
-        Task<Message> ProcessAsync(Message message)
-        {
-            return Resolver.QueryAsync(message);
-        }
-
         public void Dispose()
         {
             // TODO
         }
 
-        async Task ReadRequests(UdpClient listener)
+        async void ReadRequests(UdpClient listener)
         {
-            if (log.IsDebugEnabled)
-                log.Debug("Starting reader thread");
-
             while (true)
             {
                 try
                 {
                     var request = await listener.ReceiveAsync();
-                    var query = (Message)new Message().Read(request.Buffer);
-                    var response = await ProcessAsync(query);
-                    var responseBytes = response.ToByteArray();
-                    await listener.SendAsync(responseBytes, responseBytes.Length, request.RemoteEndPoint);
+                    log.Debug("got request");
+                    Process(request, listener);
                 }
                 catch (Exception e)
                 {
                     log.Error(e);
                 }
             }
+        }
 
-            if (log.IsDebugEnabled)
-                log.Debug($"Stopping reader thread");
-
+        async void Process(UdpReceiveResult request, UdpClient listener)
+        {
+            try
+            {
+                var query = (Message)new Message().Read(request.Buffer);
+                var response = await Resolver.QueryAsync(query);
+                var responseBytes = response.ToByteArray();
+                await listener.SendAsync(responseBytes, responseBytes.Length, request.RemoteEndPoint);
+            }
+            catch (Exception e)
+            {
+                log.Error(e);
+            }
         }
 
     }
