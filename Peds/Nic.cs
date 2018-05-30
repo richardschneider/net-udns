@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
 namespace Peds
@@ -13,71 +14,49 @@ namespace Peds
     /// </summary>
     /// <remarks>
     ///   <b>Dispose</b> restores all networks to thier orignal values.
+    ///   <note>
+    ///   Requires elevated privileges.
+    ///   </note>
     /// </remarks>
     class Nic : IDisposable
     {
         static ILog log = LogManager.GetLogger(typeof(Nic));
 
-        Dictionary<string, string[]> originalDnsServers = new Dictionary<string, string[]>();
-
-        public void Dispose()
-        {
-            var mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-            var moc = mc.GetInstances();
-            foreach (ManagementObject mo in moc)
-            {
-                if (originalDnsServers.TryGetValue((string)mo["Description"], out var original))
-                {
-                    if (log.IsDebugEnabled)
-                    {
-                        const string comma = ", ";
-                        log.Debug($"restore {mo["Description"]}");
-                        log.Debug($"dns {string.Join(comma, original)}");
-                    }
-                    var objdns = mo.GetMethodParameters("SetDNSServerSearchOrder");
-                    objdns["DNSServerSearchOrder"] = original;
-                    mo.InvokeMethod("SetDNSServerSearchOrder", objdns, null);
-                }
-            }
-        }
+        Dictionary<NetworkInterface, IPAddressCollection> originalDnsServers = new Dictionary<NetworkInterface, IPAddressCollection>();
 
         /// <summary>
-        ///   Set the DNS server addresses of all network interfaces.
+        ///   Set the DNS server addresses for all network interfaces.
         /// </summary>
         /// <param name="server">
         ///   The sequence of <see cref="IPAddress"/> for the DNS server.
         /// </param>
         public void SetDnsServer(IEnumerable<IPAddress> addresses)
         {
-            // TODO: IPv6
-            if (addresses.Any(a => a.AddressFamily == AddressFamily.InterNetworkV6))
-                throw new NotSupportedException("IPv6 addresses.");
-
-            var stringAddresses = addresses.Select(a => a.ToString()).ToArray();
-
-            var mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-            var moc = mc.GetInstances();
-            foreach (ManagementObject mo in moc)
+            var netsh = new NetShell();
+            var nics = NetworkInterface
+                .GetAllNetworkInterfaces()
+                .Where(nic => nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+                .Where(nic => 
+                    nic.Supports(NetworkInterfaceComponent.IPv4) ||
+                    nic.Supports(NetworkInterfaceComponent.IPv6));
+            foreach (var nic in nics)
             {
-                if (!(bool)mo["IPEnabled"])
-                {
-                    continue;
-                }
-                if (log.IsDebugEnabled)
-                {
-                    log.Debug($"set {mo["Description"]}");
-                    log.Debug("dns " + String.Join(", ", addresses));
-                }
-
-                var objdns = mo.GetMethodParameters("SetDNSServerSearchOrder");
-                objdns["DNSServerSearchOrder"] = stringAddresses;
-                var result = mo.InvokeMethod("SetDNSServerSearchOrder", objdns, null);
-                var rv = (uint)result["ReturnValue"];
-                if (rv != 0)
-                    throw new Exception($"Failed to set dns server search order.  Error code {rv}.");
-
-                originalDnsServers[(string)mo["Description"]] = (string[])mo["DNSServerSearchOrder"];
+                var original = nic.GetIPProperties().DnsAddresses;
+                originalDnsServers[nic] = original;
+                netsh.SetDnsServers(nic, addresses);
             }
+            netsh.Run();
         }
+
+        public void Dispose()
+        {
+            var netsh = new NetShell();
+            foreach (var x in originalDnsServers)
+            {
+                netsh.SetDnsServers(x.Key, x.Value);
+            }
+            netsh.Run();
+        }
+
     }
 }

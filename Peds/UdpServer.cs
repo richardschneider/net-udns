@@ -50,10 +50,11 @@ namespace Peds
         ///   The addresses of the server.
         /// </summary>
         /// <value>
-        ///   Defaults to <see cref="IPAddress.Loopback"/>.
+        ///   Defaults to <see cref="IPAddress.IPv6Loopback"/> and <see cref="IPAddress.Loopback"/>.
         /// </value>
         public IEnumerable<IPAddress> Addresses { get; set; } = new[] 
         {
+            IPAddress.IPv6Loopback,
             IPAddress.Loopback
         };
 
