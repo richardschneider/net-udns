@@ -53,16 +53,6 @@ namespace Makaretu.Dns
             new DotEndPoint
             {
                 Hostname = "cloudflare-dns.com",
-                Address = IPAddress.Parse("1.1.1.1")
-            },
-            new DotEndPoint
-            {
-                Hostname = "cloudflare-dns.com",
-                Address = IPAddress.Parse("1.0.0.1")
-            },
-            new DotEndPoint
-            {
-                Hostname = "cloudflare-dns.com",
                 Address = IPAddress.Parse("2606:4700:4700::1111")
             },
             new DotEndPoint
@@ -72,15 +62,25 @@ namespace Makaretu.Dns
             },
             new DotEndPoint
             {
-                Hostname = "securedns.eu",
-                Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
-                Address = IPAddress.Parse("146.185.167.43")
+                Hostname = "cloudflare-dns.com",
+                Address = IPAddress.Parse("1.1.1.1")
+            },
+            new DotEndPoint
+            {
+                Hostname = "cloudflare-dns.com",
+                Address = IPAddress.Parse("1.0.0.1")
             },
             new DotEndPoint
             {
                 Hostname = "securedns.eu",
                 Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                 Address = IPAddress.Parse("2a03:b0c0:0:1010::e9a:3001")
+            },
+            new DotEndPoint
+            {
+                Hostname = "securedns.eu",
+                Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
+                Address = IPAddress.Parse("146.185.167.43")
             },
             new DotEndPoint
             {
@@ -367,16 +367,14 @@ namespace Makaretu.Dns
 
         void ReadResponses(Stream stream)
         {
-            if (log.IsDebugEnabled)
-                log.Debug("Starting reader thread");
-
             var reader = new DnsReader(stream);
             while (stream.CanRead)
             {
                 try
                 {
                     var length = reader.ReadUInt16();
-                    // TODO: Check MinLength
+                    if (length < Message.MinLength)
+                        throw new InvalidDataException("DNS response is too small.");
                     if (length > Message.MaxLength)
                        throw new InvalidDataException("DNS response exceeded max length.");
                     Message response;
@@ -407,7 +405,6 @@ namespace Makaretu.Dns
                 }
                 catch (EndOfStreamException)
                 {
-                    log.Warn("Server closed stream.");
                     stream.Dispose();
                 }
                 catch (Exception e)
@@ -419,9 +416,6 @@ namespace Makaretu.Dns
                     stream.Dispose();
                 }
             }
-
-            if (log.IsDebugEnabled)
-                log.Debug($"Stopping reader thread");
 
             // Cancel any outstanding queries.
             foreach (var task in OutstandingRequests.Values)
