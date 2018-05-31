@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udns", "src\Udns.csproj", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdnsTests", "test\UdnsTests.csproj", "{B459FBC7-4A28-4170-AD83-7348A403407F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peds", "Peds\Peds.csproj", "{09988844-7359-4B20-AE88-C34C78A22BD4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,10 +35,6 @@ Global
 		{B459FBC7-4A28-4170-AD83-7348A403407F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B459FBC7-4A28-4170-AD83-7348A403407F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B459FBC7-4A28-4170-AD83-7348A403407F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{09988844-7359-4B20-AE88-C34C78A22BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09988844-7359-4B20-AE88-C34C78A22BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09988844-7359-4B20-AE88-C34C78A22BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09988844-7359-4B20-AE88-C34C78A22BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

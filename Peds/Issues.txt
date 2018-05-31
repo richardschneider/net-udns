@@ -1,4 +1,0 @@
-﻿NIC uses WMI to manage the network adapters.  However, WMI does not support IPv6!
-See https://github.com/Noxwizard/dnscrypt-winclient/issues/4
-
-Should detect new adapter or adapter is active and set the dns server.
