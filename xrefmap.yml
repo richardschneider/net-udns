@@ -39,11 +39,11 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClient.GetServers
   nameWithType: DnsClient.GetServers
-- uid: Makaretu.Dns.DnsClient.QueryAsync(Message,CancellationToken)
+- uid: Makaretu.Dns.DnsClient.QueryAsync(Message,System.Threading.CancellationToken)
   name: QueryAsync(Message, CancellationToken)
-  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_Message_CancellationToken_
-  commentId: M:Makaretu.Dns.DnsClient.QueryAsync(Message,CancellationToken)
-  fullName: Makaretu.Dns.DnsClient.QueryAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_QueryAsync_Message_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClient.QueryAsync(Message,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClient.QueryAsync(Message, System.Threading.CancellationToken)
   nameWithType: DnsClient.QueryAsync(Message, CancellationToken)
 - uid: Makaretu.Dns.DnsClient.QueryAsync*
   name: QueryAsync
@@ -116,17 +116,30 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClientBase.Dispose
   nameWithType: DnsClientBase.Dispose
-- uid: Makaretu.Dns.DnsClientBase.QueryAsync(Message,CancellationToken)
+- uid: Makaretu.Dns.DnsClientBase.NextQueryId
+  name: NextQueryId()
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_NextQueryId
+  commentId: M:Makaretu.Dns.DnsClientBase.NextQueryId
+  fullName: Makaretu.Dns.DnsClientBase.NextQueryId()
+  nameWithType: DnsClientBase.NextQueryId()
+- uid: Makaretu.Dns.DnsClientBase.NextQueryId*
+  name: NextQueryId
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_NextQueryId_
+  commentId: Overload:Makaretu.Dns.DnsClientBase.NextQueryId
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClientBase.NextQueryId
+  nameWithType: DnsClientBase.NextQueryId
+- uid: Makaretu.Dns.DnsClientBase.QueryAsync(Message,System.Threading.CancellationToken)
   name: QueryAsync(Message, CancellationToken)
-  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_QueryAsync_Message_CancellationToken_
-  commentId: M:Makaretu.Dns.DnsClientBase.QueryAsync(Message,CancellationToken)
-  fullName: Makaretu.Dns.DnsClientBase.QueryAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_QueryAsync_Message_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClientBase.QueryAsync(Message,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClientBase.QueryAsync(Message, System.Threading.CancellationToken)
   nameWithType: DnsClientBase.QueryAsync(Message, CancellationToken)
-- uid: Makaretu.Dns.DnsClientBase.QueryAsync(System.String,DnsType,CancellationToken)
+- uid: Makaretu.Dns.DnsClientBase.QueryAsync(System.String,DnsType,System.Threading.CancellationToken)
   name: QueryAsync(String, DnsType, CancellationToken)
-  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_QueryAsync_System_String_DnsType_CancellationToken_
-  commentId: M:Makaretu.Dns.DnsClientBase.QueryAsync(System.String,DnsType,CancellationToken)
-  fullName: Makaretu.Dns.DnsClientBase.QueryAsync(System.String, DnsType, CancellationToken)
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_QueryAsync_System_String_DnsType_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClientBase.QueryAsync(System.String,DnsType,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClientBase.QueryAsync(System.String, DnsType, System.Threading.CancellationToken)
   nameWithType: DnsClientBase.QueryAsync(String, DnsType, CancellationToken)
 - uid: Makaretu.Dns.DnsClientBase.QueryAsync*
   name: QueryAsync
@@ -135,17 +148,17 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClientBase.QueryAsync
   nameWithType: DnsClientBase.QueryAsync
-- uid: Makaretu.Dns.DnsClientBase.ResolveAsync(IPAddress,CancellationToken)
+- uid: Makaretu.Dns.DnsClientBase.ResolveAsync(System.Net.IPAddress,System.Threading.CancellationToken)
   name: ResolveAsync(IPAddress, CancellationToken)
-  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_IPAddress_CancellationToken_
-  commentId: M:Makaretu.Dns.DnsClientBase.ResolveAsync(IPAddress,CancellationToken)
-  fullName: Makaretu.Dns.DnsClientBase.ResolveAsync(IPAddress, CancellationToken)
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_System_Net_IPAddress_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClientBase.ResolveAsync(System.Net.IPAddress,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClientBase.ResolveAsync(System.Net.IPAddress, System.Threading.CancellationToken)
   nameWithType: DnsClientBase.ResolveAsync(IPAddress, CancellationToken)
-- uid: Makaretu.Dns.DnsClientBase.ResolveAsync(System.String,CancellationToken)
+- uid: Makaretu.Dns.DnsClientBase.ResolveAsync(System.String,System.Threading.CancellationToken)
   name: ResolveAsync(String, CancellationToken)
-  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_System_String_CancellationToken_
-  commentId: M:Makaretu.Dns.DnsClientBase.ResolveAsync(System.String,CancellationToken)
-  fullName: Makaretu.Dns.DnsClientBase.ResolveAsync(System.String, CancellationToken)
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClientBase.ResolveAsync(System.String,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClientBase.ResolveAsync(System.String, System.Threading.CancellationToken)
   nameWithType: DnsClientBase.ResolveAsync(String, CancellationToken)
 - uid: Makaretu.Dns.DnsClientBase.ResolveAsync*
   name: ResolveAsync
@@ -198,11 +211,11 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DohClient.HttpClient
   nameWithType: DohClient.HttpClient
-- uid: Makaretu.Dns.DohClient.QueryAsync(Message,CancellationToken)
+- uid: Makaretu.Dns.DohClient.QueryAsync(Message,System.Threading.CancellationToken)
   name: QueryAsync(Message, CancellationToken)
-  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_QueryAsync_Message_CancellationToken_
-  commentId: M:Makaretu.Dns.DohClient.QueryAsync(Message,CancellationToken)
-  fullName: Makaretu.Dns.DohClient.QueryAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.DohClient.html#Makaretu_Dns_DohClient_QueryAsync_Message_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DohClient.QueryAsync(Message,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DohClient.QueryAsync(Message, System.Threading.CancellationToken)
   nameWithType: DohClient.QueryAsync(Message, CancellationToken)
 - uid: Makaretu.Dns.DohClient.QueryAsync*
   name: QueryAsync
@@ -294,11 +307,11 @@ references:
   commentId: F:Makaretu.Dns.DotClient.PublicServers
   fullName: Makaretu.Dns.DotClient.PublicServers
   nameWithType: DotClient.PublicServers
-- uid: Makaretu.Dns.DotClient.QueryAsync(Message,CancellationToken)
+- uid: Makaretu.Dns.DotClient.QueryAsync(Message,System.Threading.CancellationToken)
   name: QueryAsync(Message, CancellationToken)
-  href: api/Makaretu.Dns.DotClient.html#Makaretu_Dns_DotClient_QueryAsync_Message_CancellationToken_
-  commentId: M:Makaretu.Dns.DotClient.QueryAsync(Message,CancellationToken)
-  fullName: Makaretu.Dns.DotClient.QueryAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.DotClient.html#Makaretu_Dns_DotClient_QueryAsync_Message_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DotClient.QueryAsync(Message,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DotClient.QueryAsync(Message, System.Threading.CancellationToken)
   nameWithType: DotClient.QueryAsync(Message, CancellationToken)
 - uid: Makaretu.Dns.DotClient.QueryAsync*
   name: QueryAsync
@@ -369,17 +382,30 @@ references:
   commentId: T:Makaretu.Dns.IDnsClient
   fullName: Makaretu.Dns.IDnsClient
   nameWithType: IDnsClient
-- uid: Makaretu.Dns.IDnsClient.QueryAsync(Message,CancellationToken)
+- uid: Makaretu.Dns.IDnsClient.NextQueryId
+  name: NextQueryId()
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_NextQueryId
+  commentId: M:Makaretu.Dns.IDnsClient.NextQueryId
+  fullName: Makaretu.Dns.IDnsClient.NextQueryId()
+  nameWithType: IDnsClient.NextQueryId()
+- uid: Makaretu.Dns.IDnsClient.NextQueryId*
+  name: NextQueryId
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_NextQueryId_
+  commentId: Overload:Makaretu.Dns.IDnsClient.NextQueryId
+  isSpec: "True"
+  fullName: Makaretu.Dns.IDnsClient.NextQueryId
+  nameWithType: IDnsClient.NextQueryId
+- uid: Makaretu.Dns.IDnsClient.QueryAsync(Message,System.Threading.CancellationToken)
   name: QueryAsync(Message, CancellationToken)
-  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_QueryAsync_Message_CancellationToken_
-  commentId: M:Makaretu.Dns.IDnsClient.QueryAsync(Message,CancellationToken)
-  fullName: Makaretu.Dns.IDnsClient.QueryAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_QueryAsync_Message_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.IDnsClient.QueryAsync(Message,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.IDnsClient.QueryAsync(Message, System.Threading.CancellationToken)
   nameWithType: IDnsClient.QueryAsync(Message, CancellationToken)
-- uid: Makaretu.Dns.IDnsClient.QueryAsync(System.String,DnsType,CancellationToken)
+- uid: Makaretu.Dns.IDnsClient.QueryAsync(System.String,DnsType,System.Threading.CancellationToken)
   name: QueryAsync(String, DnsType, CancellationToken)
-  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_QueryAsync_System_String_DnsType_CancellationToken_
-  commentId: M:Makaretu.Dns.IDnsClient.QueryAsync(System.String,DnsType,CancellationToken)
-  fullName: Makaretu.Dns.IDnsClient.QueryAsync(System.String, DnsType, CancellationToken)
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_QueryAsync_System_String_DnsType_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.IDnsClient.QueryAsync(System.String,DnsType,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.IDnsClient.QueryAsync(System.String, DnsType, System.Threading.CancellationToken)
   nameWithType: IDnsClient.QueryAsync(String, DnsType, CancellationToken)
 - uid: Makaretu.Dns.IDnsClient.QueryAsync*
   name: QueryAsync
@@ -388,17 +414,17 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.IDnsClient.QueryAsync
   nameWithType: IDnsClient.QueryAsync
-- uid: Makaretu.Dns.IDnsClient.ResolveAsync(IPAddress,CancellationToken)
+- uid: Makaretu.Dns.IDnsClient.ResolveAsync(System.Net.IPAddress,System.Threading.CancellationToken)
   name: ResolveAsync(IPAddress, CancellationToken)
-  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_ResolveAsync_IPAddress_CancellationToken_
-  commentId: M:Makaretu.Dns.IDnsClient.ResolveAsync(IPAddress,CancellationToken)
-  fullName: Makaretu.Dns.IDnsClient.ResolveAsync(IPAddress, CancellationToken)
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_ResolveAsync_System_Net_IPAddress_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.IDnsClient.ResolveAsync(System.Net.IPAddress,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.IDnsClient.ResolveAsync(System.Net.IPAddress, System.Threading.CancellationToken)
   nameWithType: IDnsClient.ResolveAsync(IPAddress, CancellationToken)
-- uid: Makaretu.Dns.IDnsClient.ResolveAsync(System.String,CancellationToken)
+- uid: Makaretu.Dns.IDnsClient.ResolveAsync(System.String,System.Threading.CancellationToken)
   name: ResolveAsync(String, CancellationToken)
-  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_ResolveAsync_System_String_CancellationToken_
-  commentId: M:Makaretu.Dns.IDnsClient.ResolveAsync(System.String,CancellationToken)
-  fullName: Makaretu.Dns.IDnsClient.ResolveAsync(System.String, CancellationToken)
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_ResolveAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.IDnsClient.ResolveAsync(System.String,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.IDnsClient.ResolveAsync(System.String, System.Threading.CancellationToken)
   nameWithType: IDnsClient.ResolveAsync(String, CancellationToken)
 - uid: Makaretu.Dns.IDnsClient.ResolveAsync*
   name: ResolveAsync
@@ -426,11 +452,11 @@ references:
   commentId: T:Makaretu.Dns.IPAddressExtensions
   fullName: Makaretu.Dns.IPAddressExtensions
   nameWithType: IPAddressExtensions
-- uid: Makaretu.Dns.IPAddressExtensions.GetArpaName(IPAddress)
+- uid: Makaretu.Dns.IPAddressExtensions.GetArpaName(System.Net.IPAddress)
   name: GetArpaName(IPAddress)
-  href: api/Makaretu.Dns.IPAddressExtensions.html#Makaretu_Dns_IPAddressExtensions_GetArpaName_IPAddress_
-  commentId: M:Makaretu.Dns.IPAddressExtensions.GetArpaName(IPAddress)
-  fullName: Makaretu.Dns.IPAddressExtensions.GetArpaName(IPAddress)
+  href: api/Makaretu.Dns.IPAddressExtensions.html#Makaretu_Dns_IPAddressExtensions_GetArpaName_System_Net_IPAddress_
+  commentId: M:Makaretu.Dns.IPAddressExtensions.GetArpaName(System.Net.IPAddress)
+  fullName: Makaretu.Dns.IPAddressExtensions.GetArpaName(System.Net.IPAddress)
   nameWithType: IPAddressExtensions.GetArpaName(IPAddress)
 - uid: Makaretu.Dns.IPAddressExtensions.GetArpaName*
   name: GetArpaName

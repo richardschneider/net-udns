@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClient.html",
-          "hash": "3ypnAQa3nVhvtIHpojRAyA=="
+          "hash": "QvLlTX3PM7dsZwxnaFNUdw=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClientBase.html",
-          "hash": "RxoN5distXpCa3bLWyZzBA=="
+          "hash": "DJVJXVefMFAzp4kLGQDxNA=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DohClient.html",
-          "hash": "Hepw8iHa1goSFN9f9t/RPQ=="
+          "hash": "F4sLkziZbGo1+36E2LFrtQ=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotClient.html",
-          "hash": "Uce1bZG8L+jOdE7izF4BZg=="
+          "hash": "VLbZbOJLAjhLAOIpol65Jg=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotEndPoint.html",
-          "hash": "GSiKM1LQOmf3oGX1h4ctSw=="
+          "hash": "Xh+WH/+CgU6Tq4gLL55XTQ=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.IDnsClient.html",
-          "hash": "OOFsQ8QTe5BgWhwZdE6Z6g=="
+          "hash": "35b1pB8tN7OqLyOe2hyR7Q=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.IPAddressExtensions.html",
-          "hash": "tkZGuiIxWr5bloWdwsZ8Gw=="
+          "hash": "5NXuml5vqoVUb8A6Lt/X1g=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.html",
-          "hash": "36VC9r9csAsAlY1f0x6W+w=="
+          "hash": "mZYz7A+Da3z1Liv4YWMXcQ=="
         }
       },
       "is_incremental": false,
@@ -242,11 +242,11 @@
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ManagedReferenceDocumentProcessor": {
+        "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
+        "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
