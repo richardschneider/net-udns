@@ -70,8 +70,11 @@ namespace Peds
                 try
                 {
                     var request = await listener.ReceiveAsync();
-                    log.Debug("got request");
                     Process(request, listener);
+                }
+                catch (SocketException e) when (e.SocketErrorCode == SocketError.ConnectionReset)
+                {
+                    // eat it.
                 }
                 catch (Exception e)
                 {
