@@ -201,7 +201,7 @@ namespace Makaretu.Dns
         {
             var dns = new DnsClient
             {
-                Servers = new IPAddress[] { IPAddress.Parse("127.0.0.1") }
+                Servers = new IPAddress[] { IPAddress.Parse("127.0.0.2") }
             };
             ExceptionAssert.Throws<Exception>(() =>
             {

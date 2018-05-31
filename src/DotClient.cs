@@ -331,9 +331,13 @@ namespace Makaretu.Dns
 
                         return dnsServer;
                     }
+                    catch (SocketException e)
+                    {
+                        log.Warn($"Connecting to {endPoint.Address} failed; {e.SocketErrorCode}.");
+                    }
                     catch (Exception e)
                     {
-                        log.Warn($"Connection to {endPoint.Address} failed.", e);
+                        log.Warn($"Connecting to {endPoint.Address} failed.", e);
                     }
                 }
             }
