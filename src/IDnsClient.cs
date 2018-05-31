@@ -33,6 +33,17 @@ namespace Makaretu.Dns
         bool ThrowResponseError { get; set; }
 
         /// <summary>
+        ///   Get the next ID for a query message.
+        /// </summary>
+        /// <returns>
+        ///   The next <see cref="Message.Id"/>
+        /// </returns>
+        /// <remarks>
+        ///   This is thread safe.
+        /// </remarks>
+        ushort NextQueryId();
+
+        /// <summary>
         ///   Get the IP addresses for the specified name.
         /// </summary>
         /// <param name="name">

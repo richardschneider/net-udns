@@ -15,8 +15,17 @@ namespace Makaretu.Dns
     /// </remarks>
     public abstract class DnsClientBase : IDnsClient
     {
+        int nextQueryId = new Random().Next((int)ushort.MaxValue + 1);
+
         /// <inheritdoc />
         public bool ThrowResponseError { get; set; } = true;
+
+        /// <inheritdoc />
+        public ushort NextQueryId()
+        {
+            var next = Interlocked.Increment(ref nextQueryId);
+            return (ushort)next;
+        }
 
         /// <inheritdoc />
         public async Task<IEnumerable<IPAddress>> ResolveAsync(
@@ -40,7 +49,11 @@ namespace Makaretu.Dns
             DnsType rtype,
             CancellationToken cancel = default(CancellationToken))
         {
-            var query = new Message { RD = true };
+            var query = new Message
+            {
+                Id = NextQueryId(),
+                RD = true
+            };
             query.Questions.Add(new Question { Name = name, Type = rtype });
 
             return QueryAsync(query, cancel);

@@ -192,7 +192,11 @@ namespace Makaretu.Dns
                         Address = IPAddress.Parse("127.0.0.1"),
                         Port = 8530
                     },
-                    DotClient.PublicServers[0]
+                    new DotEndPoint
+                    {
+                        Hostname = "cloudflare-dns.com",
+                        Address = IPAddress.Parse("1.1.1.1")
+                    }
                 }
             })
             {

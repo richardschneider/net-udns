@@ -53,16 +53,6 @@ namespace Makaretu.Dns
             new DotEndPoint
             {
                 Hostname = "cloudflare-dns.com",
-                Address = IPAddress.Parse("1.1.1.1")
-            },
-            new DotEndPoint
-            {
-                Hostname = "cloudflare-dns.com",
-                Address = IPAddress.Parse("1.0.0.1")
-            },
-            new DotEndPoint
-            {
-                Hostname = "cloudflare-dns.com",
                 Address = IPAddress.Parse("2606:4700:4700::1111")
             },
             new DotEndPoint
@@ -72,9 +62,13 @@ namespace Makaretu.Dns
             },
             new DotEndPoint
             {
-                Hostname = "securedns.eu",
-                Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
-                Address = IPAddress.Parse("146.185.167.43")
+                Hostname = "cloudflare-dns.com",
+                Address = IPAddress.Parse("1.1.1.1")
+            },
+            new DotEndPoint
+            {
+                Hostname = "cloudflare-dns.com",
+                Address = IPAddress.Parse("1.0.0.1")
             },
             new DotEndPoint
             {
@@ -84,14 +78,18 @@ namespace Makaretu.Dns
             },
             new DotEndPoint
             {
+                Hostname = "securedns.eu",
+                Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
+                Address = IPAddress.Parse("146.185.167.43")
+            },
+            new DotEndPoint
+            {
                 Hostname = "dns.quad9.net",
                 Address = IPAddress.Parse("9.9.9.9")
             },
         };
 
         static ILog log = LogManager.GetLogger(typeof(DotClient));
-
-        ushort nextQueryId = (ushort)new Random().Next((int)ushort.MaxValue + 1);
 
         /// <summary>
         ///   The number of octets for padding.
@@ -190,7 +188,11 @@ namespace Makaretu.Dns
                 cancel, 
                 new CancellationTokenSource(Timeout).Token);
             var tcs = new TaskCompletionSource<Message>();
-            OutstandingRequests[request.Id] = tcs;
+            if (!OutstandingRequests.TryAdd(request.Id, tcs))
+            {
+                cts.Dispose();
+                throw new Exception($"An outstanding request already exists with the ID {request.Id}.");
+            }
 
             Message dnsResponse;
             try
@@ -205,12 +207,16 @@ namespace Makaretu.Dns
             }
             catch (TaskCanceledException) when (server != null && !server.CanRead)
             {
+                cts.Dispose();
+                OutstandingRequests.TryRemove(request.Id, out var _);
+
                 if (log.IsDebugEnabled)
                     log.Debug($"Retying query #{request.Id}");
                 return await QueryAsync(request, cancel);
             }
             finally
             {
+                cts.Dispose();
                 OutstandingRequests.TryRemove(request.Id, out var _);
             }
 
@@ -233,8 +239,6 @@ namespace Makaretu.Dns
 
         byte[] BuildRequest(Message request)
         {
-            request.Id = nextQueryId++;
-
             // Add an OPT if not already present.
             var opt = request.AdditionalRecords.OfType<OPTRecord>().FirstOrDefault();
             if (opt == null)
@@ -242,16 +246,6 @@ namespace Makaretu.Dns
                 opt = new OPTRecord();
                 request.AdditionalRecords.Add(opt);
             }
-
-            // Always use padding.
-            if (!opt.Options.Any(o => o.Type == EdnsOptionType.Padding))
-            {
-                var paddingOption = new EdnsPaddingOption();
-                opt.Options.Add(paddingOption);
-                var need = BlockLength - (request.ToByteArray().Length % BlockLength);
-                if (need > 0)
-                    paddingOption.Padding = new byte[need];
-            };
 
             // Keep the connection alive.
             if (!opt.Options.Any(o => o.Type == EdnsOptionType.Keepalive))
@@ -261,6 +255,16 @@ namespace Makaretu.Dns
                     Timeout = TimeSpan.FromMinutes(2)
                 };
                 opt.Options.Add(keepalive);
+            };
+
+            // Always use padding. Must be the last transform.
+            if (!opt.Options.Any(o => o.Type == EdnsOptionType.Padding))
+            {
+                var paddingOption = new EdnsPaddingOption();
+                opt.Options.Add(paddingOption);
+                var need = BlockLength - (request.Length() % BlockLength);
+                if (need > 0)
+                    paddingOption.Padding = new byte[need];
             };
 
             var udpRequest = request.ToByteArray();
@@ -327,9 +331,13 @@ namespace Makaretu.Dns
 
                         return dnsServer;
                     }
+                    catch (SocketException e)
+                    {
+                        log.Warn($"Connecting to {endPoint.Address} failed; {e.SocketErrorCode}.");
+                    }
                     catch (Exception e)
                     {
-                        log.Warn($"Connection to {endPoint.Address} failed.", e);
+                        log.Warn($"Connecting to {endPoint.Address} failed.", e);
                     }
                 }
             }
@@ -363,25 +371,33 @@ namespace Makaretu.Dns
 
         void ReadResponses(Stream stream)
         {
-            if (log.IsDebugEnabled)
-                log.Debug("Starting reader thread");
-
             var reader = new DnsReader(stream);
             while (stream.CanRead)
             {
                 try
                 {
                     var length = reader.ReadUInt16();
-                    // TODO: Check MinLength
+                    if (length < Message.MinLength)
+                        throw new InvalidDataException("DNS response is too small.");
                     if (length > Message.MaxLength)
                        throw new InvalidDataException("DNS response exceeded max length.");
-                    // TODO: Should work, but doesn't
-                    //var response = (Message)new Message().Read(reader);
-                    var response = (Message)new Message().Read(reader.ReadBytes(length));
+                    Message response;
+                    var packet = reader.ReadBytes(length);
+                    try
+                    {
+                        // TODO: Should work, but doesn't
+                        //var response = (Message)new Message().Read(reader);
+                        response = (Message)new Message().Read(packet);
+                    }
+                    catch (Exception e)
+                    {
+                        log.Error($"Failed to read response {Convert.ToBase64String(packet)}", e);
+                        continue;
+                    }
 
                     // Find matching request.
                     if (log.IsDebugEnabled)
-                        log.Debug($"Got response #{response.Id}");
+                        log.Debug($"Got response #{response.Id} {response.Status}");
                     if (!OutstandingRequests.TryGetValue(response.Id, out var task))
                     {
                         log.Warn("DNS response is missing a matching request ID.");
@@ -393,7 +409,6 @@ namespace Makaretu.Dns
                 }
                 catch (EndOfStreamException)
                 {
-                    log.Warn("Server closed stream.");
                     stream.Dispose();
                 }
                 catch (Exception e)
@@ -405,9 +420,6 @@ namespace Makaretu.Dns
                     stream.Dispose();
                 }
             }
-
-            if (log.IsDebugEnabled)
-                log.Debug($"Stopping reader thread");
 
             // Cancel any outstanding queries.
             foreach (var task in OutstandingRequests.Values)

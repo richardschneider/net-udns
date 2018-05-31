@@ -58,7 +58,7 @@ after_test:
     - packages\OpenCover.4.6.519\tools\OpenCover.Console.exe 
         -register:user -filter:"+[Makaretu.Dns.Unicast]*" 
         -target:"c:\Program Files\dotnet\dotnet.exe" 
-        -targetargs:"test -c Release --no-build --no-restore --framework net461 test" 
+        -targetargs:"test -c Release --no-build --no-restore --framework net46 test" 
         -output:coverage.xml  
         -mergeoutput 
         -hideskipped:File 
@@ -67,6 +67,7 @@ after_test:
         packages\coveralls.net.0.6.0\tools\csmacnz.coveralls.exe 
         --opencover -i ./coverage.xml --useRelativePaths --serviceName appveyor --jobId %APPVEYOR_BUILD_NUMBER%
 # Build documentation in doc\_site
+    - del src\obj\*.* /s /q
     - docfx doc\docfx.json --logLevel Warning
     - 7z a -tzip docs.zip doc\_site
     - appveyor PushArtifact docs.zip
