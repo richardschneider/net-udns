@@ -307,11 +307,7 @@ namespace Makaretu.Dns
                         var socket = new Socket(endPoint.Address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                         await socket.ConnectAsync(endPoint.Address, endPoint.Port);
                         Stream stream = new NetworkStream(socket, ownsSocket: true);
-                        // Better performance with a buffered stream.
-#if !NETSTANDARD14
-                        stream = new BufferedStream(stream);
-#endif
-                        dnsServer = new SslStream(
+                         dnsServer = new SslStream(
                             stream,
                             false, // leave inner stream open
                             (sender, certificate, chain, errors) =>
