@@ -121,9 +121,15 @@ namespace Makaretu.Dns
                 new CancellationTokenSource(Timeout).Token);
 
             // Post the request.
-            var content = new ByteArrayContent(request.ToByteArray());
-            content.Headers.ContentType = new MediaTypeHeaderValue(DnsWireFormat);
-            var httpResponse = await HttpClient.PostAsync(ServerUrl, content, cts.Token);
+            HttpResponseMessage httpResponse;
+            using (var ms = new MemoryStream())
+            {
+                request.Write(ms);
+                ms.Position = 0;
+                var content = new StreamContent(ms);
+                content.Headers.ContentType = new MediaTypeHeaderValue(DnsWireFormat);
+                httpResponse = await HttpClient.PostAsync(ServerUrl, content, cts.Token);
+            }
 
             // Check the HTTP response.
             httpResponse.EnsureSuccessStatusCode();

@@ -267,17 +267,17 @@ namespace Makaretu.Dns
                     paddingOption.Padding = new byte[need];
             };
 
-            var udpRequest = request.ToByteArray();
-            byte[] length = BitConverter.GetBytes((ushort)udpRequest.Length);
-            if (BitConverter.IsLittleEndian)
+            using (var tcpRequest = new MemoryStream())
             {
-                Array.Reverse(length);
+                tcpRequest.WriteByte(0); // two byte length prefix
+                tcpRequest.WriteByte(0);
+                request.Write(tcpRequest); // udpRequest
+                var length = (ushort)(tcpRequest.Length - 2);
+                tcpRequest.Position = 0;
+                tcpRequest.WriteByte((byte) (length >> 8));
+                tcpRequest.WriteByte((byte) (length));
+                return tcpRequest.ToArray();
             }
-            var tcpRequest = new byte[length.Length + udpRequest.Length];
-            length.CopyTo(tcpRequest, 0);
-            udpRequest.CopyTo(tcpRequest, length.Length);
-
-            return tcpRequest;
         }
 
         /// <summary>
