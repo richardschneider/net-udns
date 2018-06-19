@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClient.html",
-          "hash": "QvLlTX3PM7dsZwxnaFNUdw=="
+          "hash": "VTrWMgx0t//AH/VpqTM1Yg=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClientBase.html",
-          "hash": "DJVJXVefMFAzp4kLGQDxNA=="
+          "hash": "sS7UrpwE/F/796ipHKH7xA=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DohClient.html",
-          "hash": "F4sLkziZbGo1+36E2LFrtQ=="
+          "hash": "EfPIyoMT72sapveTOOdmCA=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotClient.html",
-          "hash": "VLbZbOJLAjhLAOIpol65Jg=="
+          "hash": "GJJRg5WijqlBixMyTpHo1g=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotEndPoint.html",
-          "hash": "Xh+WH/+CgU6Tq4gLL55XTQ=="
+          "hash": "4HRDRxVX3GT63Q2txHc7VA=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.IDnsClient.html",
-          "hash": "35b1pB8tN7OqLyOe2hyR7Q=="
+          "hash": "qWP0TuRHn2ybyHXg6FAPRg=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.IPAddressExtensions.html",
-          "hash": "5NXuml5vqoVUb8A6Lt/X1g=="
+          "hash": "dyJnzRy/jTPD+hfS72q9RA=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.html",
-          "hash": "mZYz7A+Da3z1Liv4YWMXcQ=="
+          "hash": "oRnXU43RRUWJkv30qqnHcg=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/async.html",
-          "hash": "qqT+QIxT2AopErY3K3YdCQ=="
+          "hash": "ZefYlMH8nQQgUqTa6PbOrw=="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/cancellation.html",
-          "hash": "4AozwKdYc5+epv97EwmjoA=="
+          "hash": "8bXg5GqH1x8A+EsWK7b6+A=="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "9LycTgqNQmcGF0zsXy/Wbw=="
+          "hash": "mdk046vRO+O2VHX2O/JYpg=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/server.html",
-          "hash": "CwpMHLoK57eVy5GgYg8N7Q=="
+          "hash": "cR9S1MYIjZLcQMgLmuApXw=="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "dDKTmWzElplY0745/P3CFA=="
+          "hash": "D/ZGKITG4oDozo2fcBF+Vw=="
         }
       },
       "is_incremental": false,
@@ -246,13 +246,13 @@
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build"
-        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
           "incrementalPhase": "build"
         }
       }
