@@ -73,13 +73,13 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
-        [Ignore("not always timing out")]
+        //[Ignore("not always timing out")]
         public void Query_Timeout()
         {
             var dns = new DnsClient
             {
-                TimeoutUdp = TimeSpan.FromMilliseconds(0),
-                TimeoutTcp = TimeSpan.FromMilliseconds(0)
+                TimeoutUdp = TimeSpan.FromMilliseconds(1),
+                TimeoutTcp = TimeSpan.FromMilliseconds(1)
             };
             var query = new Message { RD = true };
             query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
