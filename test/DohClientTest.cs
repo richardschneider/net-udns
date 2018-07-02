@@ -59,7 +59,7 @@ namespace Makaretu.Dns
         {
             var doh = new DohClient
             {
-                Timeout = TimeSpan.FromMilliseconds(100)
+                Timeout = TimeSpan.FromMilliseconds(1)
             };
             var query = new Message { RD = true };
             query.Questions.Add(new Question { Name = "ipfs-x.io", Type = DnsType.TXT });
