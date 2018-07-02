@@ -159,6 +159,7 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        [Ignore("doh.securedns.eu now requires authentication")]
         public async Task Query_SecureEuServer()
         {
             var doh = new DohClient
@@ -173,6 +174,7 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        [Ignore("doh.securedns.eu now requires authentication")]
         public async Task Query_EDNS()
         {
             var doh = new DohClient
