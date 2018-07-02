@@ -62,7 +62,7 @@ namespace Makaretu.Dns
                 Timeout = TimeSpan.FromMilliseconds(0)
             };
             var query = new Message { RD = true };
-            query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+            query.Questions.Add(new Question { Name = "ipfs-x.io", Type = DnsType.TXT });
             ExceptionAssert.Throws<TaskCanceledException>(() =>
             {
                 var _ = doh.QueryAsync(query).Result;
