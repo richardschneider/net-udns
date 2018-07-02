@@ -24,11 +24,11 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
-        public void Resolve()
+        public async Task Resolve()
         {
             var doh = new DohClient();
-            var addresses = doh.ResolveAsync("cloudflare-dns.com").Result.ToArray();
-            Assert.AreNotEqual(0, addresses.Length);
+            var addresses = await doh.ResolveAsync("cloudflare-dns.com");
+            Assert.AreNotEqual(0, addresses.Count());
             Assert.IsTrue(addresses.Any(a => a.AddressFamily == AddressFamily.InterNetwork));
             Assert.IsTrue(addresses.Any(a => a.AddressFamily == AddressFamily.InterNetworkV6));
         }
