@@ -73,7 +73,6 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
-        //[Ignore("not always timing out")]
         public void Query_Timeout()
         {
             var dns = new DnsClient
@@ -82,7 +81,7 @@ namespace Makaretu.Dns
                 TimeoutTcp = TimeSpan.FromMilliseconds(1)
             };
             var query = new Message { RD = true };
-            query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+            query.Questions.Add(new Question { Name = "ipfs-x.io", Type = DnsType.TXT });
             ExceptionAssert.Throws<IOException>(() =>
             {
                 var _ = dns.QueryAsync(query).Result;
