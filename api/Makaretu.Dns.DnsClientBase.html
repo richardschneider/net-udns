@@ -88,6 +88,7 @@
     <h5>Implements</h5>
     <div><a class="xref" href="Makaretu.Dns.IDnsClient.html">IDnsClient</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    <div><span class="xref">IResolver</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -117,7 +118,7 @@
   <h6><strong>Assembly</strong>: Makaretu.Dns.Unicast.dll</h6>
   <h5 id="Makaretu_Dns_DnsClientBase_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class DnsClientBase : IDnsClient, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class DnsClientBase : IDnsClient, IDisposable, IResolver</code></pre>
   </div>
   <h5 id="Makaretu_Dns_DnsClientBase_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Sends and receives DNS queries and answers to unicast DNS servers.</p>
@@ -396,6 +397,59 @@ contains the response <see cref="!:Message"></see>.</p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_ResolveAsync_Message_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.ResolveAsync(Message%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DnsClientBase.cs/#L98">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DnsClientBase_ResolveAsync_" data-uid="Makaretu.Dns.DnsClientBase.ResolveAsync*"></a>
+  <h4 id="Makaretu_Dns_DnsClientBase_ResolveAsync_Message_System_Threading_CancellationToken_" data-uid="Makaretu.Dns.DnsClientBase.ResolveAsync(Message,System.Threading.CancellationToken)">ResolveAsync(Message, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Another name for <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_QueryAsync_Message_System_Threading_CancellationToken_">QueryAsync(Message, CancellationToken)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Message&gt; ResolveAsync(Message request, CancellationToken cancel = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Message</span></td>
+        <td><span class="parametername">request</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<span class="xref">Message</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DnsClientBase_ResolveAsync_System_Net_IPAddress_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DnsClientBase.ResolveAsync(System.Net.IPAddress%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -520,6 +574,9 @@ contains the <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.
   </div>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">System.IDisposable</a>
+  </div>
+  <div>
+      <span class="xref">IResolver</span>
   </div>
 </article>
           </div>

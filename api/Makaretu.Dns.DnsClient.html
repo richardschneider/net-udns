@@ -86,6 +86,7 @@
     <h5>Implements</h5>
     <div><a class="xref" href="Makaretu.Dns.IDnsClient.html">IDnsClient</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    <div><span class="xref">IResolver</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -109,6 +110,9 @@
     </div>
     <div>
       <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_Dispose_System_Boolean_">DnsClientBase.Dispose(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_Message_System_Threading_CancellationToken_">DnsClientBase.ResolveAsync(Message, CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
@@ -136,7 +140,7 @@
   <h6><strong>Assembly</strong>: Makaretu.Dns.Unicast.dll</h6>
   <h5 id="Makaretu_Dns_DnsClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DnsClient : DnsClientBase, IDnsClient, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class DnsClient : DnsClientBase, IDnsClient, IDisposable, IResolver</code></pre>
   </div>
   <h5 id="Makaretu_Dns_DnsClient_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Sends and receives DNS queries and answers to unicast DNS servers.</p>
@@ -398,6 +402,9 @@ Some home routers have issues with IPv6, so IPv4 servers are tried first.
   </div>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">System.IDisposable</a>
+  </div>
+  <div>
+      <span class="xref">IResolver</span>
   </div>
 </article>
           </div>

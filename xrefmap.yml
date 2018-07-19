@@ -148,6 +148,12 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClientBase.QueryAsync
   nameWithType: DnsClientBase.QueryAsync
+- uid: Makaretu.Dns.DnsClientBase.ResolveAsync(Message,System.Threading.CancellationToken)
+  name: ResolveAsync(Message, CancellationToken)
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_Message_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClientBase.ResolveAsync(Message,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClientBase.ResolveAsync(Message, System.Threading.CancellationToken)
+  nameWithType: DnsClientBase.ResolveAsync(Message, CancellationToken)
 - uid: Makaretu.Dns.DnsClientBase.ResolveAsync(System.Net.IPAddress,System.Threading.CancellationToken)
   name: ResolveAsync(IPAddress, CancellationToken)
   href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_System_Net_IPAddress_System_Threading_CancellationToken_
