@@ -1,4 +1,5 @@
 ﻿using Common.Logging;
+using Nito.AsyncEx;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,6 +60,7 @@ namespace Makaretu.Dns
 
         HttpClient httpClient;
         object httpClientLock = new object();
+        readonly AsyncLock dnsServerLock = new AsyncLock();
 
         /// <summary>
         ///   The client that sends HTTP requests and receives HTTP responses.
@@ -128,7 +130,10 @@ namespace Makaretu.Dns
                 ms.Position = 0;
                 var content = new StreamContent(ms);
                 content.Headers.ContentType = new MediaTypeHeaderValue(DnsWireFormat);
-                httpResponse = await HttpClient.PostAsync(ServerUrl, content, cts.Token);
+                // Only one writer at a time.
+                using (await dnsServerLock.LockAsync()) {
+                    httpResponse = await HttpClient.PostAsync(ServerUrl, content, cts.Token);
+                }
             }
 
             // Check the HTTP response.

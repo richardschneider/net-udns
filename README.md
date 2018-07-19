@@ -22,7 +22,7 @@ DNS clients that can fetch more than `A` and `AAAA` resource records.
 - Supports cancellation
 - Supports IPv6 and IPv4 platforms
 - Targets .Net Framework 4.6 an .NET Standard 1.4 and 2.0
-- CI on Circle (Debian GNU/Linux), Travis (Ubuntu Trusty) and AppVeyor (Windows Server 2016)
+- CI on Circle (Debian GNU/Linux), Travis (Ubuntu Trusty and OSX) and AppVeyor (Windows Server 2016)
 
 ## Getting started
 
