@@ -91,5 +91,13 @@ namespace Makaretu.Dns
         protected virtual void Dispose(bool disposing)
         {
         }
+
+        /// <summary>
+        ///   Another name for <see cref="QueryAsync(Message, CancellationToken)"/>.
+        /// </summary>
+        public Task<Message> ResolveAsync(Message request, CancellationToken cancel = default(CancellationToken))
+        {
+            return QueryAsync(request, cancel);
+        }
     }
 }

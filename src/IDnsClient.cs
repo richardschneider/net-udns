@@ -16,7 +16,7 @@ namespace Makaretu.Dns
     ///   Client interface to a DNS server.
     /// </summary>
     /// <seealso cref="DnsClientBase"/>
-    public interface IDnsClient : IDisposable
+    public interface IDnsClient : IDisposable, IResolver
     {
         /// <summary>
         ///   Determines if an exception is thrown when a response contains
