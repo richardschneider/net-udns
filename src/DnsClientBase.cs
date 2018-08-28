@@ -60,6 +60,22 @@ namespace Makaretu.Dns
         }
 
         /// <inheritdoc />
+        public Task<Message> SecureQueryAsync(
+            string name,
+            DnsType rtype,
+            CancellationToken cancel = default(CancellationToken))
+        {
+            var query = new Message
+            {
+                Id = NextQueryId(),
+                RD = true
+            }.UseDnsSecurity();
+            query.Questions.Add(new Question { Name = name, Type = rtype });
+
+            return QueryAsync(query, cancel);
+        }
+
+        /// <inheritdoc />
         public async Task<string> ResolveAsync(
             IPAddress address,
             CancellationToken cancel = default(CancellationToken))

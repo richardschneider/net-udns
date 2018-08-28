@@ -85,6 +85,31 @@ namespace Makaretu.Dns
             CancellationToken cancel = default(CancellationToken));
 
         /// <summary>
+        ///   Send a DNSSEC query with the specified name and resource record type.
+        /// </summary>
+        /// <param name="name">
+        ///   A domain name.
+        /// </param>
+        /// <param name="rtype">
+        ///   A resource record type.
+        /// </param>
+        /// <param name="cancel">
+        ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
+        /// </param>
+        /// <returns>
+        ///   A task that represents the asynchronous operation. The task's value
+        ///   contains the response <see cref="Message"/>.
+        /// </returns>
+        /// <remarks>
+        ///   Creates a secure query <see cref="Message"/> and then calls <see cref="QueryAsync(Message, CancellationToken)"/>.
+        /// </remarks>
+        /// <seealso cref="Message.UseDnsSecurity"/>
+        Task<Message> SecureQueryAsync(
+            string name,
+            DnsType rtype,
+            CancellationToken cancel = default(CancellationToken));
+
+        /// <summary>
         ///   Reverse query for an IP address.
         /// </summary>
         /// <param name="address">

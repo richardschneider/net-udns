@@ -38,5 +38,31 @@ namespace Makaretu.Dns
                 Console.WriteLine(a.ToString());
         }
 
+        [TestMethod]
+        public async Task SecureQueryAddress()
+        {
+            var dns = new DnsClient();
+            var response = await dns.SecureQueryAsync("dia.govt.nz", DnsType.A);
+            foreach (var a in response.Answers)
+                Console.WriteLine(a.ToString());
+        }
+
+        [TestMethod]
+        public async Task SecureQueryDnsKey()
+        {
+            var dns = new DnsClient();
+            var response = await dns.SecureQueryAsync("dia.govt.nz", DnsType.DNSKEY);
+            foreach (var a in response.Answers)
+                Console.WriteLine(a.ToString());
+        }
+
+        [TestMethod]
+        public async Task SecureQueryDs()
+        {
+            var dns = new DnsClient();
+            var response = await dns.SecureQueryAsync("govt.nz", DnsType.DS);
+            foreach (var a in response.Answers)
+                Console.WriteLine(a.ToString());
+        }
     }
 }
