@@ -15,7 +15,7 @@ jobs:
       - run: cat /etc/os-release
       - run: apt-get update
       - run: apt-get install -y dnsutils
-      - run: dig cloudflare-dns.com. AAAA +dnssec
+      - run: dig cloudflare-dns.com. A +dnssec
       - checkout
       - run: dotnet restore
       - run: dotnet build ./src/Udns.csproj -c Debug --framework netstandard14 
@@ -32,7 +32,7 @@ jobs:
       - run: cat /etc/os-release
       - run: apt-get update
       - run: apt-get install -y dnsutils
-      - run: dig cloudflare-dns.com. AAAA +dnssec
+      - run: dig cloudflare-dns.com. A +dnssec
       - checkout
       - run: dotnet restore
       - run: dotnet build ./src/Udns.csproj -c Debug --framework netstandard2 

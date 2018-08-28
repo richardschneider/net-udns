@@ -77,20 +77,16 @@ namespace Makaretu.Dns
         {
             var dns = new DnsClient();
             var query = new Message { RD = true }.UseDnsSecurity();
-            query.Questions.Add(new Question { Name = "cloudflare-dns.com", Type = DnsType.AAAA });
+            query.Questions.Add(new Question { Name = "cloudflare-dns.com", Type = DnsType.A });
             var response = await dns.QueryAsync(query);
             Assert.IsNotNull(response);
             Assert.AreNotEqual(0, response.Answers.Count);
 
             var opt = response.AdditionalRecords.OfType<OPTRecord>().Single();
             Assert.AreEqual(true, opt.DO);
-
-            var rrsig = response
-                .Answers
-                .Concat(response.AdditionalRecords)
-                .Concat(response.AuthorityRecords)
-                .OfType<RRSIGRecord>().Single();
-            Assert.AreEqual(DnsType.AAAA, rrsig.TypeCovered);
+            
+            var rrsig = response.Answers.OfType<RRSIGRecord>().Single();
+            Assert.AreEqual(DnsType.A, rrsig.TypeCovered);
         }
 
 
