@@ -13,7 +13,8 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
     steps:
       - run: cat /etc/os-release
-      - run: apt-get install dnsutils
+      - run: sudo apt-get update
+      - run: sudo apt-get install dnsutils
       - run: dig cloudflare-dns.com. AAAA +dnssec
       - checkout
       - run: dotnet restore
@@ -29,7 +30,8 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
     steps:
       - run: cat /etc/os-release
-      - run: apt-get install dnsutils
+      - run: sudo apt-get update
+      - run: sudo apt-get install dnsutils
       - run: dig cloudflare-dns.com. AAAA +dnssec
       - checkout
       - run: dotnet restore
