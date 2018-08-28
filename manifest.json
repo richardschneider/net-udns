@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClient.html",
-          "hash": "ZKkEJNAZxRUvr5YRW3SIqA=="
+          "hash": "de7FD1Y7FAhdIGiZDiDwug=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClientBase.html",
-          "hash": "5UmWWdHBsLYatrldeetY5A=="
+          "hash": "oXXCe6N3rG8uSltc2JS8tg=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DohClient.html",
-          "hash": "vj1rawcNP74LbzvGMLePgA=="
+          "hash": "lGwPAEvk7wleqygoTQ3P+A=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotClient.html",
-          "hash": "RrtOs3wWJcUsCNl9B0kLLA=="
+          "hash": "vzuAGv6vrHV73bYN+leHyQ=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.IDnsClient.html",
-          "hash": "ca/lgYbgo6yQvqUzaLOyHA=="
+          "hash": "+3eRskGRZe4Rla99Dc9geQ=="
         }
       },
       "is_incremental": false,

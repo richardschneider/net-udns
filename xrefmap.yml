@@ -173,6 +173,19 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.DnsClientBase.ResolveAsync
   nameWithType: DnsClientBase.ResolveAsync
+- uid: Makaretu.Dns.DnsClientBase.SecureQueryAsync(System.String,DnsType,System.Threading.CancellationToken)
+  name: SecureQueryAsync(String, DnsType, CancellationToken)
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_SecureQueryAsync_System_String_DnsType_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.DnsClientBase.SecureQueryAsync(System.String,DnsType,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.DnsClientBase.SecureQueryAsync(System.String, DnsType, System.Threading.CancellationToken)
+  nameWithType: DnsClientBase.SecureQueryAsync(String, DnsType, CancellationToken)
+- uid: Makaretu.Dns.DnsClientBase.SecureQueryAsync*
+  name: SecureQueryAsync
+  href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_SecureQueryAsync_
+  commentId: Overload:Makaretu.Dns.DnsClientBase.SecureQueryAsync
+  isSpec: "True"
+  fullName: Makaretu.Dns.DnsClientBase.SecureQueryAsync
+  nameWithType: DnsClientBase.SecureQueryAsync
 - uid: Makaretu.Dns.DnsClientBase.ThrowResponseError
   name: ThrowResponseError
   href: api/Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ThrowResponseError
@@ -439,6 +452,19 @@ references:
   isSpec: "True"
   fullName: Makaretu.Dns.IDnsClient.ResolveAsync
   nameWithType: IDnsClient.ResolveAsync
+- uid: Makaretu.Dns.IDnsClient.SecureQueryAsync(System.String,DnsType,System.Threading.CancellationToken)
+  name: SecureQueryAsync(String, DnsType, CancellationToken)
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_SecureQueryAsync_System_String_DnsType_System_Threading_CancellationToken_
+  commentId: M:Makaretu.Dns.IDnsClient.SecureQueryAsync(System.String,DnsType,System.Threading.CancellationToken)
+  fullName: Makaretu.Dns.IDnsClient.SecureQueryAsync(System.String, DnsType, System.Threading.CancellationToken)
+  nameWithType: IDnsClient.SecureQueryAsync(String, DnsType, CancellationToken)
+- uid: Makaretu.Dns.IDnsClient.SecureQueryAsync*
+  name: SecureQueryAsync
+  href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_SecureQueryAsync_
+  commentId: Overload:Makaretu.Dns.IDnsClient.SecureQueryAsync
+  isSpec: "True"
+  fullName: Makaretu.Dns.IDnsClient.SecureQueryAsync
+  nameWithType: IDnsClient.SecureQueryAsync
 - uid: Makaretu.Dns.IDnsClient.ThrowResponseError
   name: ThrowResponseError
   href: api/Makaretu.Dns.IDnsClient.html#Makaretu_Dns_IDnsClient_ThrowResponseError
