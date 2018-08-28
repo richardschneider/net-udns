@@ -126,10 +126,10 @@ namespace Makaretu.Dns
         {
             var doh = new DohClient();
             var name = await doh.ResolveAsync(IPAddress.Parse("1.1.1.1"));
-            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+            Assert.AreEqual("one.one.one.one", name);
 
             name = await doh.ResolveAsync(IPAddress.Parse("2606:4700:4700::1111"));
-            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+            Assert.AreEqual("one.one.one.one", name);
         }
 
         [TestMethod]

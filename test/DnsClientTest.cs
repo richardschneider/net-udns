@@ -214,10 +214,10 @@ namespace Makaretu.Dns
         {
             var dns = new DnsClient();
             var name = await dns.ResolveAsync(IPAddress.Parse("1.1.1.1"));
-            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+            Assert.AreEqual("one.one.one.one", name);
 
             name = await dns.ResolveAsync(IPAddress.Parse("2606:4700:4700::1111"));
-            Assert.AreEqual("1dot1dot1dot1.cloudflare-dns.com", name);
+            Assert.AreEqual("one.one.one.one", name);
         }
 
         [TestMethod]
