@@ -85,7 +85,11 @@ namespace Makaretu.Dns
             var opt = response.AdditionalRecords.OfType<OPTRecord>().Single();
             Assert.AreEqual(true, opt.DO);
 
-            var rrsig = response.Answers.OfType<RRSIGRecord>().Single();
+            var rrsig = response
+                .Answers
+                .Concat(response.AdditionalRecords)
+                .Concat(response.AuthorityRecords)
+                .OfType<RRSIGRecord>().Single();
             Assert.AreEqual(DnsType.AAAA, rrsig.TypeCovered);
         }
 
