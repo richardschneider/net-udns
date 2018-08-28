@@ -175,13 +175,9 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
-        [Ignore("doh.securedns.eu now requires authentication")]
         public async Task Query_EDNS()
         {
-            var doh = new DohClient
-            {
-                ServerUrl = "https://doh.securedns.eu/dns-query"
-            };
+            var doh = new DohClient();
             var query = new Message
             {
                 RD = true,
