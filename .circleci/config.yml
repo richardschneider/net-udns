@@ -15,8 +15,8 @@ jobs:
       - run: cat /etc/os-release
       - checkout
       - run: dotnet restore
-      - run: dotnet build ./src/Udns.csproj -c Release --framework netstandard14 
-      - run: dotnet test ./test/UdnsTests.csproj -c Release --framework netcoreapp1.1
+      - run: dotnet build ./src/Udns.csproj -c Debug --framework netstandard14 
+      - run: dotnet test ./test/UdnsTests.csproj -c Debug --framework netcoreapp1.1
 
   dotnet2:
     working_directory: /temp
@@ -29,8 +29,8 @@ jobs:
       - run: cat /etc/os-release
       - checkout
       - run: dotnet restore
-      - run: dotnet build ./src/Udns.csproj -c Release --framework netstandard2 
-      - run: dotnet test ./test/UdnsTests.csproj -c Release --framework netcoreapp2
+      - run: dotnet build ./src/Udns.csproj -c Debug --framework netstandard2 
+      - run: dotnet test ./test/UdnsTests.csproj -c Debug --framework netcoreapp2
 workflows:
   version: 2
   build-all:
