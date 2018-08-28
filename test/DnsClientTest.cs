@@ -73,6 +73,24 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        public async Task SecureQuery_HasRRs()
+        {
+            var dns = new DnsClient();
+            var query = new Message { RD = true }.UseDnsSecurity();
+            query.Questions.Add(new Question { Name = "cloudflare-dns.com", Type = DnsType.AAAA });
+            var response = await dns.QueryAsync(query);
+            Assert.IsNotNull(response);
+            Assert.AreNotEqual(0, response.Answers.Count);
+
+            var opt = response.AdditionalRecords.OfType<OPTRecord>().Single();
+            Assert.AreEqual(true, opt.DO);
+
+            var rrsig = response.Answers.OfType<RRSIGRecord>().Single();
+            Assert.AreEqual(DnsType.AAAA, rrsig.TypeCovered);
+        }
+
+
+        [TestMethod]
         [Ignore("not always timing out")]
         public void Query_Timeout()
         {
