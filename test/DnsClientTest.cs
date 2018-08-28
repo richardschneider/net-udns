@@ -85,8 +85,16 @@ namespace Makaretu.Dns
             var opt = response.AdditionalRecords.OfType<OPTRecord>().Single();
             Assert.AreEqual(true, opt.DO);
 
-            var rrsig = response.Answers.OfType<RRSIGRecord>().Single();
-            Assert.AreEqual(DnsType.A, rrsig.TypeCovered);
+            // See https://discuss.circleci.com/t/dns-response-missing-rrsig/24719
+            if (Environment.GetEnvironmentVariable("CIRCLECI") == "true")
+            {
+                Assert.Inconclusive("Not testable on Circle CI");
+            }
+            else
+            {
+                var rrsig = response.Answers.OfType<RRSIGRecord>().Single();
+                Assert.AreEqual(DnsType.A, rrsig.TypeCovered);
+            }
         }
 
 
