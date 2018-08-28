@@ -33,7 +33,10 @@ namespace Makaretu.Dns
         /// <summary>
         ///   The MIME type for a DNS message encoded in UPD wire format.
         /// </summary>
-        public const string DnsWireFormat = "application/dns-udpwireformat";
+        /// <remarks>
+        ///   Previous drafts defined this as "application/dns-udpwireformat".
+        /// </remarks>
+        public const string DnsWireFormat = "application/dns-message";
 
         /// <summary>
         ///   The MIME type for a DNS message encoded in JSON.
