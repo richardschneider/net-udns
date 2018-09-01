@@ -367,7 +367,7 @@ namespace Makaretu.Dns
 
         void ReadResponses(Stream stream)
         {
-            var reader = new DnsReader(stream);
+            var reader = new WireReader(stream);
             while (stream.CanRead)
             {
                 try

@@ -7,7 +7,7 @@
     <DocumentationFile>Makaretu.Dns.Unicast.xml</DocumentationFile>
     <DebugType>full</DebugType>
     
-    <!-- developer build is always 0.2 -->
+    <!-- developer build is always 0.42 -->
     <AssemblyVersion>0.42</AssemblyVersion>
     <Version>0.42</Version>
     
@@ -17,9 +17,9 @@
     <Title>Unicast DNS clients</Title>
     <Description>Clients that communicate with a standard DNS server or a DNS server over HTTPS.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/richardschneider/net-udns/releases</PackageReleaseNotes>
     <Copyright>© 2018 Richard Schneider</Copyright>
-    <PackageTags>unicast dns https doh client</PackageTags>
+    <PackageTags>unicast dns https doh dot client</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageLicenseUrl>https://github.com/richardschneider/net-udns/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/richardschneider/net-udns</PackageProjectUrl>
@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <PackageReference Include="Common.Logging" Version="3.4.1" />
-    <PackageReference Include="Makaretu.Dns" Version="0.17.0" />
+    <PackageReference Include="Makaretu.Dns" Version="0.17.1" />
     <PackageReference Include="Nito.AsyncEx" Version="5.0.0-pre-05" />
   </ItemGroup>
   
