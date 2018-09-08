@@ -5,9 +5,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Finding a DNS server | DNS Client </title>
+    <title>Namespace Makaretu.Dns
+   | DNS Client </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Finding a DNS server | DNS Client ">
+    <meta name="title" content="Namespace Makaretu.Dns
+   | DNS Client ">
     <meta name="generator" content="docfx 2.39.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -66,28 +68,46 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="finding-a-dns-server">Finding a DNS server</h1>
-
-<h2 id="default">Default</h2>
-<p>Normally the OS network interfaces are queried for the DNS servers; see <a class="xref" href="../api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_GetServers">GetServers</a> for the details.</p>
-<h2 id="specific">Specific</h2>
-<p>To specify the servers, set the <a class="xref" href="../api/Makaretu.Dns.DnsClient.html#Makaretu_Dns_DnsClient_Servers">DnsClient.Servers</a> property</p>
-<pre><code class="lang-csharp">DnsClient.Servers = new IPAddress[] 
-{
-    IPAddress.Parse(&quot;8.8.8.8&quot;),
-    IPAddress.Parse(&quot;2001:4860:4860::8888&quot;)
-}; 
-</code></pre></article>
+            <article class="content wrap" id="_content" data-uid="Makaretu.Dns">
+  
+  <h1 id="Makaretu_Dns" data-uid="Makaretu.Dns" class="text-break">Namespace Makaretu.Dns
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="Makaretu.Dns.DnsClient.html">DnsClient</a></h4>
+      <section><p>Client to a unicast DNS server.</p>
+</section>
+      <h4><a class="xref" href="Makaretu.Dns.DnsClientBase.html">DnsClientBase</a></h4>
+      <section><p>Base class for a DNS client.</p>
+</section>
+      <h4><a class="xref" href="Makaretu.Dns.DohClient.html">DohClient</a></h4>
+      <section><p>Client to a DNS server over HTTPS.</p>
+</section>
+      <h4><a class="xref" href="Makaretu.Dns.DotClient.html">DotClient</a></h4>
+      <section><p>Client to a DNS server over TLS.</p>
+</section>
+      <h4><a class="xref" href="Makaretu.Dns.DotEndPoint.html">DotEndPoint</a></h4>
+      <section><p>Provides the information to make a secure connection to a
+DNS over TLS server.</p>
+</section>
+      <h4><a class="xref" href="Makaretu.Dns.IPAddressExtensions.html">IPAddressExtensions</a></h4>
+      <section><p>Extension methods for <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a>.</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="Makaretu.Dns.IDnsClient.html">IDnsClient</a></h4>
+      <section><p>Client interface to a DNS server.</p>
+</section>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/richardschneider/net-udns/blob/master/doc/articles/server.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

@@ -4,12 +4,120 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.DnsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.DnsClient.html",
+          "hash": "4IUu5I7Jjdpiz7ov/jzhdw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.DnsClientBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.DnsClientBase.html",
+          "hash": "lkQxpd0KTpDk5d+n4ahBCQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.DohClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.DohClient.html",
+          "hash": "F6CRvJc6F80WsU6Pb+CcBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.DotClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.DotClient.html",
+          "hash": "mI+26MM2+mBumuVpiiLlAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.DotEndPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.DotEndPoint.html",
+          "hash": "0D0wsjLG5SlnPOS/hPSwzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.IDnsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.IDnsClient.html",
+          "hash": "neQ4jyiCJxVzo/AhMSccFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.IPAddressExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.IPAddressExtensions.html",
+          "hash": "Br9F313lu8KSFT/H7khwHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Makaretu.Dns.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Makaretu.Dns.html",
+          "hash": "3QngAGyb6LQq5HA+XJxMmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "TaNErhRfRJg4LjlTQJjnpQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "articles/async.md",
       "output": {
         ".html": {
           "relative_path": "articles/async.html",
-          "hash": "hX90Q/yjsLTkXMPZWj8e/Q=="
+          "hash": "sxTzaoI9jgpWG0EmDT7eVg=="
         }
       },
       "is_incremental": false,
@@ -21,52 +129,43 @@
       "output": {
         ".html": {
           "relative_path": "articles/cancellation.html",
-          "hash": "zevXx4EF15AV9kIPZUeWuw=="
+          "hash": "QuSKTbPna2l6qqXeLUrv0Q=="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/intro.md",
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "kg9b4qV2qCcx2u15qOvhiA=="
+          "hash": "pnJd+mVPc1d99nj4UQmeiQ=="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/server.md",
       "output": {
         ".html": {
           "relative_path": "articles/server.html",
-          "hash": "AOKJdruzSFJwkh/jaiL4Cw=="
+          "hash": "10N9LURn83VRIB1uPLxgHA=="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Toc",
       "source_relative_path": "articles/toc.yml",
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "209rUKdPD2xXcJnM5aOiSw=="
+          "hash": "ZlumQ7lB3NnH/g5lB1Tn7A=="
         }
       },
       "is_incremental": false,
@@ -106,15 +205,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "7yPC8AxqxsML2Z7/zY2Tqg=="
+          "hash": "tYzFQa9ol16MMutqLN2G9g=="
         }
       },
       "is_incremental": false,
@@ -126,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "z2Zx7yezrt6JjTsNkN6e+Q=="
+          "hash": "DqRSR5tqfPD8YluoVcdpKA=="
         }
       },
       "is_incremental": false,
@@ -141,18 +237,22 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "TocDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ResourceDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
           "incrementalPhase": "build"
         }
       }

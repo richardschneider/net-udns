@@ -1,0 +1,529 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DotClient
+   | DNS Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DotClient
+   | DNS Client ">
+    <meta name="generator" content="docfx 2.39.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Makaretu.Dns.DotClient">
+  
+  
+  <h1 id="Makaretu_Dns_DotClient" data-uid="Makaretu.Dns.DotClient" class="text-break">Class DotClient
+  </h1>
+  <div class="markdown level0 summary"><p>Client to a DNS server over TLS.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="Makaretu.Dns.DnsClientBase.html">DnsClientBase</a></div>
+    <div class="level2"><span class="xref">DotClient</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Makaretu.Dns.IDnsClient.html">IDnsClient</a></div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    <div><span class="xref">IResolver</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ThrowResponseError">DnsClientBase.ThrowResponseError</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_NextQueryId">DnsClientBase.NextQueryId()</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_System_String_System_Threading_CancellationToken_">DnsClientBase.ResolveAsync(String, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_QueryAsync_System_String_DnsType_System_Threading_CancellationToken_">DnsClientBase.QueryAsync(String, DnsType, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_SecureQueryAsync_System_String_DnsType_System_Threading_CancellationToken_">DnsClientBase.SecureQueryAsync(String, DnsType, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_System_Net_IPAddress_System_Threading_CancellationToken_">DnsClientBase.ResolveAsync(IPAddress, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_Dispose">DnsClientBase.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_ResolveAsync_Message_System_Threading_CancellationToken_">DnsClientBase.ResolveAsync(Message, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Makaretu.Dns.html">Makaretu.Dns</a></h6>
+  <h6><strong>Assembly</strong>: Makaretu.Dns.Unicast.dll</h6>
+  <h5 id="Makaretu_Dns_DotClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DotClient : DnsClientBase, IDnsClient, IDisposable, IResolver</code></pre>
+  </div>
+  <h5 id="Makaretu_Dns_DotClient_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>DNS over TLS is a security protocol for encrypting and wrapping 
+DNS queries and answers via the Transport Layer Security (TLS) protocol. The goal 
+is to increase user privacy and security by preventing eavesdropping and 
+manipulation of DNS data via man-in-the-middle attacks.
+<p>
+All queries are padded to the closest multiple of <a class="xref" href="Makaretu.Dns.DotClient.html#Makaretu_Dns_DotClient_BlockLength">BlockLength</a> octets.
+</p></p>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_DefaultPort.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.DefaultPort%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L40">View Source</a>
+  </span>
+  <h4 id="Makaretu_Dns_DotClient_DefaultPort" data-uid="Makaretu.Dns.DotClient.DefaultPort">DefaultPort</h4>
+  <div class="markdown level1 summary"><p>The default port of a DOT server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DefaultPort = 853</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_PublicServers.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.PublicServers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L51">View Source</a>
+  </span>
+  <h4 id="Makaretu_Dns_DotClient_PublicServers" data-uid="Makaretu.Dns.DotClient.PublicServers">PublicServers</h4>
+  <div class="markdown level1 summary"><p>Known servers that support DNS over TLS.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DotEndPoint[] PublicServers</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Makaretu.Dns.DotEndPoint.html">DotEndPoint</a>[]</td>
+        <td><p>Sequence of known servers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Makaretu_Dns_DotClient_PublicServers_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is the default list that <a class="xref" href="Makaretu.Dns.DotClient.html#Makaretu_Dns_DotClient_Servers">Servers</a> uses.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_BlockLength.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.BlockLength%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L104">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DotClient_BlockLength_" data-uid="Makaretu.Dns.DotClient.BlockLength*"></a>
+  <h4 id="Makaretu_Dns_DotClient_BlockLength" data-uid="Makaretu.Dns.DotClient.BlockLength">BlockLength</h4>
+  <div class="markdown level1 summary"><p>The number of octets for padding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BlockLength { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Defaults to 128.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Makaretu_Dns_DotClient_BlockLength_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>All queries are padded to the closest multiple of <a class="xref" href="Makaretu.Dns.DotClient.html#Makaretu_Dns_DotClient_BlockLength">BlockLength</a> octets.</p>
+</div>
+  <h5 id="Makaretu_Dns_DotClient_BlockLength_seealso">See Also</h5>
+  <div class="seealso">
+      <div><span><a href="https://tools.ietf.org/html/draft-ietf-dprive-padding-policy-05#section-4.1">https://tools.ietf.org/html/draft-ietf-dprive-padding-policy-05#section-4.1</a></span></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_Servers.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.Servers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L120">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DotClient_Servers_" data-uid="Makaretu.Dns.DotClient.Servers*"></a>
+  <h4 id="Makaretu_Dns_DotClient_Servers" data-uid="Makaretu.Dns.DotClient.Servers">Servers</h4>
+  <div class="markdown level1 summary"><p>The DNS over TLS servers to communication with.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;DotEndPoint&gt; Servers { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Makaretu.Dns.DotEndPoint.html">DotEndPoint</a>&gt;</td>
+        <td><p>A sequence of DOT endpoints.  The default is the <a class="xref" href="Makaretu.Dns.DotClient.html#Makaretu_Dns_DotClient_PublicServers">PublicServers</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_Timeout.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.Timeout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L112">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DotClient_Timeout_" data-uid="Makaretu.Dns.DotClient.Timeout*"></a>
+  <h4 id="Makaretu_Dns_DotClient_Timeout" data-uid="Makaretu.Dns.DotClient.Timeout">Timeout</h4>
+  <div class="markdown level1 summary"><p>Time to wait for a DNS response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan Timeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
+        <td><p>The default is 4 seconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L134">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DotClient_Dispose_" data-uid="Makaretu.Dns.DotClient.Dispose*"></a>
+  <h4 id="Makaretu_Dns_DotClient_Dispose_System_Boolean_" data-uid="Makaretu.Dns.DotClient.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Dispose the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p><strong>true</strong> if managed resources should be disposed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_Dispose_System_Boolean_">DnsClientBase.Dispose(Boolean)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_GetDnsServerAsync.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.GetDnsServerAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L287">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DotClient_GetDnsServerAsync_" data-uid="Makaretu.Dns.DotClient.GetDnsServerAsync*"></a>
+  <h4 id="Makaretu_Dns_DotClient_GetDnsServerAsync" data-uid="Makaretu.Dns.DotClient.GetDnsServerAsync">GetDnsServerAsync()</h4>
+  <div class="markdown level1 summary"><p>Get the stream to a DNS server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Stream&gt; GetDnsServerAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient_QueryAsync_Message_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient.QueryAsync(Message%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L166">View Source</a>
+  </span>
+  <a id="Makaretu_Dns_DotClient_QueryAsync_" data-uid="Makaretu.Dns.DotClient.QueryAsync*"></a>
+  <h4 id="Makaretu_Dns_DotClient_QueryAsync_Message_System_Threading_CancellationToken_" data-uid="Makaretu.Dns.DotClient.QueryAsync(Message,System.Threading.CancellationToken)">QueryAsync(Message, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Send a DNS query with the specified message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task&lt;Message&gt; QueryAsync(Message request, CancellationToken cancel = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Message</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <see cref="!:Message"></see> containing a <see cref="!:Question"></see>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancel</span></td>
+        <td><p>Is used to stop the task.  When cancelled, the <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.taskcanceledexception">TaskCanceledException</a> is raised.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<span class="xref">Message</span>&gt;</td>
+        <td><p>A task that represents the asynchronous operation. The task&apos;s value
+contains the response <see cref="!:Message"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Makaretu.Dns.DnsClientBase.html#Makaretu_Dns_DnsClientBase_QueryAsync_Message_System_Threading_CancellationToken_">DnsClientBase.QueryAsync(Message, CancellationToken)</a></div>
+  <h5 id="Makaretu_Dns_DotClient_QueryAsync_Message_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Sends the <code data-dev-comment-type="paramref" class="paramref">request</code> and waits for
+the matching response.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.ioexception">IOException</a></td>
+        <td><p>When the DNS server returns error status or no response.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Makaretu.Dns.IDnsClient.html">IDnsClient</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">System.IDisposable</a>
+  </div>
+  <div>
+      <span class="xref">IResolver</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><span><a href="https://tools.ietf.org/html/rfc7858">https://tools.ietf.org/html/rfc7858</a></span></div>
+      <div><span><a href="https://tools.ietf.org/html/rfc8310">https://tools.ietf.org/html/rfc8310</a></span></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/richardschneider/net-udns/new/master/apiSpec/new?filename=Makaretu_Dns_DotClient.md&amp;value=---%0Auid%3A%20Makaretu.Dns.DotClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/richardschneider/net-udns/blob/master/src/DotClient.cs/#L32" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Generated by DocFX
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
