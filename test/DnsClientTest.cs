@@ -75,6 +75,12 @@ namespace Makaretu.Dns
         [TestMethod]
         public async Task SecureQuery_HasRRs()
         {
+            // See https://discuss.circleci.com/t/dns-response-missing-rrsig/24719
+            if (Environment.GetEnvironmentVariable("CIRCLECI") == "true")
+            {
+                Assert.Inconclusive("Not testable on Circle CI");
+            }
+
             var dns = new DnsClient();
             var query = new Message { RD = true }.UseDnsSecurity();
             query.Questions.Add(new Question { Name = "cloudflare-dns.com", Type = DnsType.A });
@@ -85,16 +91,8 @@ namespace Makaretu.Dns
             var opt = response.AdditionalRecords.OfType<OPTRecord>().Single();
             Assert.AreEqual(true, opt.DO);
 
-            // See https://discuss.circleci.com/t/dns-response-missing-rrsig/24719
-            if (Environment.GetEnvironmentVariable("CIRCLECI") == "true")
-            {
-                Assert.Inconclusive("Not testable on Circle CI");
-            }
-            else
-            {
-                var rrsig = response.Answers.OfType<RRSIGRecord>().Single();
-                Assert.AreEqual(DnsType.A, rrsig.TypeCovered);
-            }
+            var rrsig = response.Answers.OfType<RRSIGRecord>().Single();
+            Assert.AreEqual(DnsType.A, rrsig.TypeCovered);
         }
 
 
