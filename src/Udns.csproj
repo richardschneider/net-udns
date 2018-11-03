@@ -4,7 +4,7 @@
     <TargetFrameworks>net46;netstandard14;netstandard2</TargetFrameworks>
     <AssemblyName>Makaretu.Dns.Unicast</AssemblyName>
     <RootNamespace>Makaretu.Dns</RootNamespace>
-    <DocumentationFile>Makaretu.Dns.Unicast.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <DebugType>full</DebugType>
     
     <!-- developer build is always 0.42 -->
