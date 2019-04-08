@@ -412,10 +412,10 @@ namespace Makaretu.Dns
 #if NETSTANDARD14
                     if (stream.CanRead)
 #else
-                    if (Thread.CurrentThread.IsAlive && stream.CanRead)
+                    if (stream.CanRead && !(e.InnerException is ThreadAbortException))
 #endif
                     {
-                        log.Error(e);
+                            log.Error(e);
                     }
                     stream.Dispose();
                 }
