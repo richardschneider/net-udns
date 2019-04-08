@@ -32,7 +32,7 @@
   <ItemGroup>
     <PackageReference Include="Common.Logging" Version="3.4.1" />
     <PackageReference Include="Makaretu.Dns" Version="1.2.0" />
-    <PackageReference Include="Nito.AsyncEx" Version="5.0.0-pre-05" />
+    <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
   </ItemGroup>
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard14'">
