@@ -409,7 +409,11 @@ namespace Makaretu.Dns
                 }
                 catch (Exception e)
                 {
+#if NETSTANDARD14
                     if (stream.CanRead)
+#else
+                    if (Thread.CurrentThread.IsAlive && stream.CanRead)
+#endif
                     {
                         log.Error(e);
                     }
