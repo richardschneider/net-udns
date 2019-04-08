@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClient.html",
-          "hash": "Fqz3b21sQBFJx2c2TO+BCQ=="
+          "hash": "OJDFO+9Q+njEcm3p51mCOg=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DnsClientBase.html",
-          "hash": "uLspmhJLxIDv3Jmh7b5MlQ=="
+          "hash": "7ttdsIAOuxelQjhCw8fjwg=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DohClient.html",
-          "hash": "b7YcKnKyZb+W6AOFurfrSw=="
+          "hash": "xLGqEQNbJQVL2y59w4WsKg=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotClient.html",
-          "hash": "GkI8/+jNszsHR8E3YBijZQ=="
+          "hash": "fVbIKu0haKwkUMIP5NQSJA=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.DotEndPoint.html",
-          "hash": "i/lJNmSNM4YI6rj7vqCegw=="
+          "hash": "3I8ijcyezBwAcLIaSdXp5A=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.IDnsClient.html",
-          "hash": "Z2nxuQYG5nnnImQ3G0NVfw=="
+          "hash": "CUHtJK2f0GVZXavpl4vGDQ=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.IPAddressExtensions.html",
-          "hash": "25xdEba3O31enYJcMdp3eQ=="
+          "hash": "VHxYHDrYxVRr4IXYWMNOjQ=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Makaretu.Dns.html",
-          "hash": "MYI4BfVzHUqN9qLZOCYLpg=="
+          "hash": "sj9DNE19EDHOJrnfe04CzA=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/async.html",
-          "hash": "hcuc8sEmR+Jk6iZRz4knuA=="
+          "hash": "ScAkA7CynGuc6ujw5kZ+3g=="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/cancellation.html",
-          "hash": "d45WbXwL0NnloqgrscZaVQ=="
+          "hash": "oOtSc2Wzp89oTze4XrMXWA=="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "lQZVZbY1WTjgI7yxQFEuHg=="
+          "hash": "z1EnApMn8gzxQjwnTVQf0Q=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/server.html",
-          "hash": "i1KpHkJjNDmAmaAc+UlwlA=="
+          "hash": "jDxYo/hp3IIgZPtNrtXKdg=="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "xx+HKs5NNtmkYzqGM6yLKw=="
+          "hash": "gGG60n+CFhRZAy8/g7X/0A=="
         }
       },
       "is_incremental": false,
@@ -234,26 +234,37 @@
       "status": {
         "can_incremental": false,
         "details": "Cannot build incrementally because last build info is missing.",
-        "incrementalPhase": "build"
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "ConceptualDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
-          "incrementalPhase": "build"
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build"
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
-        "ResourceDocumentProcessor": {
+        "ConceptualDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
+          "incrementalPhase": "build",
+          "total_file_count": 5,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 8,
+          "skipped_file_count": 0
         }
       }
     },
@@ -261,7 +272,9 @@
       "status": {
         "can_incremental": false,
         "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
-        "incrementalPhase": "postProcessing"
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
       },
       "processors": {}
     }
