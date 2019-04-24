@@ -160,7 +160,10 @@ namespace Makaretu.Dns
                 }
             }
 
-            log.Debug($"Got response #{response.Id}");
+            if (log.IsDebugEnabled)
+                log.Debug($"Got response #{response.Id}");
+            if (log.IsTraceEnabled)
+                log.Trace(response);
             return response;
         }
 

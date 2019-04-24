@@ -394,6 +394,8 @@ namespace Makaretu.Dns
                     // Find matching request.
                     if (log.IsDebugEnabled)
                         log.Debug($"Got response #{response.Id} {response.Status}");
+                    if (log.IsTraceEnabled)
+                        log.Trace(response);
                     if (!OutstandingRequests.TryGetValue(response.Id, out var task))
                     {
                         log.Warn("DNS response is missing a matching request ID.");

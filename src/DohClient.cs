@@ -62,7 +62,7 @@ namespace Makaretu.Dns
         public string ServerUrl { get; set; } = "https://cloudflare-dns.com/dns-query";
 
         HttpClient httpClient;
-        object httpClientLock = new object();
+        readonly object httpClientLock = new object();
         readonly AsyncLock dnsServerLock = new AsyncLock();
 
         /// <summary>
@@ -159,6 +159,8 @@ namespace Makaretu.Dns
 
             if (log.IsDebugEnabled)
                 log.Debug($"Got response #{dnsResponse.Id}");
+            if (log.IsTraceEnabled)
+                log.Trace(dnsResponse);
             return dnsResponse;
         }
 
