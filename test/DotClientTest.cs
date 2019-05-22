@@ -265,7 +265,7 @@ namespace Makaretu.Dns
                 foreach (var address in addresses)
                 {
                     var name = await dot.ResolveAsync(address);
-                    StringAssert.EndsWith(name, github);
+                    StringAssert.EndsWith(name, ".com");
                 }
             }
         }
