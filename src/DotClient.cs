@@ -72,6 +72,26 @@ namespace Makaretu.Dns
             },
             new DotEndPoint
             {
+                Hostname = "dns.google",
+                Address = IPAddress.Parse("2001:4860:4860::8888")
+            },
+            new DotEndPoint
+            {
+                Hostname = "dns.google",
+                Address = IPAddress.Parse("2001:4860:4860::8844")
+            },
+            new DotEndPoint
+            {
+                Hostname = "dns.google",
+                Address = IPAddress.Parse("8.8.8.8")
+            },
+            new DotEndPoint
+            {
+                Hostname = "dns.google",
+                Address = IPAddress.Parse("8.8.4.4")
+            },
+            new DotEndPoint
+            {
                 Hostname = "securedns.eu",
                 Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                 Address = IPAddress.Parse("2a03:b0c0:0:1010::e9a:3001")

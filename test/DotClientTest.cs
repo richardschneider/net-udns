@@ -321,6 +321,29 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        public async Task Query_Google()
+        {
+            using (var dot = new DotClient
+            {
+                Servers = new[]
+                {
+                    new DotEndPoint
+                    {
+                        Hostname = "dns.google",
+                        Address = IPAddress.Parse("8.8.8.8")
+                    }
+                }
+            })
+            {
+                var query = new Message { RD = true };
+                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+                var response = await dot.QueryAsync(query);
+                Assert.IsNotNull(response);
+                Assert.AreNotEqual(0, response.Answers.Count);
+            }
+        }
+
+        [TestMethod]
         public async Task Query_SecureEU()
         {
             using (var dot = new DotClient
