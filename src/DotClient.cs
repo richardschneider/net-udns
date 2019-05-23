@@ -12,6 +12,7 @@ using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using Makaretu.Dns;
 
 namespace Makaretu.Dns
 {
@@ -33,6 +34,7 @@ namespace Makaretu.Dns
     {
         SslStream dnsServer;
         readonly AsyncLock dnsServerLock = new AsyncLock();
+        readonly Random rng = new Random();
 
         /// <summary>
         ///   The default port of a DOT server.
@@ -120,7 +122,7 @@ namespace Makaretu.Dns
         /// <remarks>
         ///   All queries are padded to the closest multiple of <see cref="BlockLength"/> octets.
         /// </remarks>
-        /// <seealso href="https://tools.ietf.org/html/draft-ietf-dprive-padding-policy-05#section-4.1"/>
+        /// <seealso href="https://tools.ietf.org/html/rfc8467#section-4.1"/>
         public int BlockLength { get; set; } = 128;
 
         /// <summary>
@@ -200,6 +202,10 @@ namespace Makaretu.Dns
                     .Select(q => q.Name + " " + q.Type.ToString())
                     .Aggregate((current, next) => current + ", " + next);
                 log.Debug($"query #{request.Id} for '{names}'");
+            }
+            if (log.IsTraceEnabled)
+            {
+                log.Trace(request.ToString());
             }
 
             // Cancel the request when either the timeout is reached or the
@@ -282,9 +288,12 @@ namespace Makaretu.Dns
             {
                 var paddingOption = new EdnsPaddingOption();
                 opt.Options.Add(paddingOption);
-                var need = BlockLength - (request.Length() % BlockLength);
+                var need = BlockLength - ((request.Length() + 2) % BlockLength);
                 if (need > 0)
+                {
                     paddingOption.Padding = new byte[need];
+                    rng.NextBytes(paddingOption.Padding);
+                }
             };
 
             using (var tcpRequest = new MemoryStream())
