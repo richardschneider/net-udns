@@ -265,6 +265,12 @@ namespace Makaretu.Dns
 
         byte[] BuildRequest(Message request)
         {
+            // Always have a query ID.
+            if (request.Id == 0)
+            {
+                request.Id = this.NextQueryId();
+            }
+
             // Add an OPT if not already present.
             var opt = request.AdditionalRecords.OfType<OPTRecord>().FirstOrDefault();
             if (opt == null)
