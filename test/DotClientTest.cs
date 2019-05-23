@@ -298,6 +298,7 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        [Ignore("https://github.com/richardschneider/net-udns/issues/18")]
         public async Task Query_Quad9()
         {
             using (var dot = new DotClient
@@ -308,6 +309,29 @@ namespace Makaretu.Dns
                     {
                         Hostname = "dns.quad9.net",
                         Address = IPAddress.Parse("9.9.9.9")
+                    }
+                }
+            })
+            {
+                var query = new Message { RD = true, Id = 1234 };
+                query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
+                var response = await dot.QueryAsync(query);
+                Assert.IsNotNull(response);
+                Assert.AreNotEqual(0, response.Answers.Count);
+            }
+        }
+
+        [TestMethod]
+        public async Task Query_Google()
+        {
+            using (var dot = new DotClient
+            {
+                Servers = new[]
+                {
+                    new DotEndPoint
+                    {
+                        Hostname = "dns.google",
+                        Address = IPAddress.Parse("8.8.8.8")
                     }
                 }
             })
