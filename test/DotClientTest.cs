@@ -298,6 +298,7 @@ namespace Makaretu.Dns
         }
 
         [TestMethod]
+        [Ignore("https://github.com/richardschneider/net-udns/issues/18")]
         public async Task Query_Quad9()
         {
             using (var dot = new DotClient
@@ -312,7 +313,7 @@ namespace Makaretu.Dns
                 }
             })
             {
-                var query = new Message { RD = true };
+                var query = new Message { RD = true, Id = 1234 };
                 query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
                 var response = await dot.QueryAsync(query);
                 Assert.IsNotNull(response);
