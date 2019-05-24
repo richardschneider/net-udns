@@ -69,14 +69,21 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="dns-clients">DNS Clients</h1>
 
-<p>Various DNS clients that communicate with a DNS server. The source code is on <a href="https://github.com/richardschneider/net-udns">GitHub</a> and the package is published on <a href="https://www.nuget.org/packages/Makaretu.Dns.Unicast">NuGet</a>.</p>
+<p>This package provides various unicast DNS clients, stub resolvers, that communicate with a DNS server. The source code is on <a href="https://github.com/richardschneider/net-udns">GitHub</a> and the package is published on <a href="https://www.nuget.org/packages/Makaretu.Dns.Unicast">NuGet</a>.</p>
 <ul>
-<li><a class="xref" href="../api/Makaretu.Dns.DnsClient.html">DnsClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> 
-to a standard DNS server and receive a response; uses UPD and then TCP (if needed).</li>
-<li><a class="xref" href="../api/Makaretu.Dns.DohClient.html">DohClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> 
-to a DNS over HTTPS server and receive a response.</li>
-<li><a class="xref" href="../api/Makaretu.Dns.DotClient.html">DotClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> 
-to a DNS over TLS server and receive a response.</li>
+<li><p><a class="xref" href="../api/Makaretu.Dns.DnsClient.html">DnsClient</a> is used to send a <a class="xref" href="https://richardschneider.github.io/net-dns/api/Makaretu.Dns.Message.html">Message</a> 
+to a standard DNS server and receive a response; uses UPD and then TCP (if needed). There is no privacy.</p>
+</li>
+<li><p><a class="xref" href="../api/Makaretu.Dns.DohClient.html">DohClient</a>, DNS over HTTPS (DoH), is an experimental protocol for performing remote 
+Domain Name System (DNS) resolution via the HTTPS protocol. The goal
+is to increase user privacy and security by preventing eavesdropping and 
+manipulation of DNS data by man-in-the-middle attacks.</p>
+</li>
+<li><p><a class="xref" href="../api/Makaretu.Dns.DotClient.html">DotClient</a>, DNS over TLS (DoT), is a security protocol for encrypting and wrapping 
+DNS queries and answers via the Transport Layer Security (TLS) protocol. The goal 
+is to increase user privacy and security by preventing eavesdropping and 
+manipulation of DNS data via man-in-the-middle attacks.</p>
+</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <p>Get all the TXT strings assoicated with &quot;ipfs.io&quot;</p>
