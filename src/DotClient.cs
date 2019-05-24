@@ -12,6 +12,7 @@ using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using Makaretu.Dns;
 
 namespace Makaretu.Dns
 {
@@ -33,6 +34,7 @@ namespace Makaretu.Dns
     {
         SslStream dnsServer;
         readonly AsyncLock dnsServerLock = new AsyncLock();
+        readonly Random rng = new Random();
 
         /// <summary>
         ///   The default port of a DOT server.
@@ -102,11 +104,14 @@ namespace Makaretu.Dns
                 Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                 Address = IPAddress.Parse("146.185.167.43")
             },
+// see https://github.com/richardschneider/net-udns/issues/18"
+#if false
             new DotEndPoint
             {
                 Hostname = "dns.quad9.net",
                 Address = IPAddress.Parse("9.9.9.9")
             },
+#endif
         };
 
         static ILog log = LogManager.GetLogger(typeof(DotClient));
@@ -120,7 +125,7 @@ namespace Makaretu.Dns
         /// <remarks>
         ///   All queries are padded to the closest multiple of <see cref="BlockLength"/> octets.
         /// </remarks>
-        /// <seealso href="https://tools.ietf.org/html/draft-ietf-dprive-padding-policy-05#section-4.1"/>
+        /// <seealso href="https://tools.ietf.org/html/rfc8467#section-4.1"/>
         public int BlockLength { get; set; } = 128;
 
         /// <summary>
@@ -201,6 +206,10 @@ namespace Makaretu.Dns
                     .Aggregate((current, next) => current + ", " + next);
                 log.Debug($"query #{request.Id} for '{names}'");
             }
+            if (log.IsTraceEnabled)
+            {
+                log.Trace(request.ToString());
+            }
 
             // Cancel the request when either the timeout is reached or the
             // task is cancelled by the caller.
@@ -259,6 +268,12 @@ namespace Makaretu.Dns
 
         byte[] BuildRequest(Message request)
         {
+            // Always have a query ID.
+            if (request.Id == 0)
+            {
+                request.Id = this.NextQueryId();
+            }
+
             // Add an OPT if not already present.
             var opt = request.AdditionalRecords.OfType<OPTRecord>().FirstOrDefault();
             if (opt == null)
@@ -282,9 +297,12 @@ namespace Makaretu.Dns
             {
                 var paddingOption = new EdnsPaddingOption();
                 opt.Options.Add(paddingOption);
-                var need = BlockLength - (request.Length() % BlockLength);
+                var need = BlockLength - ((request.Length() + 2) % BlockLength);
                 if (need > 0)
+                {
                     paddingOption.Padding = new byte[need];
+                    rng.NextBytes(paddingOption.Padding);
+                }
             };
 
             using (var tcpRequest = new MemoryStream())
