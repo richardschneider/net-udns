@@ -313,7 +313,7 @@ namespace Makaretu.Dns
                 }
             })
             {
-                var query = new Message { RD = true, Id = 1234 };
+                var query = new Message { RD = true };
                 query.Questions.Add(new Question { Name = "ipfs.io", Type = DnsType.TXT });
                 var response = await dot.QueryAsync(query);
                 Assert.IsNotNull(response);

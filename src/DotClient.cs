@@ -104,11 +104,14 @@ namespace Makaretu.Dns
                 Pins = new[] { "h3mufC43MEqRD6uE4lz6gAgULZ5/riqH/E+U+jE3H8g=" },
                 Address = IPAddress.Parse("146.185.167.43")
             },
+// see https://github.com/richardschneider/net-udns/issues/18"
+#if false
             new DotEndPoint
             {
                 Hostname = "dns.quad9.net",
                 Address = IPAddress.Parse("9.9.9.9")
             },
+#endif
         };
 
         static ILog log = LogManager.GetLogger(typeof(DotClient));
