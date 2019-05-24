@@ -23,7 +23,7 @@ namespace Makaretu.Dns
     ///   manipulation of DNS data by man-in-the-middle attacks.
     ///   <para>
     ///   The <b>DohClient</b> uses the HTTP POST method to hide as much
-    ///   information as is possible.  Also, it tends to generated smaller
+    ///   information as is possible.  Also, it tends to generate smaller
     ///   requests.
     ///   </para>
     /// </remarks>
