@@ -47,7 +47,7 @@ namespace Makaretu.Dns
         ///   Get the IP addresses for the specified name.
         /// </summary>
         /// <param name="name">
-        ///   A domain name.
+        ///   A domain name to resolve.
         /// </param>
         /// <param name="cancel">
         ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
@@ -57,7 +57,7 @@ namespace Makaretu.Dns
         ///   contains the <see cref="IPAddress"/> sequence for the <paramref name="name"/>.
         /// </returns>
         Task<IEnumerable<IPAddress>> ResolveAsync(
-            string name,
+            DomainName name,
             CancellationToken cancel = default(CancellationToken));
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Makaretu.Dns
         ///   Creates a query <see cref="Message"/> and then calls <see cref="QueryAsync(Message, CancellationToken)"/>.
         /// </remarks>
         Task<Message> QueryAsync(
-            string name,
+            DomainName name,
             DnsType rtype,
             CancellationToken cancel = default(CancellationToken));
 
@@ -105,7 +105,7 @@ namespace Makaretu.Dns
         /// </remarks>
         /// <seealso cref="Message.UseDnsSecurity"/>
         Task<Message> SecureQueryAsync(
-            string name,
+            DomainName name,
             DnsType rtype,
             CancellationToken cancel = default(CancellationToken));
 
@@ -128,7 +128,7 @@ namespace Makaretu.Dns
         ///   Performs a reverse lookup with a <see cref="DnsType.PTR"/>.  The
         ///   response contains the name(s) of the <paramref name="address"/>.
         /// </remarks>
-        Task<string> ResolveAsync(
+        Task<DomainName> ResolveAsync(
             IPAddress address,
             CancellationToken cancel = default(CancellationToken));
 

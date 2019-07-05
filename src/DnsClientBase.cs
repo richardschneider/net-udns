@@ -29,7 +29,7 @@ namespace Makaretu.Dns
 
         /// <inheritdoc />
         public async Task<IEnumerable<IPAddress>> ResolveAsync(
-            string name,
+            DomainName name,
             CancellationToken cancel = default(CancellationToken))
         {
             var a = QueryAsync(name, DnsType.A, cancel);
@@ -45,7 +45,7 @@ namespace Makaretu.Dns
 
         /// <inheritdoc />
         public Task<Message> QueryAsync(
-            string name,
+            DomainName name,
             DnsType rtype,
             CancellationToken cancel = default(CancellationToken))
         {
@@ -61,7 +61,7 @@ namespace Makaretu.Dns
 
         /// <inheritdoc />
         public Task<Message> SecureQueryAsync(
-            string name,
+            DomainName name,
             DnsType rtype,
             CancellationToken cancel = default(CancellationToken))
         {
@@ -76,7 +76,7 @@ namespace Makaretu.Dns
         }
 
         /// <inheritdoc />
-        public async Task<string> ResolveAsync(
+        public async Task<DomainName> ResolveAsync(
             IPAddress address,
             CancellationToken cancel = default(CancellationToken))
         {
